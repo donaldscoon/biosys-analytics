@@ -1,0 +1,500 @@
+   53       compliance with his measures.
+   54       He has dissolved representative houses repeatedly, for
+   55       opposing with manly firmness his invasions on the rights of
+   56       the people.
+   57       He has refused for a long time, after such dissolutions, to
+   58       cause others to be elected; whereby the legislative powers,
+   59       incapable of annihilation, have returned to the people at
+   60       large for their exercise; the state remaining in the meantime
+   61       exposed to all the dangers of invasion from without, and
+   62       convulsions within.
+   63       He has endeavored to prevent the population of these
+   64       states; for that purpose obstructing the laws for
+   65       naturalization of foreigners; refusing to pass others to
+   66       encourage their migration hither, and raising the conditions
+   67       of new appropriations of lands.
+   68       He has obstructed the administration of justice, by refusing
+   69       his assent to laws for establishing judiciary powers.
+   70       He has made judges dependent on his will alone, for the
+   71       tenure of their offices, and the amount and payment of their
+   72       salaries.
+   73       He has erected a multitude of new offices, and sent hither
+   74       swarms of officers to harass our people, and eat out their
+   75       substance.
+   76       He has kept among us, in times of peace, standing armies
+   77       without the consent of our legislature.
+   78       He has affected to render the military independent of and
+   79       superior to civil power.
+   80       He has combined with others to subject us to a jurisdiction
+   81       foreign to our constitution, and unacknowledged by our
+   82       laws; giving his assent to their acts of pretended legislation:
+   83       For quartering large bodies of armed troops among us:
+   84       For protecting them, by mock trial, from punishment for
+   85       any murders which they should commit on the inhabitants
+   86       of these states:
+   87       For cutting off our trade with all parts of the world:
+   88       For imposing taxes on us without our consent:
+   89       For depriving us in many cases, of the benefits of trial by
+   90       jury:
+   91       For transporting us beyond seas to be tried for pretended
+   92       offenses:
+   93       For abolishing the free system of English laws in a
+   94       neighboring province, establishing therein an arbitrary
+   95       government, and enlarging its boundaries so as to render it
+   96       at once an example and fit instrument for introducing the
+   97       same absolute rule in these colonies:
+   98       For taking away our charters, abolishing our most valuable
+   99       laws, and altering fundamentally the forms of our
+  100       governments:
+  101       For suspending our own legislatures, and declaring
+  102       themselves invested with power to legislate for us in all
+  103       cases whatsoever.
+  104       He has abdicated government here, by declaring us out of
+  105       his protection and waging war against us.
+  106       He has plundered our seas, ravaged our coasts, burned
+  107       our towns, and destroyed the lives of our people.
+  108       He is at this time transporting large armies of foreign
+  109       mercenaries to complete the works of death, desolation
+  110       and tyranny, already begun with circumstances of cruelty
+  111       and perfidy scarcely paralleled in the most barbarous ages,
+  112       and totally unworthy of the head of a civilized nation.
+  113       He has constrained our fellow citizens taken captive on the
+  114       high seas to bear arms against their country, to become the
+  115       executioners of their friends and brethren, or to fall
+  116       themselves by their hands.
+  117       He has excited domestic insurrections amongst us, and has
+  118       endeavored to bring on the inhabitants of our frontiers, the
+  119       merciless Indian savages, whose known rule of warfare, is
+  120       undistinguished destruction of all ages, sexes and
+  121       conditions.
+  122  In every stage of these oppressions we have petitioned for redress in the 
+  123  most humble terms: our repeated petitions have been answered only by 
+  124  repeated injury. A prince, whose character is thus marked by every act which 
+  125  may define a tyrant, is unfit to be the ruler of a free people.
+  126  Nor have we been wanting in attention to our British brethren. We have 
+  127  warned them from time to time of attempts by their legislature to extend an 
+  128  unwarrantable jurisdiction over us. We have reminded them of the 
+  129  circumstances of our emigration and settlement here. We have appealed to 
+  130  their native justice and magnanimity, and we have conjured them by the ties 
+  131  of our common kindred to disavow these usurpations, which, would inevitably 
+  132  interrupt our connections and correspondence. They too have been deaf to the 
+  133  voice of justice and of consanguinity. We must, therefore, acquiesce 
+  134  in the necessity, which denounces our separation, and hold them, as we hold 
+  135  the rest of mankind, enemies in war, in peace friends.
+  136  We, therefore, the representatives of the United States of America, in 
+  137  General Congress, assembled, appealing to the Supreme Judge of the world for 
+  138  the rectitude of our intentions, do, in the name, and by the authority of 
+  139  the good people of these colonies, solemnly publish and declare, that these 
+  140  united colonies are, and of right ought to be free and independent states; 
+  141  that they are absolved from all allegiance to the British Crown, and that 
+  142  all political connection between them and the state of Great Britain, is and 
+  143  ought to be totally dissolved; and that as free and independent states, they 
+  144  have full power to levey war, conclude peace, contract alliances, establish 
+  145  commerce, and to do all other acts and things which independent states may 
+  146  of right do. And for the support of this declaration, with a firm reliance 
+  147  on the protection of Divine Providence, we mutually pledge to each other our 
+  148  man wget
+  149  wget mand
+  150  wget man
+  151  wget
+  152  wget man
+  153  man wget
+  154  wget -help
+  155  wget --help
+  156  wget -h
+  157  cd ..
+  158  cd ..
+  159  cd ..
+  160  ls
+  161  cd data-shell/
+  162  ls
+  163  cd molecules/
+  164  nano middle.sh
+  165  ls
+  166  bash middle.sh 
+  167  nano middle.sh 
+  168  nano middle.sh
+  169  bash middle.sh 
+  170  bash middle.sh ocatane.pdb
+  171  nano
+  172  rm middle.sh 
+  173  ls
+  174  nano middle.sh
+  175  nano middle.sh 
+  176  nano middle.sh 
+  177  bash middle.sh octane.pdb 
+  178  bash middle.sh cubane.pdb 
+  179  nanao
+  180  nano middle.sh 
+  181  bash middle.sh pentane.pdb 15 5
+  182  bash middle.sh pentane.pdb 15 10
+  183  nano middle.sh 
+  184  wc -l *pdb | sort -n
+  185  nano sorted.sh
+  186  bash sorted.sh *.pdb
+  187  cd ..
+  188  ls
+  189  cd data/
+  190  ls
+  191  animal-counts/
+  192  cd animal-counts/
+  193  ls
+  194  nano species.sh
+  195  cd ..
+  196  cd ..
+  197  cd north-pacific-gyre/2012-07-03/
+  198  nano do-stats.sh
+  199  bash do-stats.sh NENE*[AB].txt
+  200  nano do-stats.sh `
+  201  nano do-stats.sh 
+  202  nano NENE02018B.txt 
+  203  nano do-stats.sh 
+  204  bash do-stats.sh NENE*[AB].txt | wc -l
+  205  nano do-stats.sh 
+  206  cd ..
+  207  cd ..
+  208   ls
+  209  cd mole
+  210  cd molecules/
+  211  ls
+  212  cd ..
+  213  nano longest.sh
+  214  cd molecules
+  215  wc -l
+  216  wc -l *.pdb
+  217  wc -l *pdb | sort
+  218  wc -l *.pdb | sort -n
+  219  !
+  220  echo !
+  221  history
+  222  wc -l *.pdb | sort -n
+  223  ! | echo
+  224  wc -l *pdb | sort n
+  225  wc -l *pdb | sort -rn
+  226  wc -l *.pdb | sort -rn | head 2 | tail 1
+  227  wc -l *.pdb | sort -rn | head n 2 | tail n 1
+  228  wc -l | sort -n | tail -n 2 | head -n 1
+  229  1
+  230  !
+  231  !
+  232  nano longest.sh
+  233  ls
+  234  cd ..
+  235  nano longest.sh
+  236  cd molecules/
+  237  longest.sh
+  238  bash longest.sh
+  239   cd ..
+  240  cp longest.sh molecules/
+  241  cd molecules/
+  242  ls
+  243  bash longest.sh 
+  244  cd ..
+  245  bash longest.sh molecules/ .pdb
+  246  bash molecules pdb
+  247  cd /c/Users/Donald/Desktop/biosys-analytics/
+  248  ls
+  249  cd examples/
+  250  ls
+  251  cd ..
+  252  cd data
+  253  ls
+  254  cd gapminder/
+  255  ls
+  256  cd ..
+  257  ls
+  258  cd ..
+  259  ls
+  260  cd bin
+  261  ls
+  262  cd ..
+  263  ls
+  264  cd assignments/
+  265  ls
+  266  cd 01-unix
+  267  ls
+  268  start README..MD
+  269  start README.MD
+  270  start README.txt
+  271  cd ..
+  272  ls
+  273  01-unix-grad/
+  274  cd 01-unix-grad/
+  275  ls
+  276  start 01-unix-grad.txt 
+  277  cd ..
+  278  wc --help
+  279  wget --help
+  280  Wget --help
+  281  wget -h
+  282  wget --h
+  283  wget man
+  284  cp --h
+  285  find -h
+  286  find --h
+  287  find --help
+  288  pid
+  289  top
+  290  top
+  291  ps
+  292  top --help
+  293  find --help
+  294  cat > foo
+  295  ls
+  296  start foo
+  297  rm foo
+  298  lsa
+  299  ls
+  300  ls
+  301  ssh hpc
+  302  pwd
+  303  cd
+  304  ln -s /c/Users/Donald/Desktop/biosys-analytics/
+  305  ls
+  306  ls
+  307  cd biosys-analytics/
+  308  ls
+  309  cd assignments/
+  310  cd 01-unix
+  311  git pull
+  312  ls
+  313  git config -l
+  314  git config -l
+  315  cd
+  316  rm -rf biosys-analytics/
+  317  git clone git@github.com:donaldscoon/biosys-analytics.git
+  318  cd biosys-analytics/
+  319  grep upstream lectures/01-intro/intro.md 
+  320  git remote add upstream https://github.com/hurwitzlab/biosys-analytics.git
+  321  pwd
+  322  cd assignments/01-unix
+  323  ls
+  324  cd /c/Users/Donald/Desktop/biosys-analytics/
+  325  ls assignments/01-unix
+  326  cd assignments/01-unix
+  327  ls
+  328  less README.md 
+  329  wget https://www.constitution.org/usdeclar.txt
+  330  git status
+  331  ssh hopc
+  332  ssh hpc
+  333  cd
+  334  ls
+  335  /c/Users/Donald/Desktop/data-shell/
+  336  c d /c/Users/Donald/Desktop/data-shell/
+  337  cd /c/Users/Donald/Desktop/data-shell/
+  338  cd writing
+  339  cat haiku.txt 
+  340  grep not haiku.txt 
+  341  grep the haiku.txt 
+  342  grep The haiku.txt 
+  343  grep -w The haiku.txt 
+  344  grep -w "is not haiku.tx
+  345  grep -w "is not" haiku.txt 
+  346  grep -n it haiku.txt 
+  347  grep -n -w "the" haiku.txt 
+  348  grep -i -n -w "the" haiku.txt 
+  349  grep -v -n -w "the" haiku.txt 
+  350  grep --help
+  351  cat haiku.txt 
+  352  grep -E '^.o' haiku.txt 
+  353  man grep
+  354  grep man
+  355  grep --help
+  356  wget --help
+  357  wget - help
+  358  wget man
+  359  cut --help
+  360  grep --help
+  361  ls
+  362  cd data
+  363  ls
+  364  nano littlewomensearch.sh
+  365  grep --help
+  366  nano
+  367  grep -wc Amy LittleWomen.txt 
+  368  grep -wc Amy LittleWomen.txt | echo Amy
+  369  nano
+  370  nano SisterSearch.sh 
+  371  nano SisterSearch.sh 
+  372  ls
+  373  rm littlewomensearch.sh 
+  374  bash SisterSearch.sh 
+  375  nano SisterSearch.sh 
+  376  wc --help
+  377  nano SisterSearch.sh 
+  378  bash SisterSearch.sh 
+  379  grep -ow Amy LittleWomen.txt 
+  380  grep -ow Amy LittleWomen.txt | wc -1
+  381  grep -ow Amy LittleWomen.txt | wc -l
+  382  bash SisterSearch.sh 
+  383  grep -ow Jo LittleWomen.txt | wc-l
+  384  grep -ow Jo LittleWomen.txt | wc -l
+  385  grep -ocw Jo LittleWomen.txt 
+  386  grep --help
+  387  find .
+  388  find .
+  389  cd
+  390  cd biosys-analytics/
+  391  cd data
+  392  ls
+  393  cd ..
+  394  ls
+  395  cd /c/Users/Donald/Desktop/data-shell/writing/
+  396  find .
+  397  find . -type d
+  398  find . -type f
+  399  find . -name *.txt
+  400  find . -name '*.txt'
+  401  wc -l $(find . -name '*.txt')
+  402  cd ..
+  403  ls
+  404  cd data/
+  405  wget http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+  406  gunzip < wget-1.12.tar.gz | tar -xv
+  407  gunzip < wget-latest.tar | tar -xv
+  408  cd
+  409  wget help
+  410  app-get -y install wget
+  411  wget help
+  412  wget --help
+  413  sudo apt-get install cowsay
+  414  figlet --help
+  415  ls
+  416  cd
+  417  ls
+  418  cd biosys-analytics/
+  419  ls
+  420  git pull upstream master
+  421  ls
+  422  cd assignments/01-unix
+  423  ls
+  424  nano README.md 
+  425  cd files
+  426  ls
+  427  wget https://www.usconstitution.net/const.txt
+  428  ls
+  429  cd ..
+  430  ls
+  431  nano README.md 
+  432  start README.md 
+  433  wget man
+  434  wget --help
+  435  wget -o scarlet.txt https://www.gutenberg.org/files/25344/25344-0.txt
+  436  ls
+  437  mv scarlet.txt 25344-0.txt files
+  438  ls
+  439  cd files/
+  440  ls
+  441  more scarlet.txt 
+  442  less scarlet.txt 
+  443  rm scarlet.txt 
+  444  ls
+  445  nano 25344-0.txt 
+  446  ls
+  447  rm 25344-0.txt 
+  448  nano scarlet.txt 
+  449  ls -l
+  450  mk answers.txt
+  451  nano answers.txt
+  452  ls
+  453  start answers.txt 
+  454  history
+  455  ls -l
+  456  wc
+  457  wc *.txt
+  458  wc  -l *
+  459  find --help
+  460  wc --help
+  461  wc -c *
+  462  wc -cn
+  463  wc -c | sort -n
+  464  sort --help
+  465  wc -c | sort -nh
+  466  wc -c | sort -h
+  467  ls
+  468  wc -c | sort -h | nano results.txt
+  469  cd
+  470  cd biosys-analytics/
+  471  cd assignments/01-unix
+  472  ls
+  473  cd files/
+  474  ls
+  475  wc -l
+  476  wc -c
+  477  wc -c * | sort -h
+  478  wc -c * | sort -hn
+  479  wc -c * | sort -hr
+  480  find --help
+  481  wc -c * | sort -rh 
+  482  wc -c * | sort -rh | echo *????.txt
+  483  wc --help
+  484  wc -c * | sort -rh 
+  485  find * > 50K
+  486  ls
+  487  rm 50K
+  488  wc -c * | sort -rh 
+  489  ls --h
+  490  ls --help
+  491  ls -hl
+  492  wc -c * | sort -rh 
+  493  find --help
+  494  find -size 50000
+  495  ls
+  496  find -size 5000 | echo
+  497  ls
+  498  type const.txt 
+  499  which const.txt 
+  500  which --help
+  501  file const.txt 
+  502  md5sum
+  503  md5sum --help
+  504  md5sum -r
+  505  cd ..
+  506  md5sum files/
+  507  cd files/
+  508  md5sum -a
+  509  md5sum --help
+  510  md5sum *
+  511  df
+  512  df --help
+  513  df -l
+  514  du
+  515  du --help
+  516  du -b
+  517  du -bh
+  518  grep --help
+  519  grep * judge
+  520  grep judge *
+  521  grep -c * judge
+  522  grep -c judge *
+  523  grep -cH human
+  524  grep -cH human *
+  525  grep -cHl human *
+  526  grep -wc scarlet scarlet.txt 
+  527  grep -w scarlet scarlet.txt 
+  528  grep -wc scarlet scarlet.txt 
+  529  grep --help
+  530  grep -iwc scarlet scarlet.txt 
+  531  grep -iwo scarlet scarlet.txt 
+  532  grep -iwo scarlet scarlet.txt | wc -l
+  533  head -n 15 scarlet.txt 
+  534  touch --help
+  535  head -n 15 scarlet.txt > touch foo
+  536  head -n 15 scarlet.txt > foo.txt
+  537  ls
+  538  nano
+  539  nano foo.txt 
+  540  rm foo.txt 
+  541  head -n 15 *.txt > foo.txt
+  542  ls
+  543  touch
+  544  nano touch
+  545  rm touch
+  546  nano foo.txt 
+  547  wc -l foo.txt 
+  548  nano foo.txt 
+  549  head -n 15 const.txt 
+  550  nano foo.txt 
+  551  rm foo.txt 
+  552  history > cmds

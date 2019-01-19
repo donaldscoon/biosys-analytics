@@ -4,7 +4,7 @@ For this exercise, you will create a "files" directory. In there, create a file 
 
     $ git add files
     $ git commit -m 'all done' files
-    $ git push
+    $ git pwgetlsush
 
 * Make a directory (in this directory) called "files" and download the following files in there:
 	* Download the following using their existing filenames (i.e., you will have "usdeclar.txt", etc.):
