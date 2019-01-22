@@ -23,6 +23,18 @@ $ grep -c "^$" const.txt
 169
 
 * Show a command that will find all the lines in "scarlet.txt" that begin with a vowel (case-insensitive) and shows you a count by letter like the output in Table 1
-$ grep -io '^[aeiou]' scarlet.txt | sort
+$ grep -io '^[aeiou]' scarlet.txt | sort | uniq -c
+    633 a
+     59 A
+    199 e
+     10 E
+    348 i
+     88 I
+    358 o
+     20 O
+     80 u
+      6 U
+
+
 
 
