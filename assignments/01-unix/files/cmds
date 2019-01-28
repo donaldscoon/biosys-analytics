@@ -1,0 +1,500 @@
+   23  cd ..
+   24  nano longest.sh
+   25  cd molecules/
+   26  longest.sh
+   27  bash longest.sh
+   28   cd ..
+   29  cp longest.sh molecules/
+   30  cd molecules/
+   31  ls
+   32  bash longest.sh 
+   33  cd ..
+   34  bash longest.sh molecules/ .pdb
+   35  bash molecules pdb
+   36  cd /c/Users/Donald/Desktop/biosys-analytics/
+   37  ls
+   38  cd examples/
+   39  ls
+   40  cd ..
+   41  cd data
+   42  ls
+   43  cd gapminder/
+   44  ls
+   45  cd ..
+   46  ls
+   47  cd ..
+   48  ls
+   49  cd bin
+   50  ls
+   51  cd ..
+   52  ls
+   53  cd assignments/
+   54  ls
+   55  cd 01-unix
+   56  ls
+   57  start README..MD
+   58  start README.MD
+   59  start README.txt
+   60  cd ..
+   61  ls
+   62  01-unix-grad/
+   63  cd 01-unix-grad/
+   64  ls
+   65  start 01-unix-grad.txt 
+   66  cd ..
+   67  wc --help
+   68  wget --help
+   69  Wget --help
+   70  wget -h
+   71  wget --h
+   72  wget man
+   73  cp --h
+   74  find -h
+   75  find --h
+   76  find --help
+   77  pid
+   78  top
+   79  top
+   80  ps
+   81  top --help
+   82  find --help
+   83  cat > foo
+   84  ls
+   85  start foo
+   86  rm foo
+   87  lsa
+   88  ls
+   89  ls
+   90  ssh hpc
+   91  pwd
+   92  cd
+   93  ln -s /c/Users/Donald/Desktop/biosys-analytics/
+   94  ls
+   95  ls
+   96  cd biosys-analytics/
+   97  ls
+   98  cd assignments/
+   99  cd 01-unix
+  100  git pull
+  101  ls
+  102  git config -l
+  103  git config -l
+  104  cd
+  105  rm -rf biosys-analytics/
+  106  git clone git@github.com:donaldscoon/biosys-analytics.git
+  107  cd biosys-analytics/
+  108  grep upstream lectures/01-intro/intro.md 
+  109  git remote add upstream https://github.com/hurwitzlab/biosys-analytics.git
+  110  pwd
+  111  cd assignments/01-unix
+  112  ls
+  113  cd /c/Users/Donald/Desktop/biosys-analytics/
+  114  ls assignments/01-unix
+  115  cd assignments/01-unix
+  116  ls
+  117  less README.md 
+  118  wget https://www.constitution.org/usdeclar.txt
+  119  git status
+  120  ssh hopc
+  121  ssh hpc
+  122  cd
+  123  ls
+  124  /c/Users/Donald/Desktop/data-shell/
+  125  c d /c/Users/Donald/Desktop/data-shell/
+  126  cd /c/Users/Donald/Desktop/data-shell/
+  127  cd writing
+  128  cat haiku.txt 
+  129  grep not haiku.txt 
+  130  grep the haiku.txt 
+  131  grep The haiku.txt 
+  132  grep -w The haiku.txt 
+  133  grep -w "is not haiku.tx
+  134  grep -w "is not" haiku.txt 
+  135  grep -n it haiku.txt 
+  136  grep -n -w "the" haiku.txt 
+  137  grep -i -n -w "the" haiku.txt 
+  138  grep -v -n -w "the" haiku.txt 
+  139  grep --help
+  140  cat haiku.txt 
+  141  grep -E '^.o' haiku.txt 
+  142  man grep
+  143  grep man
+  144  grep --help
+  145  wget --help
+  146  wget - help
+  147  wget man
+  148  cut --help
+  149  grep --help
+  150  ls
+  151  cd data
+  152  ls
+  153  nano littlewomensearch.sh
+  154  grep --help
+  155  nano
+  156  grep -wc Amy LittleWomen.txt 
+  157  grep -wc Amy LittleWomen.txt | echo Amy
+  158  nano
+  159  nano SisterSearch.sh 
+  160  nano SisterSearch.sh 
+  161  ls
+  162  rm littlewomensearch.sh 
+  163  bash SisterSearch.sh 
+  164  nano SisterSearch.sh 
+  165  wc --help
+  166  nano SisterSearch.sh 
+  167  bash SisterSearch.sh 
+  168  grep -ow Amy LittleWomen.txt 
+  169  grep -ow Amy LittleWomen.txt | wc -1
+  170  grep -ow Amy LittleWomen.txt | wc -l
+  171  bash SisterSearch.sh 
+  172  grep -ow Jo LittleWomen.txt | wc-l
+  173  grep -ow Jo LittleWomen.txt | wc -l
+  174  grep -ocw Jo LittleWomen.txt 
+  175  grep --help
+  176  find .
+  177  find .
+  178  cd
+  179  cd biosys-analytics/
+  180  cd data
+  181  ls
+  182  cd ..
+  183  ls
+  184  cd /c/Users/Donald/Desktop/data-shell/writing/
+  185  find .
+  186  find . -type d
+  187  find . -type f
+  188  find . -name *.txt
+  189  find . -name '*.txt'
+  190  wc -l $(find . -name '*.txt')
+  191  cd ..
+  192  ls
+  193  cd data/
+  194  wget http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+  195  gunzip < wget-1.12.tar.gz | tar -xv
+  196  gunzip < wget-latest.tar | tar -xv
+  197  cd
+  198  wget help
+  199  app-get -y install wget
+  200  wget help
+  201  wget --help
+  202  sudo apt-get install cowsay
+  203  figlet --help
+  204  ls
+  205  cd
+  206  ls
+  207  cd biosys-analytics/
+  208  ls
+  209  git pull upstream master
+  210  ls
+  211  cd assignments/01-unix
+  212  ls
+  213  nano README.md 
+  214  cd files
+  215  ls
+  216  wget https://www.usconstitution.net/const.txt
+  217  ls
+  218  cd ..
+  219  ls
+  220  nano README.md 
+  221  start README.md 
+  222  wget man
+  223  wget --help
+  224  wget -o scarlet.txt https://www.gutenberg.org/files/25344/25344-0.txt
+  225  ls
+  226  mv scarlet.txt 25344-0.txt files
+  227  ls
+  228  cd files/
+  229  ls
+  230  more scarlet.txt 
+  231  less scarlet.txt 
+  232  rm scarlet.txt 
+  233  ls
+  234  nano 25344-0.txt 
+  235  ls
+  236  rm 25344-0.txt 
+  237  nano scarlet.txt 
+  238  ls -l
+  239  mk answers.txt
+  240  nano answers.txt
+  241  ls
+  242  start answers.txt 
+  243  history
+  244  ls -l
+  245  wc
+  246  wc *.txt
+  247  wc  -l *
+  248  find --help
+  249  wc --help
+  250  wc -c *
+  251  wc -cn
+  252  wc -c | sort -n
+  253  sort --help
+  254  wc -c | sort -nh
+  255  wc -c | sort -h
+  256  ls
+  257  wc -c | sort -h | nano results.txt
+  258  cd
+  259  cd biosys-analytics/
+  260  cd assignments/01-unix
+  261  ls
+  262  cd files/
+  263  ls
+  264  wc -l
+  265  wc -c
+  266  wc -c * | sort -h
+  267  wc -c * | sort -hn
+  268  wc -c * | sort -hr
+  269  find --help
+  270  wc -c * | sort -rh 
+  271  wc -c * | sort -rh | echo *????.txt
+  272  wc --help
+  273  wc -c * | sort -rh 
+  274  find * > 50K
+  275  ls
+  276  rm 50K
+  277  wc -c * | sort -rh 
+  278  ls --h
+  279  ls --help
+  280  ls -hl
+  281  wc -c * | sort -rh 
+  282  find --help
+  283  find -size 50000
+  284  ls
+  285  find -size 5000 | echo
+  286  ls
+  287  type const.txt 
+  288  which const.txt 
+  289  which --help
+  290  file const.txt 
+  291  md5sum
+  292  md5sum --help
+  293  md5sum -r
+  294  cd ..
+  295  md5sum files/
+  296  cd files/
+  297  md5sum -a
+  298  md5sum --help
+  299  md5sum *
+  300  df
+  301  df --help
+  302  df -l
+  303  du
+  304  du --help
+  305  du -b
+  306  du -bh
+  307  grep --help
+  308  grep * judge
+  309  grep judge *
+  310  grep -c * judge
+  311  grep -c judge *
+  312  grep -cH human
+  313  grep -cH human *
+  314  grep -cHl human *
+  315  grep -wc scarlet scarlet.txt 
+  316  grep -w scarlet scarlet.txt 
+  317  grep -wc scarlet scarlet.txt 
+  318  grep --help
+  319  grep -iwc scarlet scarlet.txt 
+  320  grep -iwo scarlet scarlet.txt 
+  321  grep -iwo scarlet scarlet.txt | wc -l
+  322  head -n 15 scarlet.txt 
+  323  touch --help
+  324  head -n 15 scarlet.txt > touch foo
+  325  head -n 15 scarlet.txt > foo.txt
+  326  ls
+  327  nano
+  328  nano foo.txt 
+  329  rm foo.txt 
+  330  head -n 15 *.txt > foo.txt
+  331  ls
+  332  touch
+  333  nano touch
+  334  rm touch
+  335  nano foo.txt 
+  336  wc -l foo.txt 
+  337  nano foo.txt 
+  338  head -n 15 const.txt 
+  339  nano foo.txt 
+  340  rm foo.txt 
+  341  history > cmds
+  342  git add -A files
+  343  cd ..
+  344  git add -A files
+  345  git --help
+  346  git push
+  347  git commit
+  348  git config --global donaldscoon@gmail.com
+  349  git config --global donaldscoon@gmail.com'
+  350  git config --global donaldscoon
+  351  '
+  352  git commit
+  353  ls
+  354  cd files
+  355  git add -A
+  356  ls
+  357  git commit
+  358    git config --global user.email "you@example.com"
+  359    git config --global user.name "Your Name"
+  360    git config --global donaldscoon "Donald Coon"
+  361    git config --global donaldscoon@gmail.com "donaldscoon@gmail.com"
+  362  git commit *
+  363  git config --global user.email "you@example.com"
+  364  git config --global user.name "Your Name"
+  365  git commit *
+  366  git commit *
+  367  git commit -m 'Assignment 1 Done'
+  368  git push
+  369  cd ..
+  370  cd ..
+  371  ls
+  372  01-unix-grad/
+  373  cd 01-unix-grad/
+  374  ls
+  375  start 01-unix-grad.txt 
+  376  cd ..
+  377  01-unix
+  378  cd 01-unix
+  379  ls
+  380  cd files
+  381  ls
+  382  cy answers.txt grad-answers.txt
+  383  cp answers.txt > grad-answers.txt
+  384  cp --help
+  385  cp answers.txt grad-answers.txt
+  386  ls
+  387  rm grad-answers.txt 
+  388  ls
+  389  cd ..
+  390  cd ..
+  391  ls
+  392  01-unix
+  393  cd 01
+  394  cd 01-unix
+  395  cd files/
+  396  ls
+  397  touch grad-answers.txt
+  398  ls
+  399  start grad-answers.txt 
+  400  wc answers.txt 
+  401  wc --help
+  402  wc -w answers.txt 
+  403  ls
+  404  wc -c [cs]*.txt
+  405  grep --help
+  406  grep -x article const.txt 
+  407  ls
+  408  grep -x article usdeclar.txt 
+  409  grep -x "Article [0,1,2,3,4,5,6,7,8,9,10,11,12,13]*" usdeclar.txt 
+  410  grep -x "Article [0,1,2,3,4,5,6,7,8,9,10,11,12,13]*" const.txt 
+  411  grep -i 'article' const.txt 
+  412  grep -ix 'article' const.txt 
+  413  grep -ix 'article *' const.txt 
+  414  grep -i article* const.txt 
+  415  grep --help
+  416  grep -iw article const.txt 
+  417  grep -iw 'article ??' const.txt 
+  418  grep -iw 'article' const.txt 
+  419  grep -Fi article const.txt 
+  420  grep -ei article const.txt 
+  421  grep -ei 'article' const.txt 
+  422  grep -i 'article' const.txt 
+  423  grep -
+  424  grep -x 'article'* const.txt 
+  425  grep -i "Article [0,1,2,3,4,5,6,7,8,9,10,11,12,13]*" const.txt 
+  426  grep -i "Article [0,1,2,3,4,5,6,7,8,9,10,11,12,13]" const.txt 
+  427  grep -i "Article [0,1,2,3,4,5,6,7,8,9,10,11,12,13]" *.txt 
+  428  grep --help
+  429  grep -iv "*" const.txt 
+  430  grep --help
+  431  grep " " const.txt 
+  432  grep "^$" const.txt 
+  433  grep "^$" const.txt | wc -l
+  434  grep --help
+  435  grep -ic "of united" const.txt 
+  436  grep -ic of const.txt 
+  437  grep -C "^$" const.txt
+  438  grep -c "^$" const.txt
+  439  grep -man
+  440  grep --man
+  441  grep --help
+  442  man grep
+  443  man -grep
+  444  man-grep
+  445  man- grep
+  446  grep -i '^[^aeiou]'
+  447  grep -i '^[^aeiou]' const.txt 
+  448  grep -i '^[aeiou]' const.txt 
+  449  grep -i '^[aeiou]' const.txt | sort | uniq -c | sort -nr
+  450  grep -ic '^[aeiou]' const.txt | sort | uniq -c | sort -nr
+  451  grep -ic '^[aeiou]' const.txt 
+  452  grep -i '^[aeiou]' const.txt | sort 
+  453  grep -i '^[aeiou]' const.txt | sort | wc -l
+  454  grep -i '^[aeiou]$' const.txt | sort 
+  455  grep -i '^[aeiou]' const.txt | sort 
+  456  grep -i '^[aeiou]' const.txt | sort | unic -c
+  457  grep -i '^[aeiou]' const.txt | sort | uniq -c
+  458  grep -i '^[aeiou]' const.txt | sort | uniq
+  459  sort --help
+  460  grep -i '^[aeiou]' const.txt | sort -f
+  461  grep -i '^[aeiou]' const.txt | sort | wc -l '^[aeiou]
+  462  grep -i '^[aeiou]' const.txt | sort | wc -l '^[aeiou]'
+  463  grep -i '^[aeiou]' const.txt | sort | wc -l
+  464  grep -i '^[aeiou]' scarlet.txt | sort | wc -l
+  465  grep -i '^[aeiou]' scarlet.txt | sort
+  466  grep -iw '^[aeiou]' scarlet.txt | sort
+  467  grep -i '^[aeiou]' scarlet.txt | sort
+  468  grep -ic '^[aeiou]' scarlet.txt | sort
+  469  grep -io '^[aeiou]' scarlet.txt | sort
+  470  grep -io '^[aeiou]' scarlet.txt | sort | wc
+  471  grep -io '^[aeiou]' scarlet.txt | sort -nr
+  472  grep -io '^[aeiou]' scarlet.txt | sort
+  473  grep -io '^[aeiou]' scarlet.txt | sort | wc -m
+  474  grep -io '^[aeiou]' scarlet.txt | sort | wc -w
+  475  grep -io '^[aeiou]' scarlet.txt | sort | wc -l
+  476  wc --help
+  477  grep -io '^[aeiou]' scarlet.txt | sort | sum
+  478  count 
+  479  grep -io '^[aeiou]' scarlet.txt | sort | sum
+  480  grep -io '^[aeiou]' scarlet.txt | sort
+  481  grep -io '^[aeiou]' scarlet.txt | sort | count
+  482  grep -io '^[aeiou]' scarlet.txt | sort | wc -l
+  483  grep -io '^[aeiou]' scarlet.txt | sort | wc -c
+  484  grep -o '^[aeiou]' scarlet.txt | sort
+  485  grep -io '^[aeiou]' scarlet.txt | sort 
+  486  wc --help
+  487  grep -io '^[aeiou]' scarlet.txt | sort 
+  488  grep --herlp
+  489  grep --help
+  490  grep -ioc '^[aeiou]' scarlet.txt | sort 
+  491  grep -ioA '^[aeiou]' scarlet.txt | sort 
+  492  grep -Aio '^[aeiou]' scarlet.txt | sort 
+  493  grep -io '^[aeiou]' scarlet.txt | sort 
+  494  git commit -m 'grad assignment in progress'
+  495  git push
+  496  git add grad-answers.txt 
+  497  git commit -m 'grad assignment in progress'
+  498  git push
+  499  git pull upstream master
+  500  cd
+  501  ls
+  502  cd biosys-analytics/
+  503  cd
+  504  cd biosys-analytics/
+  505  ls
+  506  cd assignments/01-unix-grad/
+  507  cd ..
+  508  ls
+  509  cd 01-unix
+  510  ls
+  511  grep -io '^[aeiou]' scarlet.txt | sort 
+  512  cd files/
+  513  ls
+  514  grep -io '^[aeiou]' scarlet.txt | sort 
+  515  man uniq
+  516  uniq man
+  517  grep -io '^[aeiou]' scarlet.txt | sort | uniq -c
+  518  ls
+  519  start grad-answers.txt 
+  520  git commit -m "grad assingment completed"
+  521  git push
+  522  history > cmds
