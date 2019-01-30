@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ####this is gap.sh####
-#### prints countries in the file gapminder ####
+#### prints countries in the directory gapminder ####
 
 #### Usage statement
 
@@ -18,21 +18,18 @@ fi
 
 #### Variable Assignment
 SEARCH_TERMS=$1
-i=1
-#### temporary file for manipulating search results
-mktemp FILES_LIST.tmp.XXX -q
-mktemp SEARCH_RESULTS.tmp.XXX -q
+TMP_FILE=$(mktemp)
+TMP_SORTED=$(mktemp)
 
 #### Output files contents into temp file
-ls ../../data/gapminder > FILES_LIST.tmp.*
+ls ../../data/gapminder > $TMP_FILE
 
 #### Sort and filter list of countries according to user input
-grep -i "$SEARCH_TERMS" FILES_LIST.tmp.* > SEARCH_RESULTS.tmp.*
+grep -i "^$SEARCH_TERMS" $TMP_FILE > $TMP_SORTED
 
 #### remove .cc.txt
-cat SEARCH_RESULTS.tmp.* | cut -d '.' -f 1
+cat $TMP_SORTED | cut -d '.' -f 1
 
-#### Removing the temp files
-rm *.tmp.*
+
 
 
