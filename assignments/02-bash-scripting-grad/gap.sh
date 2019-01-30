@@ -31,6 +31,9 @@ ls ../../data/gapminder > FILES_LIST.tmp.*
 #### Sort and filter list of countries according to user input
 grep -i "$SEARCH_TERMS" FILES_LIST.tmp.* > SEARCH_RESULTS.tmp.*
 
+#### remove .cc.txt
+cat SEARCH_RESULTS.tmp.* | cut -d '.' -f 1
+
 #### Removing the temp files
 rm *.tmp.*
 
