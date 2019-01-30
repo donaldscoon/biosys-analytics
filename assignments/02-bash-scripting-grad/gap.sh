@@ -18,15 +18,13 @@ fi
 
 #### Variable Assignment
 SEARCH_TERMS=$1
-
+i=1
 #### temporary file for manipulating search results
 mktemp FILES_LIST.tmp.XXX -q
 mktemp SEARCH_RESULTS.tmp.XXX -q
 
 #### Output files contents into temp file
 ls ../../data/gapminder > FILES_LIST.tmp.*
-
-#### remove .cc.txt
 
 #### Sort and filter list of countries according to user input
 grep -i "$SEARCH_TERMS" FILES_LIST.tmp.* > SEARCH_RESULTS.tmp.*
