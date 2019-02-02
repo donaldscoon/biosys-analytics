@@ -13,7 +13,7 @@ args = sys.argv[1:]
 #-------------------------------------------------
 
 if len(args) != 1:
-    print('Usage: {} DNA'.format(os.path.basename(sys.argv[0])))
+    print('Usage: vowel_counter.py STRING')
     sys.exit(1)
 
 word = args[0]
@@ -32,28 +32,11 @@ for letter in word.lower():
     elif letter == 'u':
         count += 1
 
-if count == 5:
-    print(count)
+if count == 0:
+    print('There are ' + str(count) + ' vowels in \"' + str(word) + '.\"')
+elif count == 1:
+    print('There is ' + str(count) + ' vowel in \"' + str(word) + '.\"')
+elif count > 1:
+    print('There are ' + str(count) + ' vowels in \"' + str(word) + '.\"')
 
 #---------------------------------------------------
-
-# --------------------------------------------------
-#def main():
-#    args = sys.argv[1:]
-#    count = 0
-#
-#    if len(args) != 1:
-#        print('Usage: {} ARG'.format(os.path.basename(sys.argv[0])))
-#        sys.exit(1)
-#
-#    word = args[0]
-#
-#    for letter in word:
-#        if letter == 'a' or letter == 'A':
-#            count += 1
-#
-#    print(str('count'))
-#
-#
-# --------------------------------------------------
-#main()
