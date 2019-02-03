@@ -12,7 +12,9 @@ import os
 #--------------------------------------------------------------------------------------------------
 def main():
     names = sys.argv[1:]
-
+    partone = names[:-1]
+    parttwo = names[-1:]
+    
     if len(names) == 0:
         print('Usage: {} NAME [NAME ...]').format(os.path.basename(sys.argv[0]))
         sys.exit(1)
@@ -22,10 +24,7 @@ def main():
     elif len(names) == 2:
         print('Hello to the 2 of you: {}!'.format(' and '.join(names)))
     elif len(names) >2:
-        print('Hello to the ' + str(len(names[0:])) + ' of you: {}!'.format(', '.join(names[:-2] + [', and '.join(names[-2:])])
+        print('Hello to the ' + str(len(names[0:])) + ' of you: {}!'.format(', '.join(names[:-2] + [', and '.join(names[-2:])])))
 
-
-#### old code, saved just in case
-#        print('Hello to the ' + str(len(names[0:])) + ' of you: {}'.format(', '.join(names[0:-1]))) + print('{}!'.format(', and '.join(names[-1:])))
 #---------------------------------------------------------------------------------------------------------------------------
 main()
