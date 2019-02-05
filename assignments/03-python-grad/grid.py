@@ -26,7 +26,29 @@ def main():
     if (grid_size) > 9:
         print('NUM (' + str((grid_size)) + ') must be between 1 and 9')
         sys.exit(1)
-    
+
+    for i in range(1, grid_size ** 2 +1 ):
+        print('{:3}'.format(i), end='')
+        if i % grid_size == 0:
+            print()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""""    
 # ----------------------------------------------------------------------------
 #### grid sizes
     
@@ -68,7 +90,7 @@ def main():
     print(testgrid[2:])
 
 
-
+"""
 # --------------------------------------------------
 main() 
 
