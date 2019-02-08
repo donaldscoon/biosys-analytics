@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-02-08
-Purpose: Rock the Casbah
+Purpose: replicate cat in python
 """
 
 import os
@@ -14,13 +14,17 @@ def main():
     args = sys.argv[1:]
 
     if len(args) != 1:
-        print('Usage: {} ARG'.format(os.path.basename(sys.argv[0])))
+        print('Usage: cat_n.py FILE'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
-    arg = args[0]
+    file = args[0]
+    i = 1
+    text = open(file)
 
-    print('Arg is "{}"'.format(arg))
-
+    for line in text:
+        print ('{}: {}'.format(i,  line.strip()))
+        i = (i+1)
+    print ('done')
 
 # --------------------------------------------------
 main()
