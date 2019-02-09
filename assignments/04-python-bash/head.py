@@ -17,6 +17,11 @@ def main():
         print('Usage: {} FILE NUMBER'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
+    if int(args[1]) < 1:
+        print('Number must be greater than 0')
+        sys.exit(1)
+
+
     file = args[0]
     LINES = args[1]
     i = 0
