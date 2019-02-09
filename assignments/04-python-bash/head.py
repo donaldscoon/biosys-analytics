@@ -13,21 +13,25 @@ import sys
 def main():
     args = sys.argv[1:]
 
-    if len(args) != 2:
-        print('Usage: {} FILE NUMBER'.format(os.path.basename(sys.argv[0])))
+    if len(args) < 1 > 2:
+        print('Usage: {} FILE [NUM_LINES]'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
-    if int(args[1]) < 1:
-        print('Number must be greater than 0')
+    filename = args[0]
+
+    if not os.path.isfile(filename):
+        print ('"{}" is not a file'.format(filename), file=sys.stderr)
         sys.exit(1)
 
+#    if int(args[1]) < 1:
+#        print('Number must be greater than 0')
+#        sys.exit(1)
 
-    file = args[0]
+
+
     LINES = args[1]
     i = 0
-    text = open(file)
-
-
+    text = open(filename)
 
     for line in text:
         i = (i+1)
