@@ -20,7 +20,7 @@ def main():
     filename = args[0]
 
     if not os.path.isfile(filename):
-        print ('"{}" is not a file'.format(filename), file=sys.stderr)
+        print ('{} is not a file'.format(filename), file=sys.stderr)
         sys.exit(1)
 
 #    if int(args[1]) < 1:

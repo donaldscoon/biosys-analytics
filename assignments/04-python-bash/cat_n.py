@@ -17,12 +17,14 @@ def main():
         print('Usage: cat_n.py FILE'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
-    if not os.biosys-analytics.isfile(args):
-        print('{} is not a file'.format(args))
+    filename = args[0]
 
-    file = args[0]
+    if not os.path.isfile(filename):
+        print ('{} is not a file'.format(filename), file=sys.stderr)
+        sys.exit(1)
+
     i = 1
-    text = open(file)
+    text = open(filename)
 
     for line in text:
         print ('{}: {}'.format(i,  line.strip()))
