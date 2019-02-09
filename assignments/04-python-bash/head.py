@@ -13,13 +13,25 @@ import sys
 def main():
     args = sys.argv[1:]
 
-    if len(args) != 1:
-        print('Usage: {} ARG'.format(os.path.basename(sys.argv[0])))
+    if len(args) != 2:
+        print('Usage: {} FILE NUMBER'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
-    arg = args[0]
+    file = args[0]
+    LINES = args[1]
+    i = 0
+    text = open(file)
 
-    print('Arg is "{}"'.format(arg))
+
+
+    for line in text:
+        i = (i+1)
+        print ('{}: {}'.format(i, line.strip()))
+
+        if i == int(LINES):
+            break
+
+    print("Done")
 
 
 # --------------------------------------------------
