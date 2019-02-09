@@ -31,8 +31,6 @@ def main():
         if i == int(LINES):
             break
 
-    print("Done")
-
 
 # --------------------------------------------------
 main()
