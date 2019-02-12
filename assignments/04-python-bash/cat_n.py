@@ -27,7 +27,7 @@ def main():
     text = open(filename)
 
     for line in text:
-        print ('{}: {}'.format(i,  line.strip()))
+        print ('{:3}: {}'.format(i,  line.strip()))
         i = (i+1)
 
 # --------------------------------------------------

@@ -23,9 +23,9 @@ def main():
         print ('{} is not a file'.format(filename), file=sys.stderr)
         sys.exit(1)
 
-#    if int(args[1]) < 1:
-#        print('Number must be greater than 0')
-#        sys.exit(1)
+    if not 0 < int(args[1]) < 1:
+        print('Lines ({}) must be a positive number'.format(args[1]))
+        sys.exit(1)
 
 
 
