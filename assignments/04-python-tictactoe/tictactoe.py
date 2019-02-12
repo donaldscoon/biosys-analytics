@@ -17,9 +17,6 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
         '-s',
         '--state',
         help='The state of the board',
@@ -43,18 +40,6 @@ def get_args():
         type=int,
         default=None)
 
-    parser.add_argument(
-        '-h',
-        '--help',
-        help='Usage: TICTACTOE -s= state -p= player -c= cell ',
-        metavar='str',
-        type=str,
-        default=None)
-
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
-
     return parser.parse_args()
 
 
@@ -75,15 +60,14 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    state = args.state
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+##### Creating a grid
+    for i, c in enumerate(state,start=1):
+       cell_state = i if c == '.' else c
+       print('{}'.format(cell_state), end='')
+       if i % 3 == 0:
+          print()
 
 
 # --------------------------------------------------
