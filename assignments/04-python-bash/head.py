@@ -13,7 +13,7 @@ import sys
 def main():
     args = sys.argv[1:]
 
-    if 1 > len(args) > 2 :
+    if len(args) == 0 :
         print('Usage: {} FILE [NUM_LINES]'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
@@ -23,7 +23,7 @@ def main():
         print ('{} is not a file'.format(filename), file=sys.stderr)
         sys.exit(1)
 
-    if not 0 < int(args[1]) < 1:
+    if not 0 < int(args[1]) > 1:
         print('Lines ({}) must be a positive number'.format(args[1]))
         sys.exit(1)
 
