@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-02-12
-Purpose: Rock the Casbah
+Purpose: Ro Sham Bo!!!
 """
 
 import argparse
@@ -20,20 +20,37 @@ def get_args():
         'positional', metavar='str', help='A positional argument')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
+        '-s',
+        '--state',
+        help='The state of the board',
         metavar='str',
         type=str,
-        default='')
+        default='.........')
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-p',
+        '--player',
+        help='The player to modify the state',
+        metavar='str',
+        type=str,
+        default=None)
+
+    parser.add_argument(
+        '-c',
+        '--cell',
+        help='The cell to alter',
         metavar='int',
         type=int,
-        default=0)
+        default=None)
+
+    parser.add_argument(
+        '-h',
+        '--help',
+        help='Usage: TICTACTOE -s= state -p= player -c= cell ',
+        metavar='str',
+        type=str,
+        default=None)
+
 
     parser.add_argument(
         '-f', '--flag', help='A boolean flag', action='store_true')
@@ -72,3 +89,5 @@ def main():
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
+
+
