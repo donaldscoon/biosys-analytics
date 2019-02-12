@@ -24,7 +24,7 @@ def main():
         sys.exit(1)
 
     if not 0 < int(args[1]) > 1:
-        print('Lines ({}) must be a positive number'.format(args[1]))
+        print('lines ({}) must be a positive number'.format(args[1]))
         sys.exit(1)
 
 
