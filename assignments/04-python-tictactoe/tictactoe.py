@@ -65,11 +65,11 @@ def main():
     count = 0
     ### state too big
     if len(state) > 9:
-       print('State "{}" must be 9 characters of only ., X, O'.format(state))
+       print('Invalid state "{}", must be 9 characters of only -, X, O'.format(state))
        sys.exit(1)
     #### state too small
     if len(state) < 9:
-       print('State "{}" must be 9 characters of only ., X, O'.format(state))
+       print('Invalid state "{}", must be 9 characters of only -, X, O'.format(state))
        sys.exit(1)
     ### Cause I spent too long trying to use regular expressions.
     for character in state:
@@ -80,32 +80,29 @@ def main():
        if character == '.':
           count += 1
     if count != 9:
-       print('State "{}" must be 9 characters of only ., X, O'.format(state))
+       print('Invalid state "{}", must be 9 characters of only -, X, O'.format(state))
        sys.exit(1)
 
 ##### CELL ERROR MESSAGES
-  #  cell = args.cell
- #   player = args.player
-#
-#    if cell > 9:
-    #   print('Invalid cell "{}", must be 1-9'.format(cell))
-   #    sys.exit(1)
-  #  if cell < 1:
- #      print('Invalid cell "{}", must be 1-9'.format(cell))
-#       sys.exit(1)
+    cell = args.cell
+    player = args.player
+    
+    while cell != None:   
+       if cell > 9:
+          print('Invalid cell "{}", must be 1-9'.format(cell))
+          sys.exit(1)
+       if cell < 1:
+          print('Invalid cell "{}", must be 1-9'.format(cell))
+          sys.exit(1)
 
 ##### PLAYER ERROR MESSAGES
-#    player = args.player
-#    while player == 'X':
- #      print('X is good')
-  #  else player == 'O':
-   #    print('O is good')
+    player = args.player
+    if player == X:
+       print('X is good')
+    else player == O:
+       print('O is good')
 
 ##### CELL ERROR MESSAGES
-#    cell = args.cell
- #   for cell in range(0-10):
-  #     print('Another type')
-
 
   #  print(state)
  #   print(player)
