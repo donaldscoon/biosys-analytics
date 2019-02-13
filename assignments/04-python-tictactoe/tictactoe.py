@@ -94,13 +94,20 @@ def main():
        if cell < 1:
           print('Invalid cell "{}", must be 1-9'.format(cell))
           sys.exit(1)
+       if 0 < cell < 10:
+          break
 
 ##### PLAYER ERROR MESSAGES
     player = args.player
-    if player == X:
-       print('X is good')
-    else player == O:
-       print('O is good')
+    while player != None:
+        if player == 'X':
+           print('Good Job')
+        else == 'O':
+           print('inhfsd')
+           break
+
+
+
 
 ##### CELL ERROR MESSAGES
 
