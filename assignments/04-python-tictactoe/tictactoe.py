@@ -55,19 +55,12 @@ def die(msg='Something bad happened'):
     warn(msg)
     sys.exit(1)
 
-#    args = get_args()
-#    statecheck = args.state
-#    print(statecheck)
-
-#    if statecheck == 4:
-#       print(statecheck)
-
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
     state = args.state
-
+    print(args)
 #### STATE ERROR MESSAGES
     count = 0
     ### state too big
@@ -90,6 +83,31 @@ def main():
        print('State "{}" must be 9 characters of only ., X, O'.format(state))
        sys.exit(1)
 
+##### CELL ERROR MESSAGES
+  #  cell = args.cell
+ #   player = args.player
+#
+#    if cell > 9:
+    #   print('Invalid cell "{}", must be 1-9'.format(cell))
+   #    sys.exit(1)
+  #  if cell < 1:
+ #      print('Invalid cell "{}", must be 1-9'.format(cell))
+#       sys.exit(1)
+
+##### PLAYER ERROR MESSAGES
+    player = args.player
+    while player != 'X':
+       print('Thats Fine')
+
+##### CELL ERROR MESSAGES
+    cell = args.cell
+    for cell in range(0-10):
+       print('Another type')
+
+
+    print(state)
+    print(player)
+    print(cell)
 ##### Creating a grid
     print('-------------')
     for i, c in enumerate(state,start=1):
