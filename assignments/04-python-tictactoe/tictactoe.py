@@ -60,7 +60,7 @@ def main():
     """Make a jazz noise here"""
     args = get_args()
     state = args.state
-    print(args)
+ #   print(args)
 #### STATE ERROR MESSAGES
     count = 0
     ### state too big
