@@ -68,10 +68,27 @@ def main():
     args = get_args()
     state = args.state
 
-    match = re.search('XO*', (state))
-    print(match.group())
-    #if statecheck != '.........':
-     #   print('If is working')
+#### STATE ERROR MESSAGES
+    count = 0
+    ### state too big
+    if len(state) > 9:
+       print('State "{}" must be 9 characters of only ., X, O'.format(state))
+       sys.exit(1)
+    #### state too small
+    if len(state) < 9:
+       print('State "{}" must be 9 characters of only ., X, O'.format(state))
+       sys.exit(1)
+    ### Cause I spent too long trying to use regular expressions.
+    for character in state:
+       if character == 'X':
+          count += 1
+       if character == 'O':
+          count += 1
+       if character == '.':
+          count += 1
+    if count != 9:
+       print('State "{}" must be 9 characters of only ., X, O'.format(state))
+       sys.exit(1)
 
 ##### Creating a grid
     print('-------------')
