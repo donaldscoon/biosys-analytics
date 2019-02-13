@@ -50,8 +50,9 @@ def warn(msg):
 
 
 # --------------------------------------------------
-def die(msg='Something bad happened'):
+def die(msg='Invaild state (args.state) must be 9 characters of only -, X, O'):
     """warn() and exit with error"""
+
     warn(msg)
     sys.exit(1)
 
@@ -63,13 +64,13 @@ def main():
     state = args.state
 
 ##### Creating a grid
-    print(' -------------')
+    print('----------')
     for i, c in enumerate(state,start=1):
        cell_state = i if c == '.' else c
-       print(' | {}'.format(cell_state), end='')
+       print('| {}'.format(cell_state), end='')
        if i % 3 == 0:
-          print(' |')
-          print(' -------------')
+          print('|')
+          print('----------')
 
 # --------------------------------------------------
 if __name__ == '__main__':
