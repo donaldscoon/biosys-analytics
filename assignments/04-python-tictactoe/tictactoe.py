@@ -96,8 +96,10 @@ def main():
 
 ##### PLAYER ERROR MESSAGES
     player = args.player
-    while player != 'X':
-       print('Thats Fine')
+#    while player == 'X':
+ #      print('X is good')
+  #  else player == 'O':
+   #    print('O is good')
 
 ##### CELL ERROR MESSAGES
     cell = args.cell
@@ -105,9 +107,9 @@ def main():
        print('Another type')
 
 
-    print(state)
-    print(player)
-    print(cell)
+  #  print(state)
+ #   print(player)
+#    print(cell)
 ##### Creating a grid
     print('-------------')
     for i, c in enumerate(state,start=1):
