@@ -5,6 +5,7 @@ Date   : 2019-02-12
 Purpose: Ro Sham Bo!!!
 """
 
+import re
 import argparse
 import sys
 
@@ -49,19 +50,28 @@ def warn(msg):
     print(msg, file=sys.stderr)
 
 
-# --------------------------------------------------
-def die(msg='Invaild state (args.state) must be 9 characters of only -, X, O'):
-    """warn() and exit with error"""
-
+# --------------ERROR MESSAGES------------------------------------
+def die(msg='Something bad happened'):
     warn(msg)
     sys.exit(1)
 
+#    args = get_args()
+#    statecheck = args.state
+#    print(statecheck)
+
+#    if statecheck == 4:
+#       print(statecheck)
 
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
     state = args.state
+
+    match = re.search('XO*', (state))
+    print(match.group())
+    #if statecheck != '.........':
+     #   print('If is working')
 
 ##### Creating a grid
     print('-------------')
@@ -72,8 +82,7 @@ def main():
           print('|')
           print('-------------')
 
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
-
-
