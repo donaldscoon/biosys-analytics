@@ -104,19 +104,20 @@ def main():
           sys.exit(1)
 
 #### ANOTHER ERROR CODE
-#    count2 = 0
-#    print(cell)
-#    if player == None:
-#       count2 =+ 1
-#    if cell == None:
-#       count2 =+ 1
-#    print(count2)
-#    if count2 == 1:
-#       print('Must provide both -player and -cell')
-#       sys.exit(1)
+    if any([player, cell]) and not all([player, cell]):
+       print('Must provide both --player and --cell')
+       sys.exit(1)
 
+##### MUTATE STATE
+    if cell != None:
+       state = list(state)
+       state[cell - 1] = (player)
 
-
+#### STATE TAKEN
+    if all ([player, cell]):
+       if state[cell -1] != '.':
+          print('Cell {} already taken'.format(cell))
+          sys.exit(1)
 
 ##### Creating a grid
     print('-------------')
