@@ -101,7 +101,7 @@ def main():
     player = args.player
     if player is not None:
        if player is not 'X' or 'O':
-          print("YAY")
+          print("Wrong Letter or Bad Script")
 
 
 
