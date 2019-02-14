@@ -99,18 +99,12 @@ def main():
 
 ##### PLAYER ERROR MESSAGES
     player = args.player
-    while player != None:
-        if player == 'X':
-           print('Good Job')
-        else == 'O':
-           print('inhfsd')
-           break
+    if player is not none
 
 
 
-
-##### CELL ERROR MESSAGES
-
+#    while player != None:
+        
   #  print(state)
  #   print(player)
 #    print(cell)
