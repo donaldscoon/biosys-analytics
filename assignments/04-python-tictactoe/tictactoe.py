@@ -86,8 +86,8 @@ def main():
 ##### CELL ERROR MESSAGES
     cell = args.cell
     player = args.player
-    
-    while cell != None:   
+
+    while cell != None:
        if cell > 9:
           print('Invalid cell "{}", must be 1-9'.format(cell))
           sys.exit(1)
@@ -99,12 +99,15 @@ def main():
 
 ##### PLAYER ERROR MESSAGES
     player = args.player
-    if player is not none
+    if player is not None:
+       if player is not 'X' or 'O':
+          print("YAY")
+
 
 
 
 #    while player != None:
-        
+
   #  print(state)
  #   print(player)
 #    print(cell)
