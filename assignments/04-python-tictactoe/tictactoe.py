@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-02-12
-Purpose: Ro Sham Bo!!!
+Purpose: Drive Donald Crazy Writing error messages!!!
 """
 
 import re
@@ -60,7 +60,6 @@ def main():
     """Make a jazz noise here"""
     args = get_args()
     state = args.state
- #   print(args)
 #### STATE ERROR MESSAGES
     count = 0
     ### state too big
@@ -101,15 +100,22 @@ def main():
     player = args.player
     if player is not None:
        if player not in 'XO':
-          print("Wrong Letter or Bad Script")
+          print('Invalid player "{}", must be X or O'.format(player))
+          sys.exit(1)
 
-
-
-#    while player != None:
-
-  #  print(state)
- #   print(player)
+#### ANOTHER ERROR CODE
+#    count2 = 0
 #    print(cell)
+#    if player == None:
+#       count2 =+ 1
+#    if cell == None:
+#       count2 =+ 1
+#    print(count2)
+#    if count2 == 1:
+#       print('Must provide both -player and -cell')
+#       sys.exit(1)
+
+
 
 
 ##### Creating a grid
@@ -120,7 +126,6 @@ def main():
        if i % 3 == 0:
           print('|')
           print('-------------')
-
 
 # --------------------------------------------------
 if __name__ == '__main__':
