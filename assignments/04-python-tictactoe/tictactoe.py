@@ -100,9 +100,8 @@ def main():
 ##### PLAYER ERROR MESSAGES
     player = args.player
     if player is not None:
-       if player is not 'X' or 'O':
+       if player not in 'XO':
           print("Wrong Letter or Bad Script")
-
 
 
 
