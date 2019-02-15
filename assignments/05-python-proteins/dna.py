@@ -29,7 +29,8 @@ def main():
 
        counts[char] += 1
 
-    print('{} {} {} {}'.format(counts.get('A')))
+    print('A = {}'.format(counts.get('A', 0)))   # safe way to extract from dictionary
+
 
 # --------------------------------------------------
 main()

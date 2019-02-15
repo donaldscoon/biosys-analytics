@@ -114,8 +114,8 @@ def main():
        state[cell - 1] = (player)
 
 #### STATE TAKEN
-    if all ([player, cell]):
-       if state[cell -1] != '.':
+    if player and cell:
+       if state[cell -1] not in 'XO':
           print('Cell {} already taken'.format(cell))
           sys.exit(1)
 
