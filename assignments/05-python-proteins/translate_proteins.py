@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+
 """
 Author : donaldscoon
 Date   : 2019-02-15
-Purpose: Rock the Casbah
+Purpose: Translating the itty bitty codons.
 """
 
+import re
+import os
 import argparse
 import sys
 
@@ -17,26 +20,24 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'positional', metavar='STR, -c/--codons', help='A positional argument')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
+        '-c',
+        '--codons',
+        help='A file with codon translations (default: None)',
         metavar='str',
         type=str,
+        required=True,
         default='')
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
-        type=int,
+        '-o',
+        '--output',
+        help='Output filename (default: out.txt)',
+        metavar='str',
+        type=str,
         default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
 
     return parser.parse_args()
 
@@ -53,21 +54,29 @@ def die(msg='Something bad happened'):
     warn(msg)
     sys.exit(1)
 
-
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    codons = args.codons
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    if not os.path.isfile(codons):
+        die('--codons "{}" is not a file'.format(codons))
 
+#### Make a dictionary to match codons from
+    for line in open(codons):
+       splitlines()
+       print(line, end='')
+       print(codon_table)
+
+
+#    for line in codons:
+ #      print(line)
+  #     if line not in counts:
+   #       counts[char] == 0
+#
+ #      counts[char] += 1
+
+#    print('A = {}'.format(counts.get('A', 0)))   # safe way to extract from dictionary
 
 # --------------------------------------------------
 if __name__ == '__main__':
