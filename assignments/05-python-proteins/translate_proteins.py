@@ -62,8 +62,16 @@ def main():
     if not os.path.isfile(codons):
         die('--codons "{}" is not a file'.format(codons))
 
-    
+#### Make a dictionary to match codons from
+    codon_table = {}   #making a dictionary
+    for line in codons:
+       print()
+       if char not in counts:
+          counts[char] == 0
 
+       counts[char] += 1
+
+    print('A = {}'.format(counts.get('A', 0)))   # safe way to extract from dictionary
 
 # --------------------------------------------------
 if __name__ == '__main__':
