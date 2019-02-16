@@ -68,20 +68,18 @@ def main():
        for line in f:
           (key, val) = line.split()
           d[key] = val
-    print(d)
-
-#for line in open(codons):
-     #  print(line, end=')
 
 
 #### extracting codons from the input
-    string = args.positional
-
-    k = 3
-    n = len(string) - k + 1
-
-#    for i in range(0, n, k):
-#       print(string[i:i+k])
+       string = args.positional
+       k = 3
+       n = len(string) - k + 1
+       for i in range(0, n, k):
+          matchterm = (string[i:i+k])
+          if (matchterm) in d:
+             print(d.get(str(matchterm)))
+          else:
+             print('-')
 
 # --------------------------------------------------
 if __name__ == '__main__':
