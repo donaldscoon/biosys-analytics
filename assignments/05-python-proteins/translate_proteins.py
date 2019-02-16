@@ -79,10 +79,11 @@ def main():
           if (matchterm) in d:
              validmatch = (d.get(str(matchterm)))
              print(validmatch, end='')
-#             print(d.get(str(matchterm)))
           else:
              print('-', end='')
 
+    output = args.output
+    print('"\nOutput written to "{}"'.format(output))
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
