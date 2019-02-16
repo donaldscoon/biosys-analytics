@@ -63,20 +63,25 @@ def main():
         die('--codons "{}" is not a file'.format(codons))
 
 #### Make a dictionary to match codons from
-    for line in open(codons):
-       splitlines()
-       print(line, end='')
-       print(codon_table)
+    d = {}
+    with open(codons) as f:
+       for line in f:
+          (key, val) = line.split()
+          d[key] = val
+    print(d)
+
+#for line in open(codons):
+     #  print(line, end=')
 
 
-#    for line in codons:
- #      print(line)
-  #     if line not in counts:
-   #       counts[char] == 0
-#
- #      counts[char] += 1
+#### extracting codons from the input
+    string = args.positional
 
-#    print('A = {}'.format(counts.get('A', 0)))   # safe way to extract from dictionary
+    k = 3
+    n = len(string) - k + 1
+
+#    for i in range(0, n, k):
+#       print(string[i:i+k])
 
 # --------------------------------------------------
 if __name__ == '__main__':
