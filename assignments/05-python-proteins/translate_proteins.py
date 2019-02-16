@@ -77,9 +77,11 @@ def main():
        for i in range(0, n, k):
           matchterm = (string[i:i+k])
           if (matchterm) in d:
-             print(d.get(str(matchterm)))
+             validmatch = (d.get(str(matchterm)))
+             print(validmatch, end='')
+#             print(d.get(str(matchterm)))
           else:
-             print('-')
+             print('-', end='')
 
 # --------------------------------------------------
 if __name__ == '__main__':
