@@ -17,13 +17,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        '-s',
-        '--state',
-        help='The state of the board',
-        metavar='str',
-        type=str,
-        required=True,
-        default='.........')
+        'state', metavar='str', help='State of the board')
 
     return parser.parse_args()
 
@@ -48,18 +42,13 @@ def main():
     state = args.state
     count = 0
 
-
-    #### too many args
-#    if len(args) > 1:
- #      die('Usage: outcome.py STATE')
-
     #### state to big
     if len(state) > 9:
-       die('State "{}", must be 9 characters of only ., X, O'.format(state))
+       die('State "{}" must be 9 characters of only ., X, O'.format(state))
 
     #### state too small
     if len(state) < 9:
-       die('State "{}", must be 9 characters of only ., X, O'.format(state))
+       die('State "{}" must be 9 characters of only ., X, O'.format(state))
 
     #### Cause I spent too long trying to use regular expressions.
     for character in state:
@@ -70,7 +59,7 @@ def main():
        if character == '.':
           count += 1
     if count != 9:
-       die('State "{}", must be 9 characters of only ., X, O'.format(state))
+       die('State "{}" must be 9 characters of only ., X, O'.format(state))
 
     #### List of winnging states
     xwins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
@@ -88,9 +77,6 @@ def main():
        print('O has won')
     else:
        print('No winner')
-
-#### test printing area
-
 
 # --------------------------------------------------
 if __name__ == '__main__':
