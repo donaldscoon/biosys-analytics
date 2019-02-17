@@ -17,26 +17,13 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
+        '-s',
+        '--state',
+        help='The state of the board',
         metavar='str',
         type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
-        type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        required=True,
+        default='.........')
 
     return parser.parse_args()
 
@@ -56,17 +43,53 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Some boops and beeps of a computer starting up."""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    state = args.state
+    count = 0
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+
+    #### too many args
+#    if len(args) > 1:
+ #      die('Usage: outcome.py STATE')
+
+    #### state to big
+    if len(state) > 9:
+       die('State "{}", must be 9 characters of only ., X, O'.format(state))
+
+    #### state too small
+    if len(state) < 9:
+       die('State "{}", must be 9 characters of only ., X, O'.format(state))
+
+    #### Cause I spent too long trying to use regular expressions.
+    for character in state:
+       if character == 'X':
+          count += 1
+       if character == 'O':
+          count += 1
+       if character == '.':
+          count += 1
+    if count != 9:
+       die('State "{}", must be 9 characters of only ., X, O'.format(state))
+
+    #### List of winnging states
+    xwins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
+             'X..X..X..': 'X', '.X..X..X.': 'X', '..X..X..X': 'X',
+             'X...X...X': 'X', '..X.X.X..': 'X'}
+
+    owins = {'OOO......': 'O', '...OOO...': 'O', '......OOO': 'O',
+             'O..O..O..': 'O', '.O..O..O.': 'O', '..O..O..O': 'O',
+             'O...O...O': 'O', '..O.O.O..': 'O'}
+
+    #### The evaluation of the state inputed
+    if state in xwins:
+       print('X has won')
+    elif state in owins:
+       print('O has won')
+    else:
+       print('No winner')
+
+#### test printing area
 
 
 # --------------------------------------------------
