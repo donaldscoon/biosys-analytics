@@ -37,7 +37,7 @@ def get_args():
         help='Output filename (default: out.txt)',
         metavar='str',
         type=str,
-        default=0)
+        default=out.txt)
 
     return parser.parse_args()
 
@@ -83,7 +83,7 @@ def main():
              print('-', end='')
 
     output = args.output
-    print('"\nOutput written to "{}"'.format(output))
+    print('Output written to "{}"'.format(output))
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
