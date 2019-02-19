@@ -69,24 +69,18 @@ def main():
           (key, val) = line.split()
           d[key] = val
 
-
 #### extracting codons from the input
-       outfile = args.output
-       out_fh = open(outfile, 'wt')
+    outfile = args.output
+    out_fh = open(outfile, 'wt')
 
-       string = args.positional
-       k = 3
-       n = len(string) - k + 1
-       for i in range(0, n, k):
-          matchterm = (string[i:i+k])
-          if (matchterm) in d:
-             validmatch = (d.get(str(matchterm)))
-             out_fh.write(validmatch, '-')
-          #else:
-            #  out_fh.write('-')
-       out_fh.close()
+    string = args.positional
+    k = 3
+    n = len(string) - k + 1
+    for i in range(0, n, k):
+       codon = string[i:i+k]
+       out_fh.write(d.get(codon, '-'))
 
-       print('Output written to "{}"'.format(outfile))
+    print('Output written to "{}"'.format(outfile))
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
