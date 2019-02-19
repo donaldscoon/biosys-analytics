@@ -83,7 +83,7 @@ def main():
              validmatch = (d.get(str(matchterm)))
              out_fh.write(validmatch + '\n')
           else:
-             out_fh.write(validmatch + '\n')
+             out_fh.write('-' + '\n')
        out_fh.close()
 
        print('Output written to "{}"'.format(outfile))
