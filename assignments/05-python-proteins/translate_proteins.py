@@ -73,6 +73,7 @@ def main():
 #### extracting codons from the input
        outfile = 'out.txt'
        out_fh = open(outfile, 'wt')
+       output = args.output
 
        string = args.positional
        k = 3
@@ -86,7 +87,7 @@ def main():
              out_fh.write(validmatch + '\n')
        out_fh.close()
 
-       print('Output written to "{}"'.format(outfile))
+       print('Output written to "{}"'.format(output))
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
