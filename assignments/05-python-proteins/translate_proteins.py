@@ -81,9 +81,9 @@ def main():
           matchterm = (string[i:i+k])
           if (matchterm) in d:
              validmatch = (d.get(str(matchterm)))
-             out_fh.write(validmatch + '\n')
-          else:
-             out_fh.write('-' + '\n')
+             out_fh.write(validmatch, '-')
+          #else:
+            #  out_fh.write('-')
        out_fh.close()
 
        print('Output written to "{}"'.format(outfile))
