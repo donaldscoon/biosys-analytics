@@ -37,7 +37,7 @@ def get_args():
         help='Output filename (default: out.txt)',
         metavar='str',
         type=str,
-        default=out.txt)
+        default='out.txt')
 
     return parser.parse_args()
 
@@ -71,6 +71,9 @@ def main():
 
 
 #### extracting codons from the input
+       outfile = 'out.txt'
+       out_fh = open(outfile, 'wt')
+
        string = args.positional
        k = 3
        n = len(string) - k + 1
@@ -78,12 +81,12 @@ def main():
           matchterm = (string[i:i+k])
           if (matchterm) in d:
              validmatch = (d.get(str(matchterm)))
-             print(validmatch, end='')
+             out_fh.write(validmatch + '\n')
           else:
-             print('-', end='')
+             out_fh.write(validmatch + '\n')
+       out_fh.close()
 
-    output = args.output
-    print('Output written to "{}"'.format(output))
+       print('Output written to "{}"'.format(outfile))
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
