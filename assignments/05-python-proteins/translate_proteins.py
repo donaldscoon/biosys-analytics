@@ -78,7 +78,7 @@ def main():
     n = len(string) - k + 1
     for i in range(0, n, k):
        codon = string[i:i+k]
-       out_fh.write(d.get(codon, '-'))
+       out_fh.write(d.get(codon.upper(), '-'))
 
     print('Output written to "{}"'.format(outfile))
 # --------------------------------------------------
