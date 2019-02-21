@@ -53,35 +53,44 @@ def main():
          that trombone.    """
 
     args = get_args()
-    int = args.int
-    dots = '.'*int
+    width = args.int
+#    dots = '.'*int
 
     dirname = args.directory
 #    if not os.path.isdir(dirname):
  #      warn('"{}" is not a directory'.format(dirname))
+    i = 0
+    for file in os.listdir(dirname):
+        path = os.path.join(dirname, file)
+        pathw = len(path)
+        line = open(path).readline().rstrip()
+        linew = len(line)
+        dots = width - linew - pathw
+        print(dots)
+#        print(line, dots, path)
 
-
+"""
     for file in os.listdir(dirname):
        filelocation = dirname + '/' + file
        with open(filelocation) as poem:
           for line in poem:
-             break
-          d = {'line': (line), 'ellipse': (dots), 'file': (file)}
+
+          d = {'line': (line), 'ellipse': (dots), 'file': (path)}
           print(d.get('line'),end='')
           print(d.get('ellipse'))
           print(d.get('file'))
           #print('{} {}'.format(d.get('line'), (d.get('ellipse'))
+"""
 
-
-     #### old code I am hoarding just in case
-#    for file in os.listdir(dirname):
- #      print('.'*int + ' {}'.format(file))
-  #     filelocation = dirname + '/' + file
-   #    with open(filelocation) as poem:
-    #      for line in poem:
-     #        #print('{} {} {}'.format(line, dots, file), end='')
-      #       print('{} '.format(line) + ' {} '.format(dots) + ' {}'.format(dots), end='')
-
+       #### old code I am hoarding just in case
+"""    for file in os.listdir(dirname):
+       print('.'*int + ' {}'.format(file))
+       filelocation = dirname + '/' + file
+       with open(filelocation) as poem:
+          for line in poem:
+             #print('{} {} {}'.format(line, dots, file), end='')
+             print('{} '.format(line) + ' {} '.format(dots) + ' {}'.format(dots), end='')
+"""
 
 
 # --------------------------------------------------
