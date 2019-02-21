@@ -48,23 +48,39 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """TOoT toOT tOOt TooT
+        tots jazz noises
+         that trombone.    """
+
     args = get_args()
     int = args.int
     dots = '.'*int
 
     dirname = args.directory
-
 #    if not os.path.isdir(dirname):
  #      warn('"{}" is not a directory'.format(dirname))
 
+
     for file in os.listdir(dirname):
-       print('.'*int + ' {}'.format(file))
        filelocation = dirname + '/' + file
        with open(filelocation) as poem:
           for line in poem:
-             #print('{} {} {}'.format(line, dots, file), end='')
-             print('{} '.format(line) + ' {} '.format(dots) + ' {}'.format(dots), end='')
+             break
+          d = {'line': (line), 'ellipse': (dots), 'file': (file)}
+          print(d.get('line'),end='')
+          print(d.get('ellipse'))
+          print(d.get('file'))
+          #print('{} {}'.format(d.get('line'), (d.get('ellipse'))
+
+
+     #### old code I am hoarding just in case
+#    for file in os.listdir(dirname):
+ #      print('.'*int + ' {}'.format(file))
+  #     filelocation = dirname + '/' + file
+   #    with open(filelocation) as poem:
+    #      for line in poem:
+     #        #print('{} {} {}'.format(line, dots, file), end='')
+      #       print('{} '.format(line) + ' {} '.format(dots) + ' {}'.format(dots), end='')
 
 
 
