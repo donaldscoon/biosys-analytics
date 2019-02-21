@@ -27,7 +27,7 @@ def get_args():
         default=0)
 
     parser.add_argument(
-        'directory', metavar='DIR', help='Chosen directory')
+        'directory', metavar='DIR', help='Chosen directory', nargs='+')
 
     return parser.parse_args()
 
@@ -55,22 +55,34 @@ def main():
     args = get_args()
     width = args.int
 #    dots = '.'*int
+    #### Error message for not a directory
+    for dirname in args.directory:
+       if not os.path.isdir(dirname):
+          warn('"{}" is not a directory'.format(dirname))
+          continue
 
-    dirname = args.directory
-#    if not os.path.isdir(dirname):
- #      warn('"{}" is not a directory'.format(dirname))
-    i = 0
-    for file in os.listdir(dirname):
-        path = os.path.join(dirname, file)
-        pathw = len(path)
-        line = open(path).readline().rstrip()
-        linew = len(line)
-        dots = width - linew - pathw
-        print(dots)
+       d = {}
+# d[line] = file
+#sorted(d.items)
+       #### creating variables
+       for file in os.listdir(dirname):
+           path = os.path.join(dirname, file)
+           line = open(path).readline().rstrip()
+           d[line] = path
+           #print(d)
+       for key in d:
+           keyw = len(key)
+           pathw = len(path)
+           dots = '.'*(width - keyw - pathw)
+           print('{}{}{}'.format(key, dots, path))
+        #   for line in d:
+         #     print(d)
+              #print('{}{}'.format(line, d[path])
+
 #        print(line, dots, path)
 
-"""
-    for file in os.listdir(dirname):
+       #### HOARD ALL THE CODE
+"""    for file in os.listdir(dirname):
        filelocation = dirname + '/' + file
        with open(filelocation) as poem:
           for line in poem:
