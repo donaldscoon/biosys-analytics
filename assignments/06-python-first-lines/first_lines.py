@@ -2,9 +2,11 @@
 """
 Author : donaldscoon
 Date   : 2019-02-19
-Purpose: Rock the Casbah
+Purpose: Skim a bunch of poems
 """
 
+import re
+import os
 import argparse
 import sys
 
@@ -17,26 +19,15 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
+        '-w',
         '--int',
-        help='A named integer argument',
+        help='Number of characters per line?',
         metavar='int',
         type=int,
         default=0)
 
     parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        'directory', metavar='DIR', help='Chosen directory', nargs='+')
 
     return parser.parse_args()
 
@@ -53,20 +44,65 @@ def die(msg='Something bad happened'):
     warn(msg)
     sys.exit(1)
 
+#### Perhaps a function to reuse my head program?
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
-    args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    """TOoT toOT tOOt TooT
+        tots jazz noises
+         that trombone.    """
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    args = get_args()
+    width = args.int
+#    dots = '.'*int
+    #### Error message for not a directory
+    for dirname in args.directory:
+       if not os.path.isdir(dirname):
+          warn('"{}" is not a directory'.format(dirname))
+          continue
+
+       d = {}
+# d[line] = file
+#sorted(d.items)
+       #### creating variables
+       for file in os.listdir(dirname):
+           path = os.path.join(dirname, file)
+           line = open(path).readline().rstrip()
+           d[line] = path
+           #print(d)
+       for key in d:
+           keyw = len(key)
+           pathw = len(path)
+           dots = '.'*(width - keyw - pathw)
+           print('{}{}{}'.format(key, dots, path))
+        #   for line in d:
+         #     print(d)
+              #print('{}{}'.format(line, d[path])
+
+#        print(line, dots, path)
+
+       #### HOARD ALL THE CODE
+"""    for file in os.listdir(dirname):
+       filelocation = dirname + '/' + file
+       with open(filelocation) as poem:
+          for line in poem:
+
+          d = {'line': (line), 'ellipse': (dots), 'file': (path)}
+          print(d.get('line'),end='')
+          print(d.get('ellipse'))
+          print(d.get('file'))
+          #print('{} {}'.format(d.get('line'), (d.get('ellipse'))
+"""
+
+       #### old code I am hoarding just in case
+"""    for file in os.listdir(dirname):
+       print('.'*int + ' {}'.format(file))
+       filelocation = dirname + '/' + file
+       with open(filelocation) as poem:
+          for line in poem:
+             #print('{} {} {}'.format(line, dots, file), end='')
+             print('{} '.format(line) + ' {} '.format(dots) + ' {}'.format(dots), end='')
+"""
 
 
 # --------------------------------------------------
