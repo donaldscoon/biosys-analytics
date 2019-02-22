@@ -70,12 +70,13 @@ def main():
            path = os.path.join(dirname, file)
            line = open(path).readline().rstrip()
            d[line] = file
+
+       for line, file in sorted(d.items()):
            linew = len(line)
            filew = len(file)
            dots = '.'*(width - linew - filew)
 
-       for line, file in sorted(d.items()):
-           print('{}{}{}'.format(line, dots, file))
+           print('{} {} {}'.format(line, dots, file))
 ####Maybe did it wrong, again
 """           for key in d:
               keyw = len(key)
