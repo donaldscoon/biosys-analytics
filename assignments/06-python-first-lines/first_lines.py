@@ -64,22 +64,30 @@ def main():
        d = {}
 # d[line] = file
 #sorted(d.items)
+       print(dirname)
        #### creating variables
        for file in os.listdir(dirname):
            path = os.path.join(dirname, file)
            line = open(path).readline().rstrip()
-           d[line] = path
-           #print(d)
-       for key in d:
-           keyw = len(key)
-           pathw = len(path)
-           dots = '.'*(width - keyw - pathw)
-           print('{}{}{}'.format(key, dots, path))
-        #   for line in d:
-         #     print(d)
-              #print('{}{}'.format(line, d[path])
+           d[line] = file
+           linew = len(line)
+           filew = len(file)
+           dots = '.'*(width - linew - filew)
 
-#        print(line, dots, path)
+       for line, file in sorted(d.items()):
+           print('{}{}{}'.format(line, dots, file))
+####Maybe did it wrong, again
+"""           for key in d:
+              keyw = len(key)
+              filew = len(file)
+              dots = '.'*(width - keyw - filew)
+           
+           print('{}{}{}'.format(key, dots, file))
+
+"""
+
+
+
 
        #### HOARD ALL THE CODE
 """    for file in os.listdir(dirname):
