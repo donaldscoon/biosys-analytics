@@ -24,7 +24,7 @@ def get_args():
         help='Number of characters per line?',
         metavar='int',
         type=int,
-        default=0)
+        default=50)
 
     parser.add_argument(
         'directory', metavar='DIR', help='Chosen directory', nargs='+')
