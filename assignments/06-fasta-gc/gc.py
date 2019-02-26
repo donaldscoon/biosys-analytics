@@ -71,11 +71,13 @@ def main():
 
     for files in fasta:
        if not os.path.isfile(fasta[0]):
-          warn('"{}" is not a file'.format(fasta[0:]))
+          warn('"{}" is not a file'.format(fasta[0]))
           continue
 
+    if not 100 >= pct_gc > 0:
+       print('"{}" must be between 0 and 100'.format(pct_gc))
 
-    for file in fasta:
+    """for file in fasta:
        print(file)
        for record in SeqIO.parse(file, 'fasta'):
           #print(record.seq)
@@ -88,7 +90,7 @@ def main():
           gc = (int(gc_num/seq_len * 100))
           print(gc)
           print('HIGH' if gc >= pct_gc else 'LOW')
-          print()
+          print()"""
 
     print('Test Complete, did you screw it up?')
 
