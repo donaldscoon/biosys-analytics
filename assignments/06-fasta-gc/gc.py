@@ -10,7 +10,7 @@ import argparse
 import sys
 import re
 from collections import Counter
-from bio import SeqIO
+from Bio import SeqIO
 
 # --------------------------------------------------
 def get_args():
