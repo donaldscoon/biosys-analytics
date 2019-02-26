@@ -9,7 +9,7 @@ import os
 import argparse
 import sys
 import re
-import Counter
+from collections import Counter
 from bio import SeqIO
 
 # --------------------------------------------------
@@ -58,15 +58,15 @@ def die(msg='Something bad happened'):
 def main():
     """Scatty Datt Dat Doo"""
     args = get_args()
-
-
-
+    fasta = args.fasta
+    out_dir = args.out
+    pct_gc = args.pct_GC
 
     for pathname in args.positional:
        if not os.path.isfile(pathname):
           warn('"{}" is not a file'.format(pathname))
           continue
-"""
+
     for file in fasta:
        print(file)
        for record in SeqIO.parse(file, 'fasta'):
@@ -79,7 +79,7 @@ def main():
           print(gc)
           print('HIGH' if gc >= pct_gc else 'LOW')
           print()
-"""
+
 print('Test Complete, did you screw it up?')
 
 
