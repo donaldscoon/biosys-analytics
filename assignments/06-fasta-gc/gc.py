@@ -58,47 +58,46 @@ def die(msg='Something bad happened'):
 def main():
     """Scatty Datt Dat Doo"""
     args = get_args()
-    fasta = args.fasta
-    out_dir = args.out
-    pct_gc = args.pct_GC
+    fasta = args.positional
+    out_dir = args.outdir
+    pct_gc = args.pct_gc
 
-    for pathname in args.positional:
-       if not os.path.isfile(pathname):
-          warn('"{}" is not a file'.format(pathname))
+
+#    print(args)
+#    print(fasta[0])
+#    print(out_dir)
+#    print(pct_gc)
+
+
+    for files in fasta:
+       if not os.path.isfile(fasta[0]):
+          warn('"{}" is not a file'.format(fasta[0:]))
           continue
+
 
     for file in fasta:
        print(file)
        for record in SeqIO.parse(file, 'fasta'):
           print(record.seq)
           seq_len = len(record.seq)
-          nucs = (Counter(record.seq)
-          gcnum = nucs.get('G', 0) + nucs.get('C', 0)
-          #print(record.seq)
+          print(seq_len)
+          nucleo = (collections.Counter(record.seq)
+          print(nucleo)
+          """gcnum = nucs.get('G', 0) + nucs.get('C', 0)
+          print(record.seq)
           gc = (int(gc_num/seq_len * 100))
           print(gc)
           print('HIGH' if gc >= pct_gc else 'LOW')
-          print()
+          print()"""
 
-print('Test Complete, did you screw it up?')
-
-
+    print('Test Complete, did you screw it up?')
 
 
 
 
 
-"""    d = {}
-       print(dirname)
-
-       for file in os.listdir(dirname):
-           path = os.path.join(dirname, file)
-           line = open(path).readline().rstrip()
-           d[line] = file
-"""
 
 
-
-# --------------------------------------------------
+#--------------------------------------------------
 if __name__ == '__main__':
     main()
