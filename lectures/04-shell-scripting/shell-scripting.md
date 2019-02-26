@@ -273,11 +273,7 @@ It's common to use a `while` loop to `read` a file, line-by-line, into some `VAR
 
 ````
 while read -r LINE; do
-<<<<<<< HEAD
 	echo "$LINE"
-=======
-    echo "$LINE"
->>>>>>> 102e3e735a41ead9903e75a1a26b945e3dc42e85
 done < "$FILE"
 ````
 
@@ -288,13 +284,8 @@ It's common to use the variable `i` (for "integer" maybe?) as a temporary counte
 ````
 i=0
 while read -r LINE; do
-<<<<<<< HEAD
 	i=$((i+1))
 	echo $i "$LINE"
-=======
-    i=$((i+1))
-    echo $i "$LINE"
->>>>>>> 102e3e735a41ead9903e75a1a26b945e3dc42e85
 done < "$FILE"
 ````
 
@@ -319,19 +310,11 @@ Use `break` to leave a loop. This will print the first 10 lines of a file:
 ````
 i=0
 while read -r LINE; do
-<<<<<<< HEAD
-	echo "$LINE"
-	i=$((i+1))
-	if [[ $i -eq 10 ]]; then
-		break
-	fi
-=======
     echo "$LINE"
     i=$((i+1))
     if [[ $i -eq 10 ]]; then
         break
     fi
->>>>>>> 102e3e735a41ead9903e75a1a26b945e3dc42e85
 done < "$FILE"
 ````
 
@@ -375,7 +358,7 @@ cd "$TMP_DIR"
 
 ## Get the last part of a file or directory name
 
-If you have "/path/to/my/file.txt" and you just want to print "file.txt", use `basename`:
+If you have `/path/to/my/file.txt` and you just want to print `file.txt`, use `basename`:
 
 ````
 FILE="/path/to/my/file.txt"
