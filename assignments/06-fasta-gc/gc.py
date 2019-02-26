@@ -5,9 +5,12 @@ Date   : 2019-02-26
 Purpose: Rock the Casbah
 """
 
+import os
 import argparse
 import sys
-
+import re
+import Counter
+from bio import SeqIO
 
 # --------------------------------------------------
 def get_args():
@@ -17,26 +20,23 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'positional', metavar='FILE', help='FASTA files to read', nargs='+')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
+        '-o',
+        '--outdir',
+        help='directory name to write the output',
+        metavar='DIR',
         type=str,
-        default='')
+        default='out')
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-p',
+        '--pct_gc',
+        help='Percent GC',
         metavar='int',
         type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        default=50)
 
     return parser.parse_args()
 
@@ -56,17 +56,47 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Scatty Datt Dat Doo"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+
+
+
+    for pathname in args.positional:
+       if not os.path.isfile(pathname):
+          warn('"{}" is not a file'.format(pathname))
+          continue
+"""
+    for file in fasta:
+       print(file)
+       for record in SeqIO.parse(file, 'fasta'):
+          print(record.seq)
+          seq_len = len(record.seq)
+          nucs = (Counter(record.seq)
+          gcnum = nucs.get('G', 0) + nucs.get('C', 0)
+          #print(record.seq)
+          gc = (int(gc_num/seq_len * 100))
+          print(gc)
+          print('HIGH' if gc >= pct_gc else 'LOW')
+          print()
+"""
+print('Test Complete, did you screw it up?')
+
+
+
+
+
+
+
+"""    d = {}
+       print(dirname)
+
+       for file in os.listdir(dirname):
+           path = os.path.join(dirname, file)
+           line = open(path).readline().rstrip()
+           d[line] = file
+"""
+
 
 
 # --------------------------------------------------
