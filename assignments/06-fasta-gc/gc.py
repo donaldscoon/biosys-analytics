@@ -88,16 +88,16 @@ def main():
             gc_num = nucleo.get('G', 0) + nucleo.get('C', 0)
             #print(record.seq)
             gc = (int(gc_num/seq_len * 100))
-#            print(gc)
-#            print('HIGH' if gc >= pct_gc else 'LOW')
-#            print()
+            #print(gc)
+            """Attempt at one line :( didnt work
             gc_state = ('{}_HIGH'.format(fasta[0])) if gc >= pct_gc else ('{}_LOW'.format(fasta[0]))
-            print(gc_state)
-            #### Alternate"""
+            print(gc_state)"""
+
             if gc >= pct_gc:
-                print('{}_HIGH'.format(fasta[0]))
-                else
-                    print('{}_LOW'.format(fasta[0]))"""
+                gc_state = ('{}_HIGH'.format(fasta[0]))
+            else:
+                gc_state = ('{}_LOW'.format(fasta[0]))
+            print(gc_state)
     print('Test Complete, did you screw it up?')
 
 
