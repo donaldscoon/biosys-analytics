@@ -70,28 +70,34 @@ def main():
 
 
     for files in fasta:
-       if not os.path.isfile(fasta[0]):
-          warn('"{}" is not a file'.format(fasta[0]))
-          continue
+        if not os.path.isfile(fasta[0]):
+            warn('"{}" is not a file'.format(fasta[0]))
+            continue
 
     if not 100 >= pct_gc > 0:
-       print('"{}" must be between 0 and 100'.format(pct_gc))
+        print('"{}" must be between 0 and 100'.format(pct_gc))
 
-    """for file in fasta:
-       print(file)
-       for record in SeqIO.parse(file, 'fasta'):
-          #print(record.seq)
-          seq_len = len(record.seq)
-          #print(seq_len)
-          nucleo = (Counter(record.seq))
-          #print(nucleo)
-          gc_num = nucleo.get('G', 0) + nucleo.get('C', 0)
-          #print(record.seq)
-          gc = (int(gc_num/seq_len * 100))
-          print(gc)
-          print('HIGH' if gc >= pct_gc else 'LOW')
-          print()"""
-
+    for file in fasta:
+        print(file)
+        for record in SeqIO.parse(file, 'fasta'):
+            #print(record.seq)
+            seq_len = len(record.seq)
+            #print(seq_len)
+            nucleo = (Counter(record.seq))
+            #print(nucleo)
+            gc_num = nucleo.get('G', 0) + nucleo.get('C', 0)
+            #print(record.seq)
+            gc = (int(gc_num/seq_len * 100))
+#            print(gc)
+#            print('HIGH' if gc >= pct_gc else 'LOW')
+#            print()
+            gc_state = ('{}_HIGH'.format(fasta[0])) if gc >= pct_gc else ('{}_LOW'.format(fasta[0]))
+            print(gc_state)
+            #### Alternate"""
+            if gc >= pct_gc:
+                print('{}_HIGH'.format(fasta[0]))
+                else
+                    print('{}_LOW'.format(fasta[0]))"""
     print('Test Complete, did you screw it up?')
 
 
