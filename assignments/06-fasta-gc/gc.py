@@ -78,17 +78,17 @@ def main():
     for file in fasta:
        print(file)
        for record in SeqIO.parse(file, 'fasta'):
-          print(record.seq)
+          #print(record.seq)
           seq_len = len(record.seq)
-          print(seq_len)
-          nucleo = (collections.Counter(record.seq)
-          print(nucleo)
-          """gcnum = nucs.get('G', 0) + nucs.get('C', 0)
-          print(record.seq)
+          #print(seq_len)
+          nucleo = (Counter(record.seq))
+          #print(nucleo)
+          gc_num = nucleo.get('G', 0) + nucleo.get('C', 0)
+          #print(record.seq)
           gc = (int(gc_num/seq_len * 100))
           print(gc)
           print('HIGH' if gc >= pct_gc else 'LOW')
-          print()"""
+          print()
 
     print('Test Complete, did you screw it up?')
 
