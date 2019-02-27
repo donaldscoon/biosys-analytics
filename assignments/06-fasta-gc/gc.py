@@ -98,6 +98,8 @@ def main():
             else:
                 gc_state = ('{}_LOW'.format(fasta[0]))
             print(gc_state)
+
+
     print('Test Complete, did you screw it up?')
 
 
