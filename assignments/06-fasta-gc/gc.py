@@ -73,6 +73,8 @@ def main():
 
 
     file_count = 0
+    num_written = 0
+
     for file in fasta:
         file_count += 1
         split_file = (os.path.split(file))
@@ -95,15 +97,11 @@ def main():
                 gc_state = ('{}_HIGH'.format(fasta[0]))
             else:
                 gc_state = ('{}_LOW'.format(fasta[0]))
-            print(gc_state)
+            #print(gc_state)
+            #print(SeqIO.write(gc, gc_state, 'fasta')
+            num_written += 1
 
-            out_fh = open(gc_state, 'wt')
-            num_written = 0
-
-
-
-    print('Test Complete, did you screw it up?')
-
+    print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
 
 
 
