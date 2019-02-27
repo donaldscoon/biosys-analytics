@@ -62,13 +62,6 @@ def main():
     out_dir = args.outdir
     pct_gc = args.pct_gc
 
-
-#    print(args)
-#    print(fasta[0])
-#    print(out_dir)
-#    print(pct_gc)
-
-
     for files in fasta:
         if not os.path.isfile(fasta[0]):
             warn('"{}" is not a file'.format(fasta[0]))
@@ -77,8 +70,13 @@ def main():
     if not 100 >= pct_gc > 0:
         print('"{}" must be between 0 and 100'.format(pct_gc))
 
+
+
+    file_count = 0
     for file in fasta:
-        print(file)
+        file_count += 1
+        split_file = (os.path.split(file))
+        print('{}: {}'.format(file_count, split_file[1]))
         for record in SeqIO.parse(file, 'fasta'):
             #print(record.seq)
             seq_len = len(record.seq)
@@ -98,6 +96,10 @@ def main():
             else:
                 gc_state = ('{}_LOW'.format(fasta[0]))
             print(gc_state)
+
+            out_fh = open(gc_state, 'wt')
+            num_written = 0
+
 
 
     print('Test Complete, did you screw it up?')
