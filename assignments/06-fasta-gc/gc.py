@@ -133,7 +133,7 @@ def main():
         high_fh.close()
         low_fh.close()
         
-    print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
+    print('Done, wrote {} sequences to out dir "{}"'.format(num_written, out_dir))
 
 
 
