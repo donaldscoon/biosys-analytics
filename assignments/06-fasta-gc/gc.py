@@ -132,9 +132,8 @@ def main():
             num_written += 1
         high_fh.close()
         low_fh.close()
-     
-     if not num_written == 0:   
-         print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
+        
+    print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
 
 
 
