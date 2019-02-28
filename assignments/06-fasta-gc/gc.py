@@ -79,10 +79,11 @@ def main():
 
     for file in fasta:
         file_count += 1
-        split_file = (os.path.split(file))
-        print('{}: {}'.format(file_count, split_file[1]))
+        split_file = (os.path.splitext(file))
+        print(file)
         high_fh = open(split_file[0] + '_high' + split_file[1], 'w')
         low_fh = open(split_file[0] + '_low' + split_file[1], 'w')
+
         for record in SeqIO.parse(file, 'fasta'):
             #print(record.seq)
             seq_len = len(record.seq)
@@ -94,12 +95,12 @@ def main():
             gc = (int(gc_num/seq_len * 100))
             #print(gc)
             if gc >= pct_gc:
-                high_fh = ('{}_HIGH'.format(fasta[0]))
+                #high_fh = ('{}_HIGH'.format(fasta[0]))
                 #print('{}'.format(record.seq), file=high_file)
                 SeqIO.write(record, high_fh, "fasta") #Don't know how to use
 
             else:
-                low_fh = ('{}_LOW'.format(fasta[0]))
+                #low_fh = ('{}_LOW'.format(fasta[0]))
                 #print('{}'.format(record.seq), file=low_file)
                 SeqIO.write(record, low_fh, "fasta")
 
