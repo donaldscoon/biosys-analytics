@@ -62,13 +62,17 @@ def main():
     out_dir = args.outdir
     pct_gc = args.pct_gc
 
-    for file in fasta:
-        if not os.path.isfile(fasta[0]):
-            warn('"{}" is not a file'.format(file))
-            continue
-
     if not 100 >= pct_gc > 0:
         die('--pct_gc "{}" must be between 0 and 100'.format(pct_gc))
+
+
+#    for file in fasta:
+ #       if not os.path.isfile(file):
+  #          warn('"{}" is not a file'.format(file))
+   #         continue
+
+ #   if not 100 >= pct_gc > 0:
+#        die('--pct_gc "{}" must be between 0 and 100'.format(pct_gc))
 
     if out_dir and not os.path.isdir(out_dir):
         os.makedirs(out_dir)
@@ -78,6 +82,10 @@ def main():
     num_written = 0
 
     for file in fasta:
+        if not os.path.isfile(file):
+            warn('"{}" is not a file'.format(file))
+            continue
+        
         file_count += 1
         split_file = (os.path.splitext(os.path.basename(file)))
         high_fh = open(out_dir + '/' + split_file[0] + '_high' + split_file[1], 'w')
@@ -122,9 +130,11 @@ def main():
 #            for items in record_dict:
 #                print(record_dict[gc_state])
             num_written += 1
-    high_fh.close()
-    low_fh.close()
-    print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
+        high_fh.close()
+        low_fh.close()
+     
+     if not num_written == 0:   
+         print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
 
 
 
