@@ -93,15 +93,20 @@ def main():
             #print(gc)
             if gc >= pct_gc:
                 gc_state = ('{}_HIGH'.format(fasta[0]))
+                #print('{}'.format(record.seq), file=high_file)
+                SeqIO.write(record.seq, gc_state, 'fasta') """Don't know how to use"""
             else:
                 gc_state = ('{}_LOW'.format(fasta[0]))
+                #print('{}'.format(record.seq), file=low_file)
+                SeqIO.write(record.seq, gc_state, 'fasta')
+
             #print(gc_state)
             #print(SeqIO.write(gc, gc_state, 'fasta')
             #record_dict = {gc:gc_state}
             #print(record_dict)
 
-            open(gc_state, 'w')
-            print('{}'.format(record.seq), file=gc_state)
+#            open(gc_state, 'w')
+#            print('{}'.format(record.seq), file=gc_state)
             #open(out_file)
 
             ##### works just enough to print only one line #####
