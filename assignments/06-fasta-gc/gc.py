@@ -68,11 +68,11 @@ def main():
             continue
 
     if not 100 >= pct_gc > 0:
-        print('"{}" must be between 0 and 100'.format(pct_gc))
+        die('"{}" must be between 0 and 100'.format(pct_gc))
 
     if out_dir and not os.path.isdir(out_dir):
         os.makedirs(out_dir)
-        print('creating dir "{}"'.format(out_dir))
+
 
     file_count = 0
     num_written = 0
