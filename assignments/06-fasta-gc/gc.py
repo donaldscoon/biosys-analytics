@@ -62,13 +62,13 @@ def main():
     out_dir = args.outdir
     pct_gc = args.pct_gc
 
-    for files in fasta:
+    for file in fasta:
         if not os.path.isfile(fasta[0]):
-            warn('"{}" is not a file'.format(fasta[0]))
+            warn('"{}" is not a file'.format(file))
             continue
 
     if not 100 >= pct_gc > 0:
-        die('"{}" must be between 0 and 100'.format(pct_gc))
+        die('--pct_gc "{}" must be between 0 and 100'.format(pct_gc))
 
     if out_dir and not os.path.isdir(out_dir):
         os.makedirs(out_dir)
