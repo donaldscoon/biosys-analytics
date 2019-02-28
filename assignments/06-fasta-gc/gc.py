@@ -79,11 +79,12 @@ def main():
 
     for file in fasta:
         file_count += 1
-        split_file = (os.path.splitext(file))
-        print(file)
-        high_fh = open(split_file[0] + '_high' + split_file[1], 'w')
-        low_fh = open(split_file[0] + '_low' + split_file[1], 'w')
-
+        split_file = (os.path.splitext(os.path.basename(file)))
+        high_fh = open(out_dir + '/' + split_file[0] + '_high' + split_file[1], 'w')
+        low_fh = open(out_dir + '/' + split_file[0] + '_low' + split_file[1], 'w')
+        #print(high_fh)
+        #print(low_fh)
+        #print(split_file)
         for record in SeqIO.parse(file, 'fasta'):
             #print(record.seq)
             seq_len = len(record.seq)
@@ -121,7 +122,8 @@ def main():
 #            for items in record_dict:
 #                print(record_dict[gc_state])
             num_written += 1
-
+    high_fh.close()
+    low_fh.close()
     print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
 
 
