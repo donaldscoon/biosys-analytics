@@ -70,7 +70,9 @@ def main():
     if not 100 >= pct_gc > 0:
         print('"{}" must be between 0 and 100'.format(pct_gc))
 
-
+    if out_dir and not os.path.isdir(out_dir):
+        os.makedirs(out_dir)
+        print('creating dir "{}"'.format(out_dir))
 
     file_count = 0
     num_written = 0
@@ -89,18 +91,28 @@ def main():
             #print(record.seq)
             gc = (int(gc_num/seq_len * 100))
             #print(gc)
-            """Attempt at one line :( didnt work
-            gc_state = ('{}_HIGH'.format(fasta[0])) if gc >= pct_gc else ('{}_LOW'.format(fasta[0]))
-            print(gc_state)"""
-
             if gc >= pct_gc:
                 gc_state = ('{}_HIGH'.format(fasta[0]))
             else:
                 gc_state = ('{}_LOW'.format(fasta[0]))
             #print(gc_state)
             #print(SeqIO.write(gc, gc_state, 'fasta')
-            num_written += 1
+            #record_dict = {gc:gc_state}
+            #print(record_dict)
 
+            open(gc_state, 'w')
+            print('{}'.format(record.seq), file=gc_state)
+            #open(out_file)
+
+            ##### works just enough to print only one line #####
+            """with open(gc_state, 'w') as out_file:
+                print('{}'.format(record.seq), file=out_file)"""
+
+
+#            for items in record_dict:
+#                print(record_dict[gc_state])
+            num_written += 1
+    close(gc_state)
     print('Done, wrote {} to out dir "{}"'.format(num_written, out_dir))
 
 
