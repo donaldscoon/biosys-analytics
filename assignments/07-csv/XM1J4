@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "./blastomatic.py", line 79, in <module>
+    main()
+  File "./blastomatic.py", line 74, in main
+    if out_dir and not os.path.isdir(out_dir):
+NameError: name 'out_dir' is not defined
