@@ -9,6 +9,7 @@ import argparse
 import sys
 import os
 import re
+import csv
 from collections import Counter
 from Bio import SeqIO
 
@@ -71,8 +72,15 @@ def main():
     # if not os.path.isfile(anno_file):
     #     die('"{}" is not a file'.format(anno_file)
 
-    if out_dir and not os.path.isdir(out_dir):
-        os.makedirs(out_dir)
+
+    for line in open(blast_file):
+        split = line.split('\t', 3)
+        blast_out = split[1:3]
+        print(blast_out)
+    # with open(blast_file) as csvfile:
+    #     reader = csv.DictReader(csvfile), deliminator='\t'
+    #     for row in reader: 
+    #         print(row)
 
 # --------------------------------------------------
 if __name__ == '__main__':
