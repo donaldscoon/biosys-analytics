@@ -2,12 +2,15 @@
 """
 Author : donaldscoon
 Date   : 2019-03-04
-Purpose: Rock the Casbah
+Purpose: Matchy Matchy
 """
 
 import argparse
 import sys
-
+import os
+import re
+from collections import Counter
+from Bio import SeqIO
 
 # --------------------------------------------------
 def get_args():
@@ -17,26 +20,23 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'positional', metavar='FILE', help='BLAST output (-outfmt 6)')
 
     parser.add_argument(
         '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
+        '--annotations',
+        help='Annotations file',
+        metavar='FILE',
         type=str,
         default='')
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
-        type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        '-o',
+        '--outfile',
+        help='Output file',
+        metavar='FILE',
+        type=str,
+        default='')
 
     return parser.parse_args()
 
@@ -56,18 +56,23 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    blast_file = args.positional
+    anno_file = args.annotations
+    out_file = args.outfile
+    # print(blast_file)
+    # print(anno_file)
+    # print(out_file)
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    if not os.path.isfile(blast_file):
+        die('"{}" is not a file'.format(blast_file))
+    """Cant use both of these for some reason"""
+    # if not os.path.isfile(anno_file):
+    #     die('"{}" is not a file'.format(anno_file)
 
+    if out_dir and not os.path.isdir(out_dir):
+        os.makedirs(out_dir)
 
 # --------------------------------------------------
 if __name__ == '__main__':
