@@ -77,7 +77,12 @@ def main():
         split = line.split('\t', 3)
         blast_out = split[1:3]
         print(blast_out)
-    # with open(blast_file) as csvfile:
+
+    for line in open(anno_file):
+        split = line.split(',')
+        anno_out = str(split[6:])
+        print(anno_out)
+        # with open(blast_file) as csvfile:
     #     reader = csv.DictReader(csvfile), deliminator='\t'
     #     for row in reader: 
     #         print(row)
