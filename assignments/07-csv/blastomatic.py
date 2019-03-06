@@ -54,7 +54,7 @@ def get_args():
         help='Field names (no header)',
         metavar='str',
         type=str,
-        default='')
+        default='qseqid, sseqid, pident, length, mismatch, gapopen, qstart, sstart, send, evalue, bitscore')
 
     parser.add_argument(
         '-l',
@@ -103,8 +103,6 @@ def blastcheck(output):
 
     args = get_args()
     file = args.file
-    anno_file = args.annotations
-    out_file = args.outfile
     limit = args.limit
     sep = args.sep
     dense = args.dense
@@ -138,7 +136,7 @@ def blastcheck(output):
             csvfile.seek(0)
 
         reader = csv.DictReader(csvfile, **dict_args)
-
+        print(reader)
         for i, row in enumerate(reader, start=1):
             vals = dict(
                 [x for x in row.items() if x[1] != '']) if dense else row
@@ -165,14 +163,10 @@ def main():
     file = args.file
     anno_file = args.annotations
     out_file = args.outfile
-    limit = args.limit
-    sep = args.sep
-    dense = args.dense
-    show_numbers = args.number
-    no_headers = args.no_headers
 
-    print(file)
-    print(out_file)
+
+    # print(file)
+    # print(out_file)
     blastcheck(file)
 
     if not os.path.isfile(file):
@@ -186,11 +180,11 @@ def main():
     #     blast_out = split[1:3]
     #     print(blast_out)
 
-    # with open(anno_file) as csvfile:
-    #     reader = csv.DictReader(csvfile)
-    #     for row in reader: 
-    #         print(row.get('genus'))
-    #         print(row.get('species'))
+    with open(anno_file) as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader: 
+            print(row.get('genus'))
+            print(row.get('species'))
 
 # --------------------------------------------------
 if __name__ == '__main__':
