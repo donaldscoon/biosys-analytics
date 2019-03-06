@@ -20,8 +20,9 @@ def get_args():
         description='Argparse Python script',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument(
-        'positional', metavar='FILE', help='BLAST output (-outfmt 6)')
+    # parser.add_argument(
+    #     'positional', metavar='FILE', help='BLAST output (-outfmt 6)')
+    parser.add_argument('file', metavar='FILE', help='Input file')
 
     parser.add_argument(
         '-a',
@@ -39,6 +40,48 @@ def get_args():
         type=str,
         default='')
 
+    parser.add_argument(
+        '-s',
+        '--sep',
+        help='Field separator',
+        metavar='str',
+        type=str,
+        default='')
+
+    parser.add_argument(
+        '-f',
+        '--field_names',
+        help='Field names (no header)',
+        metavar='str',
+        type=str,
+        default='')
+
+    parser.add_argument(
+        '-l',
+        '--limit',
+        help='How many records to show',
+        metavar='int',
+        type=int,
+        default=1)
+
+    parser.add_argument(
+        '-d',
+        '--dense',
+        help='Not sparse (skip empty fields)',
+        action='store_true')
+
+    parser.add_argument(
+        '-n',
+        '--number',
+        help='Show field number (e.g., for awk)',
+        action='store_true')
+
+    parser.add_argument(
+        '-N',
+        '--no_headers',
+        help='No headers in first row',
+        action='store_true')
+
     return parser.parse_args()
 
 
@@ -54,39 +97,100 @@ def die(msg='Something bad happened'):
     warn(msg)
     sys.exit(1)
 
+#---------------------------------------------------
+def blastcheck(output):
+    """runs blast check on the blast output files"""
+
+    args = get_args()
+    file = args.file
+    anno_file = args.annotations
+    out_file = args.outfile
+    limit = args.limit
+    sep = args.sep
+    dense = args.dense
+    show_numbers = args.number
+    no_headers = args.no_headers
+
+    if not os.path.isfile(file):
+        print('"{}" is not a file'.format(file))
+        sys.exit(1)
+
+    if not sep:
+        _, ext = os.path.splitext(file)
+        if ext == '.csv':
+            sep = ','
+        else:
+            sep = '\t'
+
+    with open(file) as csvfile:
+        dict_args = {'delimiter': sep}
+
+        if args.field_names:
+            regex = re.compile(r'\s*,\s*')
+            names = regex.split(args.field_names)
+            if names:
+                dict_args['fieldnames'] = names
+
+        if args.no_headers:
+            num_flds = len(csvfile.readline().split(sep))
+            dict_args['fieldnames'] = list(
+                map(lambda i: 'Field' + str(i), range(1, num_flds + 1)))
+            csvfile.seek(0)
+
+        reader = csv.DictReader(csvfile, **dict_args)
+
+        for i, row in enumerate(reader, start=1):
+            vals = dict(
+                [x for x in row.items() if x[1] != '']) if dense else row
+            flds = vals.keys()
+            longest = max(map(len, flds))
+            fmt = '{:' + str(longest + 1) + '}: {}'
+            print('// ****** Record {} ****** //'.format(i))
+            n = 0
+            for key, val in vals.items():
+                n += 1
+                show = fmt.format(key, val)
+                if show_numbers:
+                    print('{:3} {}'.format(n, show))
+                else:
+                    print(show)
+
+            if i == limit:
+                break
 
 # --------------------------------------------------
 def main():
     """"""
     args = get_args()
-    blast_file = args.positional
+    file = args.file
     anno_file = args.annotations
     out_file = args.outfile
-    # print(blast_file)
-    # print(anno_file)
-    # print(out_file)
+    limit = args.limit
+    sep = args.sep
+    dense = args.dense
+    show_numbers = args.number
+    no_headers = args.no_headers
 
-    if not os.path.isfile(blast_file):
-        die('"{}" is not a file'.format(blast_file))
+    print(file)
+    print(out_file)
+    blastcheck(file)
+
+    if not os.path.isfile(file):
+        die('"{}" is not a file'.format(file))
     """Cant use both of these for some reason"""
     # if not os.path.isfile(anno_file):
     #     die('"{}" is not a file'.format(anno_file)
 
+    # for line in open(blast_file):
+    #     split = line.split('\t', 3)
+    #     blast_out = split[1:3]
+    #     print(blast_out)
 
-    for line in open(blast_file):
-        split = line.split('\t', 3)
-        blast_out = split[1:3]
-        # print(blast_out)
-
-    # for line in open(anno_file):
-    #     split = line.split(',')
-    #     anno_out = split[6:]
-    #     print(anno_out)
-    with open(anno_file) as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader: 
-            print(row.get('genus'))
-            print(row.get('species'))
+    # with open(anno_file) as csvfile:
+    #     reader = csv.DictReader(csvfile)
+    #     for row in reader: 
+    #         print(row.get('genus'))
+    #         print(row.get('species'))
 
 # --------------------------------------------------
 if __name__ == '__main__':
