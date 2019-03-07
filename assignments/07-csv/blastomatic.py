@@ -40,47 +40,47 @@ def get_args():
         type=str,
         default='')
 
-    parser.add_argument(
-        '-s',
-        '--sep',
-        help='Field separator',
-        metavar='str',
-        type=str,
-        default='')
+    # parser.add_argument(
+    #     '-s',
+    #     '--sep',
+    #     help='Field separator',
+    #     metavar='str',
+    #     type=str,
+    #     default='')
 
-    parser.add_argument(
-        '-f',
-        '--field_names',
-        help='Field names (no header)',
-        metavar='str',
-        type=str,
-        default='qseqid, sseqid, pident, length, mismatch, gapopen, qstart, sstart, send, evalue, bitscore')
+    # parser.add_argument(
+    #     '-f',
+    #     '--field_names',
+    #     help='Field names (no header)',
+    #     metavar='str',
+    #     type=str,
+    #     default='qseqid, sseqid, pident, length, mismatch, gapopen, qstart, sstart, send, evalue, bitscore')
 
-    parser.add_argument(
-        '-l',
-        '--limit',
-        help='How many records to show',
-        metavar='int',
-        type=int,
-        default=1)
+    # parser.add_argument(
+    #     '-l',
+    #     '--limit',
+    #     help='How many records to show',
+    #     metavar='int',
+    #     type=int,
+    #     default=1)
 
-    parser.add_argument(
-        '-d',
-        '--dense',
-        help='Not sparse (skip empty fields)',
-        action='store_true')
+    # parser.add_argument(
+    #     '-d',
+    #     '--dense',
+    #     help='Not sparse (skip empty fields)',
+    #     action='store_true')
 
-    parser.add_argument(
-        '-n',
-        '--number',
-        help='Show field number (e.g., for awk)',
-        action='store_true')
+    # parser.add_argument(
+    #     '-n',
+    #     '--number',
+    #     help='Show field number (e.g., for awk)',
+    #     action='store_true')
 
-    parser.add_argument(
-        '-N',
-        '--no_headers',
-        help='No headers in first row',
-        action='store_true')
+    # parser.add_argument(
+    #     '-N',
+    #     '--no_headers',
+    #     help='No headers in first row',
+    #     action='store_true')
 
     return parser.parse_args()
 
@@ -167,7 +167,7 @@ def main():
 
     # print(file)
     # print(out_file)
-    blastcheck(file)
+    # blastcheck(file)
 
     if not os.path.isfile(file):
         die('"{}" is not a file'.format(file))
@@ -175,16 +175,25 @@ def main():
     # if not os.path.isfile(anno_file):
     #     die('"{}" is not a file'.format(anno_file)
 
-    # for line in open(blast_file):
-    #     split = line.split('\t', 3)
-    #     blast_out = split[1:3]
-    #     print(blast_out)
 
     with open(anno_file) as csvfile:
         reader = csv.DictReader(csvfile)
-        for row in reader: 
-            print(row.get('genus'))
-            print(row.get('species'))
+        for row in reader:
+            for line in open(file):
+                split = line.split('\t', 3)
+                blast_seqid = split[1]
+                blast_pident = split[2]
+                # print(blast_seqid)
+                # print(blast_pident)
+                anno_seqid = row.get('centroid')
+                if blast_seqid == anno_seqid:
+                    print('"{}" has a match'.format(blast_seqid)) 
+                else:
+                    print('Cannot find seq "{}" in lookup'.format(blast_seqid))
+                # if row.get('genus') == re.search('uncultured*', str):
+                #     print('N/A')
+                    # print(row.get('genus'))
+                    # print(row.get('species'))
 
 # --------------------------------------------------
 if __name__ == '__main__':
