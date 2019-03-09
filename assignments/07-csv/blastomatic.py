@@ -183,13 +183,14 @@ def main():
                 split = line.split('\t', 3)
                 blast_seqid = split[1]
                 blast_pident = split[2]
+                # d_blast = {blast_seqid: blast_pident}
                 # print(blast_seqid)
                 # print(blast_pident)
                 anno_seqid = row.get('centroid')
-                if blast_seqid == anno_seqid:
-                    print('"{}" has a match'.format(blast_seqid)) 
-                else:
-                    print('Cannot find seq "{}" in lookup'.format(blast_seqid))
+                    if blast_seqid == anno_seqid:
+                        print('"{}" has a match'.format(blast_seqid)) 
+                    else:
+                        print('Cannot find seq "{}" in lookup'.format(blast_seqid))
                 # if row.get('genus') == re.search('uncultured*', str):
                 #     print('N/A')
                     # print(row.get('genus'))
