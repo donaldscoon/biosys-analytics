@@ -178,44 +178,24 @@ def main():
 
     """Outputs the SEQID AND PIDENT OF HITS FILE
        no tested method can add to the dictionary"""
-    # for line in open(file):
-    #     split = line.split('\t', 3)
-    #     blast_seqid = split[1]
-    #     blast_pident = split[2]
-    #     d_blast = ({blast_seqid:blast_pident})
+    for line in open(file):
+        split = line.split('\t', 3)
+        blast_seqid = split[1]
+        blast_pident = split[2]
+        d_blast = ({blast_seqid:blast_pident})
     # print(d_blast)
-
-    """Should: output the SEQID, GENUS, and 
-       SPECIES of all records into dictionary
-       for searching later """
+    """Chunk Status: Reads the CSV outputs a 
+        bunch of ordered dicts. """
     with open(anno_file) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            print(row)
-            
+            # print(row)
+            anno_seqid = row.get('centroid')
+            anno_genus = row.get('genus')
+            anno_species = row.get('species')
 
 
 
-""" Perhaps I should have deleted occassionly
-    it ended up working even less. Going to use old 
-    version
-
-    # for line in open(file):
-    #     split = line.split('\t', 3)
-    #     blast_seqid = split[1]
-    #     blast_pident = split[2]
-    #     d_blast = {blast_seqid: blast_pident}
-    #     # d_blast[(blast_seqid)] = (blast_pident) 
-    #     # d_blast.update({blast_seqid:blast_pident})
-    # with open(anno_file) as csvfile:
-    #     reader = csv.DictReader(csvfile)
-    #     # anno_seqid = reader.get('centroird')
-    #     for row in reader:
-    #         print(row)
-            # anno_seqid = reader.get('centroid')
-            # anno_genus = reader.get('genus')
-            # anno_species = reader.get('species')
-            # print(anno_seqid)
 
 
             # for line in open(file):
