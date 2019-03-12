@@ -175,27 +175,47 @@ def main():
     # if not os.path.isfile(anno_file):
     #     die('"{}" is not a file'.format(anno_file)
 
-
+    # for line in open(file):
+    #     split = line.split('\t', 3)
+    #     blast_seqid = split[1]
+    #     blast_pident = split[2]
+    #     d_blast = {blast_seqid: blast_pident}
+    #     # d_blast[(blast_seqid)] = (blast_pident) 
+    #     # d_blast.update({blast_seqid:blast_pident})
     with open(anno_file) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            for line in open(file):
-                split = line.split('\t', 3)
-                blast_seqid = split[1]
-                blast_pident = split[2]
+            anno_seqid = reader.get('centroid')
+            anno_genus = reader.get('genus')
+            anno_species = reader.get('species')
+            print(anno_seqid)
+
+
+            # for line in open(file):
+            #     split = line.split('\t', 3)
+            #     blast_seqid = split[1]
+            #     blast_pident = split[2]
+            #     print(row)
                 # d_blast = {blast_seqid: blast_pident}
                 # print(blast_seqid)
                 # print(blast_pident)
-                anno_seqid = row.get('centroid')
-                    if blast_seqid == anno_seqid:
-                        print('"{}" has a match'.format(blast_seqid)) 
-                    else:
-                        print('Cannot find seq "{}" in lookup'.format(blast_seqid))
+                # anno_seqid = row.get('centroid')
+                #     if blast_seqid == anno_seqid:
+                #         print('"{}" has a match'.format(blast_seqid)) 
+                #     else:
+                #         print('Cannot find seq "{}" in lookup'.format(blast_seqid))
                 # if row.get('genus') == re.search('uncultured*', str):
                 #     print('N/A')
                     # print(row.get('genus'))
                     # print(row.get('species'))
 
+    # ATTEMPT AT USING DICT WRITER DOESNT WORK
+    # with open(anno_file, 'w', newline='') as csvfile:
+    #     fieldnames = ['centroid', 'domain', 'kingdom', 'phylum', 'class', 'order', 'genus', 'species']
+    #     writer = csv.DictWriter(csv, fieldnames=fieldnames)
+    #     # writer.writeheader()
+    #     # writer.writerow({'centriod': 'genus'})
+    #     # print(writer)
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
