@@ -193,6 +193,7 @@ def main():
             anno_seqid = row.get('centroid')
             anno_genus = row.get('genus')
             anno_species = row.get('species')
+            print(anno_seqid)
 
 
 
