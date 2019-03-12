@@ -175,6 +175,31 @@ def main():
     # if not os.path.isfile(anno_file):
     #     die('"{}" is not a file'.format(anno_file)
 
+
+    """Outputs the SEQID AND PIDENT OF HITS FILE
+       no tested method can add to the dictionary"""
+    # for line in open(file):
+    #     split = line.split('\t', 3)
+    #     blast_seqid = split[1]
+    #     blast_pident = split[2]
+    #     d_blast = ({blast_seqid:blast_pident})
+    # print(d_blast)
+
+    """Should: output the SEQID, GENUS, and 
+       SPECIES of all records into dictionary
+       for searching later """
+    with open(anno_file) as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            print(row)
+
+
+
+
+""" Perhaps I should have deleted occassionly
+    it ended up working even less. Going to use old 
+    version
+
     # for line in open(file):
     #     split = line.split('\t', 3)
     #     blast_seqid = split[1]
@@ -182,13 +207,15 @@ def main():
     #     d_blast = {blast_seqid: blast_pident}
     #     # d_blast[(blast_seqid)] = (blast_pident) 
     #     # d_blast.update({blast_seqid:blast_pident})
-    with open(anno_file) as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            anno_seqid = reader.get('centroid')
-            anno_genus = reader.get('genus')
-            anno_species = reader.get('species')
-            print(anno_seqid)
+    # with open(anno_file) as csvfile:
+    #     reader = csv.DictReader(csvfile)
+    #     # anno_seqid = reader.get('centroird')
+    #     for row in reader:
+    #         print(row)
+            # anno_seqid = reader.get('centroid')
+            # anno_genus = reader.get('genus')
+            # anno_species = reader.get('species')
+            # print(anno_seqid)
 
 
             # for line in open(file):
@@ -215,7 +242,7 @@ def main():
     #     writer = csv.DictWriter(csv, fieldnames=fieldnames)
     #     # writer.writeheader()
     #     # writer.writerow({'centriod': 'genus'})
-    #     # print(writer)
+    #     # print(writer)"""
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
