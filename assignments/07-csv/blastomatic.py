@@ -82,9 +82,9 @@ def main():
         for row in reader:
             seqid = row.get('centroid')
             d_anno[seqid] = row
+            # print(d_anno.get(seqid).get('genus'))
         # print(d_anno)
-    """--------------------------------------"""
-
+    """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
 
     """Outputs record to dictionary {d_blast}"""
     d_blast = {}
@@ -95,8 +95,25 @@ def main():
             sseqid = row.get('sseqid')
             d_blast[sseqid] = row
         # print(d_blast)
-    """--------------------------------------"""
+    """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
 
+    """Section that makes the comparisons"""
+    for row in d_blast:
+        lookup = d_blast.get(row).get('sseqid')
+        if lookup in d_anno:
+            print('')
+        else:
+            print('Cannot find seq "{}" in lookup'.format(lookup))
+
+            # if lookup == d_anno.get(row).get('centroid'):
+            #     print('match found')
+            # else:
+            #     print('no a match')
+        # print(lookup)
+        # if lookup == d_anno.get(row).get('centroid'):
+        #     print('match found')
+        # else:
+        #     print('not a match')
 
 
 # --------------------------------------------------
