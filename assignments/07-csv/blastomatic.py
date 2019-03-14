@@ -100,21 +100,21 @@ def main():
     """Section that makes the comparisons"""
     for row in d_blast:
         lookup = d_blast.get(row).get('sseqid')
+        lookup_pident = d_blast.get(row).get('pident')
+        # print(lookup_pident)
         if lookup in d_anno:
-            print('')
+            genus = d_anno.get(lookup).get('genus')
+            species = d_anno.get(lookup).get('species')
+            if genus == '':
+                genus = 'NA'
+                if species == '':
+                    species = 'NA'
+            if out_file:
+                print("{}\t{}\t{}\t{}".format(lookup, lookup_pident, genus, species), file=open(out_file, "a"))
+            else:
+                print("{}\t{}\t{}\t{}".format(lookup, lookup_pident, genus, species))
         else:
-            print('Cannot find seq "{}" in lookup'.format(lookup))
-
-            # if lookup == d_anno.get(row).get('centroid'):
-            #     print('match found')
-            # else:
-            #     print('no a match')
-        # print(lookup)
-        # if lookup == d_anno.get(row).get('centroid'):
-        #     print('match found')
-        # else:
-        #     print('not a match')
-
+            warn('Cannot find seq "{}" in lookup'.format(lookup))
 
 # --------------------------------------------------
 if __name__ == '__main__':
