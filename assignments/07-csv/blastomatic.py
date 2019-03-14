@@ -58,16 +58,12 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """"""
+    """Do jazz hands make noise?
+       if so that noise goes here. """
     args = get_args()
     blast_hits = args.file
     anno_file = args.annotations
     out_file = args.outfile
-
-
-    # print(file)
-    # print(out_file)
-    # blastcheck(file)
 
     if not os.path.isfile(blast_hits):
         die('"{}" is not a file'.format(blast_hits))
@@ -82,8 +78,6 @@ def main():
         for row in reader:
             seqid = row.get('centroid')
             d_anno[seqid] = row
-            # print(d_anno.get(seqid).get('genus'))
-        # print(d_anno)
     """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
 
     """Outputs record to dictionary {d_blast}"""
@@ -94,14 +88,12 @@ def main():
         for row in reader:
             sseqid = row.get('sseqid')
             d_blast[sseqid] = row
-        # print(d_blast)
     """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
 
     """Section that makes the comparisons"""
     for row in d_blast:
         lookup = d_blast.get(row).get('sseqid')
         lookup_pident = d_blast.get(row).get('pident')
-        # print(lookup_pident)
         if lookup in d_anno:
             genus = d_anno.get(lookup).get('genus')
             species = d_anno.get(lookup).get('species')
@@ -109,6 +101,7 @@ def main():
                 genus = 'NA'
                 if species == '':
                     species = 'NA'
+            print("seq_id\tpident\tgenus\tspecies", file=open(out_file, 'a'))
             if out_file:
                 print("{}\t{}\t{}\t{}".format(lookup, lookup_pident, genus, species), file=open(out_file, "a"))
             else:
