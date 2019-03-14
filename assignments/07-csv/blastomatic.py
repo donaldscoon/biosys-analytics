@@ -91,6 +91,7 @@ def main():
     """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
 
     """Section that makes the comparisons"""
+    print("seq_id\tpident\tgenus\tspecies", file=open(out_file, 'a'))
     for row in d_blast:
         lookup = d_blast.get(row).get('sseqid')
         lookup_pident = d_blast.get(row).get('pident')
@@ -101,7 +102,6 @@ def main():
                 genus = 'NA'
                 if species == '':
                     species = 'NA'
-            print("seq_id\tpident\tgenus\tspecies", file=open(out_file, 'a'))
             if out_file:
                 print("{}\t{}\t{}\t{}".format(lookup, lookup_pident, genus, species), file=open(out_file, "a"))
             else:
