@@ -42,12 +42,14 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Drunken Jazz Noises"""
     args = get_args()
     bottles = args.num_bottles
 
+    if bottles < 1:
+        die('N() must be a positive integer.')
+        
     while bottles > 0:
-        """for plural amounts of bottles """
         if bottles > 1:
             print('{} bottles of beer on the wall,'.format(bottles))
             print('{} bottles of beer,'.format(bottles))
@@ -59,14 +61,12 @@ def main():
             else:
                 print('{} bottles of beer on the wall!'.format(bottles))
                 print('')
-
         elif bottles == 1:
             print('{} bottle of beer on the wall,'.format(bottles))
             print('{} bottle of beer,'.format(bottles))
             print('Take one down, pass it around,')
             bottles -= 1
             print('{} bottles of beer on the wall!'.format(bottles))
-
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
