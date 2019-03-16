@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "./blastomatic.py", line 74, in <module>
+    main()
+  File "./blastomatic.py", line 61, in main
+    str_arg = args.arg
+AttributeError: 'Namespace' object has no attribute 'arg'
