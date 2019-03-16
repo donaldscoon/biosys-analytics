@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-03-16
-Purpose: Rock the Casbah
+Purpose: Enterntain on Road Trips
 """
 
 import argparse
@@ -17,26 +17,12 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-n',
+        '--num_bottles',
+        help='Number of bottles in the song',
         metavar='int',
         type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        default=10)
 
     return parser.parse_args()
 
@@ -58,16 +44,28 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    bottles = args.num_bottles
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    while bottles > 0:
+        """for plural amounts of bottles """
+        if bottles > 1:
+            print('{} bottles of beer on the wall,'.format(bottles))
+            print('{} bottles of beer,'.format(bottles))
+            print('Take one down, pass it around,')
+            bottles -= 1
+            if bottles == 1:
+                print('{} bottle of beer on the wall!'.format(bottles))
+                print('')
+            else:
+                print('{} bottles of beer on the wall!'.format(bottles))
+                print('')
 
+        elif bottles == 1:
+            print('{} bottle of beer on the wall,'.format(bottles))
+            print('{} bottle of beer,'.format(bottles))
+            print('Take one down, pass it around,')
+            bottles -= 1
+            print('{} bottles of beer on the wall!'.format(bottles))
 
 # --------------------------------------------------
 if __name__ == '__main__':
