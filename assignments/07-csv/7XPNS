@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "./blastomatic.py", line 114, in <module>
+    main()
+  File "./blastomatic.py", line 94, in main
+    print("seq_id\tpident\tgenus\tspecies", file=open(out_file, 'a'))
+FileNotFoundError: [Errno 2] No such file or directory: ''

@@ -1,0 +1,4 @@
+  File "./blastomatic.py", line 105
+    if out_file:
+    ^
+IndentationError: unexpected indent

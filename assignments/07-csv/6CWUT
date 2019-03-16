@@ -1,0 +1,4 @@
+  File "./blastomatic.py", line 74
+    """Outputs records to dictionary {d_anno}"""
+                                               ^
+SyntaxError: invalid syntax
