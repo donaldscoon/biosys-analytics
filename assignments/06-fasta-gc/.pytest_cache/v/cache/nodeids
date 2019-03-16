@@ -1,0 +1,7 @@
+[
+  "test.py::test_usage",
+  "test.py::test_bad_input",
+  "test.py::test_good_input1",
+  "test.py::test_good_input2",
+  "test.py::test_good_input3"
+]
