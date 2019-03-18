@@ -30,7 +30,8 @@ def get_args():
         help='take on keyword (default: None)',
         metavar='STR',
         type=str,
-        default='None')
+        default='None',
+        required=True)
 
     parser.add_argument(
         '-s',
@@ -72,23 +73,34 @@ def main():
     # search_terms = args.keywords
     input_file = args.FILE
     # out_file = args.output
+    taxa_skip = args.skip
 
     if not os.path.isfile(input_file):
         die('"{}" is not a file'.format(input_file))
     
-    print('Processing "{}".'.format(input_file))
+    print('Processing "{}"'.format(input_file))
+    """make program create dict records like blastomatic
+       would be easier to make comparisons and skip/take"""
+    dictionary = {}
 
     for i, record in enumerate(SeqIO.parse(input_file, "swiss"), start=1):
         # print('{}: {}'.format(i, record.id))
         annotations = record.annotations
-        
-        """lines with KW are the ANNOTATIONS"""
-
-        for annot_type in ['keywords']:
+        """lines with KW are the ANNOTATIONS
+            lines with SQ are the sequnces """
+    #### THANKS SWISSPROT PROGRAM
+        for annot_type in ['keywords', 'taxonomy' 'accessions']:
             if annot_type in annotations:
-                val = annotations[annot_type]
-                """INSERT AN IF STATEMENT FOR SKIPPING
-                MAKE THE REST ELIF/ELSE"""
+                val = annotations['keywords']
+                tax = annotations['taxonomy']
+                entry = annotations['accessions']
+                # d_taxonomy[entry] = tax
+                """MATCHS SKIP TERMS TO LIST OF TAXA
+                   need to make it so the program skips"""
+                for item in tax:
+                    if item in taxa_skip:
+                        print('ABANDON SHIP')
+                """PRINTS OUT KEYWORDS """
                 if type(val) is list:
                     for v in val:
                         print('{}'.format(v))
