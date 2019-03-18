@@ -7,6 +7,11 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
+import os
+import re
+import csv
+from collections import Counter
+from Bio import SeqIO
 
 
 # --------------------------------------------------
@@ -17,26 +22,32 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'FILE', metavar='FILE', help='Uniprot file')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
+        '-k',
+        '--keyword',
+        help='take on keyword (default: None)',
+        metavar='STR',
         type=str,
-        default='')
+        default='None')
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
-        type=int,
-        default=0)
+        '-s',
+        '--skip',
+        help='Skip taxa (default: )',
+        metavar='STR',
+        type=str,
+        default='',
+        nargs='+')
 
     parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        '-o',
+        '--output ',
+        help='output filename (default: out.fa)',
+        metavar='FILE',
+        type=str,
+        default='out.fa')
 
     return parser.parse_args()
 
@@ -58,16 +69,31 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    # search_terms = args.keywords
+    input_file = args.FILE
+    # out_file = args.output
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    if not os.path.isfile(input_file):
+        die('"{}" is not a file'.format(input_file))
+    
+    print('Processing "{}".'.format(input_file))
 
+    for i, record in enumerate(SeqIO.parse(input_file, "swiss"), start=1):
+        # print('{}: {}'.format(i, record.id))
+        annotations = record.annotations
+        
+        """lines with KW are the ANNOTATIONS"""
+
+        for annot_type in ['keywords']:
+            if annot_type in annotations:
+                val = annotations[annot_type]
+                """INSERT AN IF STATEMENT FOR SKIPPING
+                MAKE THE REST ELIF/ELSE"""
+                if type(val) is list:
+                    for v in val:
+                        print('{}'.format(v))
+                else:
+                    print('{}'.format(val))
 
 # --------------------------------------------------
 if __name__ == '__main__':
