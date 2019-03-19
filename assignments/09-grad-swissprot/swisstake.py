@@ -73,15 +73,16 @@ def main():
     # search_terms = args.keywords
     input_file = args.FILE
     # out_file = args.output
-    taxa_skip = args.skip
+    taxa_skip = set(args.skip)
 
     if not os.path.isfile(input_file):
         die('"{}" is not a file'.format(input_file))
-    
+
     print('Processing "{}"'.format(input_file))
     """make program create dict records like blastomatic
        would be easier to make comparisons and skip/take"""
     dictionary = {}
+
 
     for i, record in enumerate(SeqIO.parse(input_file, "swiss"), start=1):
         # print('{}: {}'.format(i, record.id))
@@ -91,21 +92,52 @@ def main():
     #### THANKS SWISSPROT PROGRAM
         for annot_type in ['keywords', 'taxonomy' 'accessions']:
             if annot_type in annotations:
-                val = annotations['keywords']
-                tax = annotations['taxonomy']
-                entry = annotations['accessions']
-                # d_taxonomy[entry] = tax
+                val = set(annotations['keywords'])
+                tax = set(annotations['taxonomy'])
+                entry = set(annotations['accessions'])
+                #### Needs all same case .upper ot .lower
+                print(taxa_skip.intersection(tax))
+
+
+
+
                 """MATCHS SKIP TERMS TO LIST OF TAXA
-                   need to make it so the program skips"""
-                for item in tax:
-                    if item in taxa_skip:
-                        print('ABANDON SHIP')
-                """PRINTS OUT KEYWORDS """
-                if type(val) is list:
-                    for v in val:
-                        print('{}'.format(v))
-                else:
-                    print('{}'.format(val))
+                   need to make it so the program skips
+                   now I am hoarding this to make an attempt
+                   at using sets"""
+                # for item in tax:
+                #     if item in taxa_skip:
+                #         print('ABANDON SHIP')
+                # """PRINTS OUT KEYWORDS """
+                # if type(val) is list:
+                #     for v in val:
+                #         print('{}'.format(v))
+                # else:
+                #     print('{}'.format(val))
+
+# Stuff for guessing game
+# variables upper bound, lower bounds, num guess
+# import random
+# new variable secret number random.choice(range(low,high))
+# new variable seed in arg parse default None type int
+# seed = args.seed
+# not a number error check if guess.isdigit(): >>>continue
+# if seed is not None:
+#     random.seed(seed)
+# prompt=(String)
+# while numguess > 0:
+#     num guesses -= 1
+#     guess=input(prompt)
+#     print(guess)
+#     guess== int(guess)
+#     if guess == secret
+#         print(win)
+#         sys.exit(0)
+#     elif guess < secret:
+#         print(low)
+#     elif guess > secret:
+#         print(high)
+# print(youlose)
 
 # --------------------------------------------------
 if __name__ == '__main__':
