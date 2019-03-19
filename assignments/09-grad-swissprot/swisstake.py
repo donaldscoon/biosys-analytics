@@ -83,28 +83,33 @@ def main():
        would be easier to make comparisons and skip/take"""
     dictionary = {}
 
+    skip_counter = 0
+    take_counter = 0
 
     for i, record in enumerate(SeqIO.parse(input_file, "swiss"), start=1):
-        # print('{}: {}'.format(i, record.id))
         annotations = record.annotations
-        """lines with KW are the ANNOTATIONS
-            lines with SQ are the sequnces """
-    #### THANKS SWISSPROT PROGRAM
-        for annot_type in ['keywords', 'taxonomy' 'accessions']:
+        for annot_type in ['keywords', 'taxonomy']:
             if annot_type in annotations:
                 val = set(annotations['keywords'])
                 tax = set(annotations['taxonomy'])
-                entry = set(annotations['accessions'])
-                #### Needs all same case .upper ot .lower
-                print(taxa_skip.intersection(tax))
+                #### Needs all same case .upper or .lower
+                if len(taxa_skip.intersection(tax)) > 0:
+                    skip_counter += 1
+                    print(skip_counter)
+                else:
+                    with open(input_file, "w") as handle:
+                        print(SeqIO.write(record, handle, "fasta"))
+                    take_counter += 1
+                    print(take_counter)
+    print('Done, skipped {} and took {}. See output in "FIX THIS"'.format(skip_counter, take_counter))
 
 
 
 
-                """MATCHS SKIP TERMS TO LIST OF TAXA
-                   need to make it so the program skips
-                   now I am hoarding this to make an attempt
-                   at using sets"""
+                # """MATCHS SKIP TERMS TO LIST OF TAXA
+                #    need to make it so the program skips
+                #    now I am hoarding this to make an attempt
+                #    at using sets"""
                 # for item in tax:
                 #     if item in taxa_skip:
                 #         print('ABANDON SHIP')
