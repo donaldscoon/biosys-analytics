@@ -83,6 +83,8 @@ def main():
     skip_counter = 0
     take_counter = 0
 
+"""    # out_fh = open(out_file, "w+")"""
+
     for record in SeqIO.parse(input_file, "swiss"):
         annotations = record.annotations
         for annot_type in ['keywords', 'taxonomy']:
@@ -94,9 +96,10 @@ def main():
                     skip_counter += 1
                     print(skip_counter)
                 else:
+                    SeqIO.write(record, out_file, "fasta")
                     take_counter += 1
                     print(take_counter)
-    print('Done, skipped {} and took {}. See output in "FIX THIS"'.format(skip_counter, take_counter))
+    print('Done, skipped {} and took {}. See output in "{}"'.format(skip_counter, take_counter, out_file))
 
 
 
