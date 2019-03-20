@@ -94,11 +94,11 @@ def main():
                 #### Needs all same case .upper or .lower
                 if len(taxa_skip.intersection(tax)) > 0:
                     skip_counter += 1
-                    print(skip_counter)
+                    # print(skip_counter)
                 else:
                     SeqIO.write(record, out_file, "fasta")
                     take_counter += 1
-                    print(take_counter)
+                    # print(take_counter)
     print('Done, skipped {} and took {}. See output in "{}"'.format(skip_counter, take_counter, out_file))
 
 
