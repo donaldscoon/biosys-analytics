@@ -83,7 +83,7 @@ def main():
     skip_counter = 0
     take_counter = 0
 
-"""    # out_fh = open(out_file, "w+")"""
+# """    # out_fh = open(out_file, "w+")"""
 
     for record in SeqIO.parse(input_file, "swiss"):
         annotations = record.annotations
