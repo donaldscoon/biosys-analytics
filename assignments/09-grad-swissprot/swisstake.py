@@ -27,7 +27,7 @@ def get_args():
     parser.add_argument(
         '-k',
         '--keyword',
-        help='take on keyword (default: None)',
+        help='take on keyword',
         metavar='STR',
         type=str,
         default='None',
@@ -36,7 +36,7 @@ def get_args():
     parser.add_argument(
         '-s',
         '--skip',
-        help='Skip taxa (default: )',
+        help='Skip taxa',
         metavar='STR',
         type=str,
         default='',
@@ -44,11 +44,11 @@ def get_args():
 
     parser.add_argument(
         '-o',
-        '--output ',
-        help='output filename (default: out.fa)',
+        '--output',
+        help='output filename',
         metavar='FILE',
         type=str,
-        default='out.fa')
+        default='out_test.fa')
 
     return parser.parse_args()
 
@@ -70,23 +70,20 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    # search_terms = args.keywords
+    search_terms = args.keyword
     input_file = args.FILE
-    # out_file = args.output
+    out_file = args.output
     taxa_skip = set(args.skip)
 
     if not os.path.isfile(input_file):
         die('"{}" is not a file'.format(input_file))
 
     print('Processing "{}"'.format(input_file))
-    """make program create dict records like blastomatic
-       would be easier to make comparisons and skip/take"""
-    dictionary = {}
 
     skip_counter = 0
     take_counter = 0
 
-    for i, record in enumerate(SeqIO.parse(input_file, "swiss"), start=1):
+    for record in SeqIO.parse(input_file, "swiss"):
         annotations = record.annotations
         for annot_type in ['keywords', 'taxonomy']:
             if annot_type in annotations:
@@ -97,12 +94,9 @@ def main():
                     skip_counter += 1
                     print(skip_counter)
                 else:
-                    with open(input_file, "w") as handle:
-                        print(SeqIO.write(record, handle, "fasta"))
                     take_counter += 1
                     print(take_counter)
     print('Done, skipped {} and took {}. See output in "FIX THIS"'.format(skip_counter, take_counter))
-
 
 
 
