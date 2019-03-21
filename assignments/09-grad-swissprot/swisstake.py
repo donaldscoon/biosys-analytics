@@ -70,10 +70,10 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    search_terms = args.keyword
+    search_terms = str(args.keyword)
     input_file = args.FILE
     out_file = args.output
-    taxa_skip = set(args.skip)
+    taxa_given = set(args.skip)
 
     if not os.path.isfile(input_file):
         die('"{}" is not a file'.format(input_file))
@@ -83,22 +83,34 @@ def main():
     skip_counter = 0
     take_counter = 0
 
+    # taxa_list = []
+    # for item in taxa_given:
+    #     taxa_list.append(item.lower())
+    # taxa_skip = set(taxa_list)
+    # # print(taxa_skip)
+
+    # # print(search_terms)
+    # key_lower = search_terms.lower()
+    # key_list = set([key_lower])
+    # # print(key_list)
+
     out_fh = open(out_file, "w+")
 
     for record in SeqIO.parse(input_file, "swiss"):
         annotations = record.annotations
         for annot_type in ['keywords', 'taxonomy']:
             if annot_type in annotations:
-                val = set(annotations['keywords'])
+                key = set(annotations['keywords'])
                 tax = set(annotations['taxonomy'])
-                #### Needs all same case .upper or .lower
-                if len(taxa_skip.intersection(tax)) > 0:
+                if len(taxa_given.intersection(tax)) > 0:
                     skip_counter += 1
-                    # print(skip_counter)
+                ### IF STATEMENT TO TAKE THINGS THAT MATCH KEYWORDS
+                # elif len(search_terms.intersection(key)) > 0:
+                #     SeqIO.write(record, out_fh, "fasta")
+                #     take_counter += 1
                 else:
                     SeqIO.write(record, out_fh, "fasta")
                     take_counter += 1
-                    # print(take_counter)
     print('Done, skipped {} and took {}. See output in "{}"'.format(skip_counter, take_counter, out_file))
 
 
