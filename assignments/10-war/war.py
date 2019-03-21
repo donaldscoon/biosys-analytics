@@ -2,11 +2,17 @@
 """
 Author : donaldscoon
 Date   : 2019-03-21
-Purpose: Rock the Casbah
+Purpose: Single player card games
 """
 
 import argparse
 import sys
+import os
+import re
+import csv
+from collections import Counter
+from Bio import SeqIO
+from itertools import product
 
 
 # --------------------------------------------------
@@ -17,26 +23,12 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-s',
+        '--seed',
+        help='used for testing',
         metavar='int',
         type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        default=None)
 
     return parser.parse_args()
 
@@ -56,18 +48,16 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Dizzy Atmosphere by Dizzy Gillespie"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    seed = args.seed
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    suite = ['♥', '♠', '♣', '♦']
 
+    deck = list(product(cards, suite))
+
+    print(len(deck))
 
 # --------------------------------------------------
 if __name__ == '__main__':
