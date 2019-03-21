@@ -89,23 +89,21 @@ def main():
     taxa_skip = set(taxa_list)
     # print(taxa_skip)
 
-    # print(search_terms)
-    key_lower = search_terms.lower()
-    key_list = set([key_lower])
-    # print(key_list)
-
     out_fh = open(out_file, "w+")
 
     for record in SeqIO.parse(input_file, "swiss"):
         annotations = record.annotations
         for annot_type in ['keywords', 'taxonomy']:
             if annot_type in annotations:
-                key = set(annotations['keywords'])
-                tax = set(annotations['taxonomy'])
-                if len(taxa_given.intersection(tax)) > 0:
+                key = [k.lower() for k in annotations['keywords']]
+                # print(key)
+                # print(search_terms)
+                tax = set([t.lower() for t in annotations['taxonomy']])
+                if len(taxa_skip.intersection(tax)) > 0:
                     skip_counter += 1
+                    continue
                 ### IF STATEMENT TO TAKE THINGS THAT MATCH KEYWORDS
-                elif len(key_list.intersection(key)) > 0:
+                if search_terms in key:
                     SeqIO.write(record, out_fh, "fasta")
                     take_counter += 1
                 else:
