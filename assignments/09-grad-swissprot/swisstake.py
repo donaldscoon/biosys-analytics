@@ -83,16 +83,16 @@ def main():
     skip_counter = 0
     take_counter = 0
 
-    # taxa_list = []
-    # for item in taxa_given:
-    #     taxa_list.append(item.lower())
-    # taxa_skip = set(taxa_list)
-    # # print(taxa_skip)
+    taxa_list = []
+    for item in taxa_given:
+        taxa_list.append(item.lower())
+    taxa_skip = set(taxa_list)
+    # print(taxa_skip)
 
-    # # print(search_terms)
-    # key_lower = search_terms.lower()
-    # key_list = set([key_lower])
-    # # print(key_list)
+    # print(search_terms)
+    key_lower = search_terms.lower()
+    key_list = set([key_lower])
+    # print(key_list)
 
     out_fh = open(out_file, "w+")
 
@@ -105,9 +105,9 @@ def main():
                 if len(taxa_given.intersection(tax)) > 0:
                     skip_counter += 1
                 ### IF STATEMENT TO TAKE THINGS THAT MATCH KEYWORDS
-                # elif len(search_terms.intersection(key)) > 0:
-                #     SeqIO.write(record, out_fh, "fasta")
-                #     take_counter += 1
+                elif len(key_list.intersection(key)) > 0:
+                    SeqIO.write(record, out_fh, "fasta")
+                    take_counter += 1
                 else:
                     SeqIO.write(record, out_fh, "fasta")
                     take_counter += 1
