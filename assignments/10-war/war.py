@@ -52,36 +52,52 @@ def main():
     """Dizzy Atmosphere by Dizzy Gillespie"""
     args = get_args()
     seed = args.seed
+    random.seed(seed)
 
     cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     suite = ['♥', '♠', '♣', '♦']
 
     deck = list(product(suite, cards))
-    print(deck)
+    shuffle = random.shuffle(deck)
+    # print(deck)
+    player1_wins = 0
+    player2_wins = 0
 
-    # while len(deck) != 0:
-    #     """ready Player 1"""
-    #     player1 = deck.pop(0)
-    #     player1_card = player1[1]
-    #     player1_suite = player1[0]
-    #     player1_hand = player1_suite + player1_card
+    while len(deck) != 0:
+        """ready Player 1"""
+        player1 = deck.pop(0)
+        player1_card = player1[1]
+        player1_suite = player1[0]
+        player1_hand = player1_suite + player1_card
 
-    #     """ready Player 2"""
-    #     player2 = deck.pop(0)
-    #     player2_card = player2[1]
-    #     player2_suite = player2[0]
-    #     player2_hand = player2_suite + player2_card
+        """ready Player 2"""
+        player2 = deck.pop(0)
+        player2_card = player2[1]
+        player2_suite = player2[0]
+        player2_hand = player2_suite + player2_card
 
-        # """this means war"""
-        # if player1_card > player2_card:
-        #     winner = ('Player 1')
-        #     print('{} {} {}'.format(player1_hand, player2_hand, winner))
-        # elif player1_card < player2_card:
-        #     winner = ('Player 2')
-        #     print('{} {} {}'.format(player1_hand, player2_hand, winner))
-        # else:
-        #     winner = ('Draw')
-        #     print('{} {} {}'.format(player1_hand, player2_hand, winner))
+        """this means war"""
+        if player1_card > player2_card:
+            winner = ('P1')
+            print(' {:4}{:4}{:4}'.format(player1_hand, player2_hand, winner))
+            player1_wins += 1
+        elif player1_card < player2_card:
+            winner = ('P2')
+            print(' {:4}{:4}{:4}'.format(player1_hand, player2_hand, winner))
+            player2_wins += 1
+        else:
+            winner = ('WAR!')
+            print(' {:4}{:4}{:4}'.format(player1_hand, player2_hand, winner))
+
+    """and the winner is..."""
+    if player1_wins > player2_wins:
+        print('P1 {} P2 {}: Player 1 wins'.format(player1_wins, player2_wins))
+    elif player1_wins < player2_wins:
+        print('P1 {} P2 {}: Player 2 wins'.format(player1_wins, player2_wins))
+    else:
+        print('P1 {} P2 {}: DRAW'.format(player1_wins, player2_wins))
+        """Nobody. They both suck at random chance games."""
+
 
 
 # --------------------------------------------------
