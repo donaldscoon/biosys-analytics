@@ -5,14 +5,9 @@ Date   : 2019-03-21
 Purpose: Single player card games
 """
 
-import argparse
 import sys
 import os
-import re
-import csv
 import itertools, random
-from collections import Counter
-from Bio import SeqIO
 from itertools import product
 
 
@@ -59,24 +54,23 @@ def main():
 
     deck = list(product(suite, cards))
     shuffle = random.shuffle(deck)
-    # print(deck)
     player1_wins = 0
     player2_wins = 0
 
     while len(deck) != 0:
-        """ready Player 1"""
+        """Ready Player 1?"""
         player1 = deck.pop(0)
         player1_card = player1[1]
         player1_suite = player1[0]
         player1_hand = player1_suite + player1_card
 
-        """ready Player 2"""
+        """Ready Player 2?"""
         player2 = deck.pop(0)
         player2_card = player2[1]
         player2_suite = player2[0]
         player2_hand = player2_suite + player2_card
 
-        """this means war"""
+        """This means war"""
         if player1_card > player2_card:
             winner = ('P1')
             print(' {:4}{:4}{:4}'.format(player1_hand, player2_hand, winner))
