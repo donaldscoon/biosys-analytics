@@ -23,14 +23,6 @@ def get_args():
         '-s', '--seed', help='activates seed', action='store_true')
 
     parser.add_argument(
-        '-s',
-        '--seed',
-        help='used for testing',
-        metavar='int',
-        type=int,
-        default=None)
-
-    parser.add_argument(
         '-p', '--player', help='Player takes an extra card', action='store_true')
 
     parser.add_argument(
@@ -59,6 +51,7 @@ def main():
     p_hits = args.player
     d_hits = args.dealer
     # seed = args.seed
+    print(type(p_hits))
 
     """ADD RANDOM SEED STUFF HERE"""
 
@@ -67,55 +60,112 @@ def main():
 
     deck = sorted(product(suite, cards))
     shuffle = random.shuffle(deck)
+
     """I should probably find a way to make this shorter."""
-    if p_hits and d_hits == None:
-        """First Card"""
-        p_draw_1 = deck.pop(0)
-        p_c_draw_1 = p_draw_1[1]
-        p_s_draw_1 = p_draw_1[0]
-        p_card1 = p_s_draw_1 + p_c_draw_1
+    # if p_hits and d_hits == 'False':
+    #     """First Card"""
+    #     p_draw_1 = deck.pop(0)
+    #     p_c_draw_1 = p_draw_1[1]
+    #     p_s_draw_1 = p_draw_1[0]
+    #     p_v1 = p_draw_1[1]
+    #     if p_v1 == 'J':
+    #         p_v1 = 10
+    #     if p_v1 == 'Q':
+    #         p_v1 = 10
+    #     if p_v1 == 'K':
+    #         p_v1 = 10
+    #     if p_v1 == 'A':
+    #         p_v1 = 1
+    #     p_card1 = p_s_draw_1 + p_c_draw_1
 
-        """Second Card"""
-        d_draw_1 = deck.pop(0)
-        d_c_draw_1 = d_draw_1[1]
-        d_s_draw_1 = d_draw_1[0]
-        d_card1 = d_s_draw_1 + d_c_draw_1
+    #     """Second Card"""
+    #     d_draw_1 = deck.pop(0)
+    #     d_c_draw_1 = d_draw_1[1]
+    #     d_s_draw_1 = d_draw_1[0]
+    #     d_v1 = d_draw_1[1]
+    #     if d_v1 == 'J':
+    #         d_v1 = 10
+    #     if d_v1 == 'Q':
+    #         d_v1 = 10
+    #     if d_v1 == 'K':
+    #         d_v1 = 10
+    #     if d_v1 == 'A':
+    #         d_v1 = 1
+    #     d_card1 = d_s_draw_1 + d_c_draw_1
 
-        """Third Card"""
-        p_draw_2 = deck.pop(0)
-        p_c_draw_2 = p_draw_2[1]
-        p_s_draw_2 = p_draw_2[0]
-        p_card2 = p_s_draw_2 + p_c_draw_2
+    #     """Third Card"""
+    #     p_draw_2 = deck.pop(0)
+    #     p_c_draw_2 = p_draw_2[1]
+    #     p_s_draw_2 = p_draw_2[0]
+    #     p_v2 = p_draw_2[1]
+    #     if p_v2 == 'J':
+    #         p_v2 = 10
+    #     if p_v2 == 'Q':
+    #         p_v2 = 10
+    #     if p_v2 == 'K':
+    #         p_v2 = 10
+    #     if p_v2 == 'A':
+    #         p_v2 = 1
+    #     p_card2 = p_s_draw_2 + p_c_draw_2
 
-        """Fourth Card"""
-        d_draw_2 = deck.pop(0)
-        d_c_draw_2 = d_draw_2[1]
-        d_s_draw_2 = d_draw_2[0]
-        d_card2 = d_s_draw_2 + d_c_draw_2
+    #     """Fourth Card"""
+    #     d_draw_2 = deck.pop(0)
+    #     d_c_draw_2 = d_draw_2[1]
+    #     d_s_draw_2 = d_draw_2[0]
+    #     d_v2 = d_draw_2[1]
+    #     if d_v2 == 'J':
+    #         d_v2 = 10
+    #     if d_v2 == 'Q':
+    #         d_v2 = 10
+    #     if d_v2 == 'K':
+    #         d_v2 = 10
+    #     if d_v2 == 'A':
+    #         d_v2 = 1
+    #     d_card2 = d_s_draw_2 + d_c_draw_2
 
-        """Math Time"""
-        player_total = p_c_draw_1 + p_c_draw_2
-        dealer_total = d_c_draw_1 + d_c_draw_2
+    #     """Math Time"""
+    #     player_total = p_v1 + p_v2
+    #     dealer_total = d_v1 + d_v2
 
-        """Player Hits"""
-        if p_hits is not None:
-            p_draw_3 = deck.pop(0)
-            p_c_draw_3 = p_draw_3[1]
-            p_s_draw_3 = p_draw_3[0]
-            p_card3 = p_s_draw_3 + p_c_draw_3
-            player_total = player_total + p_c_draw_3
+    #     print("{} {} {}".format(d_card1, d_card2, dealer_total))
+    #     print("{} {} {}".format(p_card1, p_card2, player_total))
+        # """Player Hits"""
+        # if p_hits is not False:
+        #     p_draw_3 = deck.pop(0)
+        #     p_c_draw_3 = p_draw_3[1]
+        #     p_s_draw_3 = p_draw_3[0]
+        #     p_v3 = p_c_draw_3[1]
+        #     if p_v3 == 'J':
+        #         p_v3 = 10
+        #     if p_v3 == 'Q':
+        #         p_v3 = 10
+        #     if p_v3 == 'K':
+        #         p_v3 = 10
+        #     if p_v3 == 'A':
+        #         p_v3 = 1
+        #     p_card3 = p_s_draw_3 + p_c_draw_3
+        #     player_total = player_total + p_v3
         
-        """Dealer Hits"""
-        if d_hits is not None:
-            d_draw_3 = deck.pop(0)
-            d_c_draw_3 = d_draw_3[1]
-            d_s_draw_3 = d_draw_3[0]
-            d_card3 = d_s_draw_3 + d_c_draw_3
-            dealer_total = dealer_total + d_c_draw_3
+        # """Dealer Hits"""
+        # if d_hits is not False:
+        #     d_draw_3 = deck.pop(0)
+        #     d_c_draw_3 = d_draw_3[1]
+        #     d_s_draw_3 = d_draw_3[0]
+        #     d_v3 = d_c_draw_3[1]
+        #     if d_v3 == 'J':
+        #         d_v3 = 10
+        #     if d_v3 == 'Q':
+        #         d_v3 = 10
+        #     if d_v3 == 'K':
+        #         d_v3 = 10
+        #     if d_v3 == 'A':
+        #         d_v3 = 1
+        #     d_card3 = d_s_draw_3 + d_c_draw_3
+        #     dealer_total = dealer_total + d_v3
 
-        """Now we shall see, who wins!"""
-        print(dealer_total)
-        print(player_total)
+        # """Now we shall see, who wins!"""
+        # print(dealer_total)
+        # print(player_total)
 
 
 # --------------------------------------------------
