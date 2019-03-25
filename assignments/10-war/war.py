@@ -58,7 +58,7 @@ def main():
     # value = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
 
     deck = sorted(product(suite, cards))
-    shuffle = random.shuffle(deck)
+    random.shuffle(deck)
     player1_wins = 0
     player2_wins = 0
 
@@ -97,15 +97,15 @@ def main():
         """This means war"""
         if int(player1_value) > int(player2_value):
             winner = ('P1')
-            print('{} {} {}'.format(player1_hand, player2_hand, winner))
+            print('{:>3}  {:>3}  {:>3}'.format(player1_hand, player2_hand, winner))
             player1_wins += 1
         elif int(player1_value) < int(player2_value):
             winner = ('P2')
-            print('{} {} {}'.format(player1_hand, player2_hand, winner))
+            print('{:>3}  {:>3}  {:>3}'.format(player1_hand, player2_hand, winner))
             player2_wins += 1
         else:
             winner = ('WAR!')
-            print('{} {} {}'.format(player1_hand, player2_hand, winner))
+            print('{:>3}  {:>3}  {:>3}'.format(player1_hand, player2_hand, winner))
 
     """and the winner is..."""
     if player1_wins > player2_wins:
