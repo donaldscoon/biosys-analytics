@@ -64,7 +64,7 @@ def main():
 
     while len(deck) != 0:
         """Ready Player 1?"""
-        player1 = deck.pop(0)
+        player1 = deck.pop()
         player1_card = player1[1]
         player1_suite = player1[0]
         player1_value = player1[1]
@@ -79,7 +79,7 @@ def main():
         player1_hand = player1_suite + player1_card
 
         """Ready Player 2?"""
-        player2 = deck.pop(0)
+        player2 = deck.pop()
         player2_card = player2[1]
         player2_suite = player2[0]
         player2_value = player2[1]
@@ -97,15 +97,15 @@ def main():
         """This means war"""
         if int(player1_value) > int(player2_value):
             winner = ('P1')
-            print('{:>3}  {:>3}  {:>3}'.format(player1_hand, player2_hand, winner))
+            print('{:>3} {:>3} {}'.format(player1_hand, player2_hand, winner))
             player1_wins += 1
         elif int(player1_value) < int(player2_value):
             winner = ('P2')
-            print('{:>3}  {:>3}  {:>3}'.format(player1_hand, player2_hand, winner))
+            print('{:>3} {:>3} {}'.format(player1_hand, player2_hand, winner))
             player2_wins += 1
         else:
             winner = ('WAR!')
-            print('{:>3}  {:>3}  {:>3}'.format(player1_hand, player2_hand, winner))
+            print('{:>3} {:>3} {}'.format(player1_hand, player2_hand, winner))
 
     """and the winner is..."""
     if player1_wins > player2_wins:
