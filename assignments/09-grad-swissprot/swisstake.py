@@ -111,22 +111,6 @@ def main():
                     take_counter += 1
     print('Done, skipped {} and took {}. See output in "{}"'.format(skip_counter, take_counter, out_file))
 
-
-
-                # """MATCHS SKIP TERMS TO LIST OF TAXA
-                #    need to make it so the program skips
-                #    now I am hoarding this to make an attempt
-                #    at using sets"""
-                # for item in tax:
-                #     if item in taxa_skip:
-                #         print('ABANDON SHIP')
-                # """PRINTS OUT KEYWORDS """
-                # if type(val) is list:
-                #     for v in val:
-                #         print('{}'.format(v))
-                # else:
-                #     print('{}'.format(val))
-
 # Stuff for guessing game
 # variables upper bound, lower bounds, num guess
 # import random
