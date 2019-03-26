@@ -2,11 +2,14 @@
 """
 Author : donaldscoon
 Date   : 2019-03-21
-Purpose: Rock the Casbah
+Purpose: Single player card games
 """
 
 import argparse
 import sys
+import os
+import itertools, random
+from itertools import product
 
 
 # --------------------------------------------------
@@ -17,26 +20,12 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-s',
+        '--seed',
+        help='helps pass the test',
         metavar='int',
         type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        default=None)
 
     return parser.parse_args()
 
@@ -56,17 +45,77 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Dizzy Atmosphere by Dizzy Gillespie"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    seed = args.seed
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    """ADD RANDOM SEED STUFF HERE"""
+    if seed is not None:
+        random.seed(seed)
+
+    cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    suite = ['♥', '♠', '♣', '♦']
+    # value = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
+
+    deck = sorted(product(suite, cards))
+    random.shuffle(deck)
+    player1_wins = 0
+    player2_wins = 0
+
+    while len(deck) != 0:
+        """Ready Player 1?"""
+        player1 = deck.pop()
+        player1_card = player1[1]
+        player1_suite = player1[0]
+        player1_value = player1[1]
+        if player1_value == 'J':
+            player1_value = 11
+        if player1_value == 'Q':
+            player1_value = 12
+        if player1_value == 'K':
+            player1_value = 13
+        if player1_value == 'A':
+            player1_value = 14
+        player1_hand = player1_suite + player1_card
+
+        """Ready Player 2?"""
+        player2 = deck.pop()
+        player2_card = player2[1]
+        player2_suite = player2[0]
+        player2_value = player2[1]
+        if player2_value == 'J':
+            player2_value = 11
+        if player2_value == 'Q':
+            player2_value = 12
+        if player2_value == 'K':
+            player2_value = 13
+        if player2_value == 'A':
+            player2_value = 14
+        player2_hand = player2_suite + player2_card
+
+
+        """This means war"""
+        if int(player1_value) > int(player2_value):
+            winner = ('P1')
+            print('{:>3} {:>3} {}'.format(player1_hand, player2_hand, winner))
+            player1_wins += 1
+        elif int(player1_value) < int(player2_value):
+            winner = ('P2')
+            print('{:>3} {:>3} {}'.format(player1_hand, player2_hand, winner))
+            player2_wins += 1
+        else:
+            winner = ('WAR!')
+            print('{:>3} {:>3} {}'.format(player1_hand, player2_hand, winner))
+
+    """and the winner is..."""
+    if player1_wins > player2_wins:
+        print('P1 {} P2 {}: Player 1 wins'.format(player1_wins, player2_wins))
+    elif player1_wins < player2_wins:
+        print('P1 {} P2 {}: Player 2 wins'.format(player1_wins, player2_wins))
+    else:
+        print('P1 {} P2 {}: DRAW'.format(player1_wins, player2_wins))
+        """Nobody. They both suck at random chance games."""
+
 
 
 # --------------------------------------------------
