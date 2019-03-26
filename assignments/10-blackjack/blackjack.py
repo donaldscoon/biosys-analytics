@@ -70,7 +70,7 @@ def main():
 
     """I should probably find a way to make this shorter."""
     """First Card"""
-    p_draw_1 = deck.pop(0)
+    p_draw_1 = deck.pop()
     p_c_draw_1 = p_draw_1[1]
     p_s_draw_1 = p_draw_1[0]
     p_v1 = p_draw_1[1]
@@ -85,7 +85,7 @@ def main():
     p_card1 = p_s_draw_1 + p_c_draw_1
 
     """Second Card"""
-    d_draw_1 = deck.pop(0)
+    d_draw_1 = deck.pop()
     d_c_draw_1 = d_draw_1[1]
     d_s_draw_1 = d_draw_1[0]
     d_v1 = d_draw_1[1]
@@ -100,7 +100,7 @@ def main():
     d_card1 = d_s_draw_1 + d_c_draw_1
 
     """Third Card"""
-    p_draw_2 = deck.pop(0)
+    p_draw_2 = deck.pop()
     p_c_draw_2 = p_draw_2[1]
     p_s_draw_2 = p_draw_2[0]
     p_v2 = p_draw_2[1]
@@ -115,7 +115,7 @@ def main():
     p_card2 = p_s_draw_2 + p_c_draw_2
 
     """Fourth Card"""
-    d_draw_2 = deck.pop(0)
+    d_draw_2 = deck.pop()
     d_c_draw_2 = d_draw_2[1]
     d_s_draw_2 = d_draw_2[0]
     d_v2 = d_draw_2[1]
@@ -132,30 +132,33 @@ def main():
     """Math Time"""
     player_total = int(p_v1) + int(p_v2)
     dealer_total = int(d_v1) + int(d_v2)
-    print(d_hits)
-    print(p_hits)
+
     """No one hits"""
     if p_hits == False and d_hits == False:
-        print("D [{:>2}]: {:>3} {:>3}".format(dealer_total, d_card1, d_card2))
-        print("P [{:>2}]: {:>3} {:>3}".format(player_total, p_card1, p_card2))
+        print("D [{:>2}]: {:>2} {:>2}".format(dealer_total, d_card1, d_card2))
+        print("P [{:>2}]: {:>2} {:>2}".format(player_total, p_card1, p_card2))
         """Evaluation"""
-        if dealer_total < 18:
-            print("Dealer should hit")
-        elif dealer_total > 21:
-            print("Dealer busts! You lose, loser!")
-        elif dealer_total == 21:
-            print("Dealer wins. You probably cheated")
-
-        if player_total < 18:
-            print("Player should hit")
-        elif player_total > 21:
+        if player_total > 21:
             print("Player busts! You lose, loser!")
+            sys.exit(0)
+        elif dealer_total > 21:
+            print("Dealer busts.")
+            sys.exit(0)
         elif player_total == 21:
-            print("Player wins. You probably cheated")
+            print("Player wins. You probably cheated.")
+            sys.exit(0)
+        elif dealer_total == 21:
+            print("Dealer wins!")
+            sys.exit(0)
+
+        if dealer_total < 18:
+            print("Dealer should hit.")
+        if player_total < 18:
+            print("Player should hit.")
 
     """Player Hits"""
     if p_hits is not False and d_hits is False:
-        p_draw_3 = deck.pop(0)
+        p_draw_3 = deck.pop()
         p_c_draw_3 = p_draw_3[1]
         p_s_draw_3 = p_draw_3[0]
         p_v3 = p_draw_3[1]
@@ -169,26 +172,32 @@ def main():
             p_v3 = 1
         p_card3 = p_s_draw_3 + p_c_draw_3
         player_total = int(player_total) + int(p_v3)
-        print("D [{:>2}]: {:>3} {:>3}".format(dealer_total, d_card1, d_card2))
-        print("P [{:>2}]: {:>3} {:>3} {:>3}".format(player_total, p_card1, p_card2, p_card3))
-        """Evaluation"""
-        if dealer_total < 18:
-            print("Dealer should hit")
-        elif dealer_total > 21:
-            print("Dealer busts! You lose, loser!")
-        elif dealer_total == 21:
-            print("Dealer wins. You probably cheated")
+        print("D [{:>2}]: {:>2} {:>2}".format(dealer_total, d_card1, d_card2))
+        print("P [{:>2}]: {:>2} {:>2} {:>2}".format(player_total, p_card1, p_card2, p_card3))
 
-        if player_total < 18:
-            print("Player should hit")
-        elif player_total > 21:
+        """Evaluation"""
+        if player_total > 21:
             print("Player busts! You lose, loser!")
+            sys.exit(0)
+        elif dealer_total > 21:
+            print("Dealer busts.")
+            sys.exit(0)
         elif player_total == 21:
-            print("Player wins. You probably cheated")
+            print("Player wins. You probably cheated.")
+            sys.exit(0)
+        elif dealer_total == 21:
+            print("Dealer wins!")
+            sys.exit(0)
+
+        if dealer_total < 18:
+            print("Dealer should hit.")
+        if player_total < 18:
+            print("Player should hit.")
+
 
     """Dealer Hits"""
     if d_hits is not False and p_hits is False:
-        d_draw_3 = deck.pop(0)
+        d_draw_3 = deck.pop()
         d_c_draw_3 = d_draw_3[1]
         d_s_draw_3 = d_draw_3[0]
         d_v3 = d_draw_3[1]
@@ -202,22 +211,86 @@ def main():
             d_v3 = 1
         d_card3 = d_s_draw_3 + d_c_draw_3
         dealer_total = int(dealer_total) + int(d_v3)
-        print("D [{:>2}]: {:>3} {:>3} {:>3}".format(dealer_total, d_card1, d_card2, d_card3))
-        print("P [{:>2}]: {:>3} {:>3}".format(player_total, p_card1, p_card2))
-        """Evaluation"""
-        if dealer_total < 18:
-            print("Dealer should hit")
-        elif dealer_total > 21:
-            print("Dealer busts! You lose, loser!")
-        elif dealer_total == 21:
-            print("Dealer wins. You probably cheated")
+        print("D [{:>2}]: {:>2} {:>2} {:>2}".format(dealer_total, d_card1, d_card2, d_card3))
+        print("P [{:>2}]: {:>2} {:>2}".format(player_total, p_card1, p_card2))
 
-        if player_total < 18:
-            print("Player should hit")
-        elif player_total > 21:
+        """Evaluation"""
+        if player_total > 21:
             print("Player busts! You lose, loser!")
+            sys.exit(0)
+        elif dealer_total > 21:
+            print("Dealer busts.")
+            sys.exit(0)
         elif player_total == 21:
-            print("Player wins. You probably cheated")
+            print("Player wins. You probably cheated.")
+            sys.exit(0)
+        elif dealer_total == 21:
+            print("Dealer wins!")
+            sys.exit(0)
+
+        if dealer_total < 18:
+            print("Dealer should hit.")
+        if player_total < 18:
+            print("Player should hit.")
+
+    if p_hits is not False and d_hits is not False:
+        """Player Draws"""
+        p_draw_3 = deck.pop()
+        p_c_draw_3 = p_draw_3[1]
+        p_s_draw_3 = p_draw_3[0]
+        p_v3 = p_draw_3[1]
+        if p_v3 == 'J':
+            p_v3 = 10
+        if p_v3 == 'Q':
+            p_v3 = 10
+        if p_v3 == 'K':
+            p_v3 = 10
+        if p_v3 == 'A':
+            p_v3 = 1
+        p_card3 = p_s_draw_3 + p_c_draw_3
+        player_total = int(player_total) + int(p_v3)
+
+        """Dealer Draws"""
+        d_draw_3 = deck.pop()
+        d_c_draw_3 = d_draw_3[1]
+        d_s_draw_3 = d_draw_3[0]
+        d_v3 = d_draw_3[1]
+        if d_v3 == 'J':
+            d_v3 = 10
+        if d_v3 == 'Q':
+            d_v3 = 10
+        if d_v3 == 'K':
+            d_v3 = 10
+        if d_v3 == 'A':
+            d_v3 = 1
+        d_card3 = d_s_draw_3 + d_c_draw_3
+        dealer_total = int(dealer_total) + int(d_v3)
+
+        print("D [{:>2}]: {:>2} {:>2} {:>2}".format(dealer_total, d_card1, d_card2, d_card3))
+        print("P [{:>2}]: {:>2} {:>2} {:>2}".format(player_total, p_card1, p_card2, p_card3))
+
+        """Evaluation"""
+        if player_total > 21:
+            print("Player busts! You lose, loser!")
+            sys.exit(0)
+        elif dealer_total > 21:
+            print("Dealer busts.")
+            sys.exit(0)
+        elif player_total == 21:
+            print("Player wins. You probably cheated.")
+            sys.exit(0)
+        elif dealer_total == 21:
+            print("Dealer wins!")
+            sys.exit(0)
+
+        if dealer_total < 18:
+            print("Dealer should hit.")
+        if player_total < 18:
+            print("Player should hit.")
+
+
+
+
 
     """Now we shall see, who wins!"""
 
