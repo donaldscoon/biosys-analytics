@@ -38,9 +38,13 @@ date_re = re.compile('(?P<year>\d{4})'     # YYYY
 
 match1 = date_re.match(arg)
 
+if match1 == None:
+    print('No match')
+    sys.exit(0)
+
 parts = [match1.group('year'), 
          match1.group('month'), 
-         match1.group('day')]
+         match1.group('day')] 
 
 if parts[2] == None:
     parts[2] = '01'
@@ -48,6 +52,7 @@ if parts[2] == None:
 # standard = '{}-{}-{}'.format(match1.group('year'),
 #                              match1.group('month'),
 #                              match1.group('day'))
+
 print('{}-{}-{}'.format(parts[0], 
                         parts[1],
                         parts[2]))
@@ -57,6 +62,7 @@ print('{}-{}-{}'.format(parts[0],
 2/14
 2/14-12/15
 """
+
 """ Another Regex
 Dec-2015
 Dec, 2015
