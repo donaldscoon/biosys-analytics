@@ -33,29 +33,31 @@ arg = args[0]
 date_re = re.compile('(?P<year>\d{4})'     # YYYY
                      '[/-]?'               # optional seperator
                      '(?P<month>\d{2})'    # MM
-                     '[/-]?'               # optional seperator
+                     '[-]?'               # optional seperator
                      '(?P<day>\d{2})?')     # DD
 
-match1 = date_re.match(arg)
+date_re2 = re.compile('(?P<year>\d{2})'
+                       '[/-]?'
+                       '(?P<month>\d{2})')
 
-if match1 == None:
+match = date_re.match(arg) or date_re2.match(arg)
+
+if match == None:
     print('No match')
     sys.exit(0)
 
-parts = [match1.group('year'), 
-         match1.group('month'), 
-         match1.group('day')] 
+parts = {'year': match.group('year'), 
+         'month': match.group('month')}
+        #  'day': match.group('day')}
 
-if parts[2] == None:
-    parts[2] = '01'
+print(parts)
 
-# standard = '{}-{}-{}'.format(match1.group('year'),
-#                              match1.group('month'),
-#                              match1.group('day'))
+# if parts[2] == None:
+#     parts[2] = '01'
 
-print('{}-{}-{}'.format(parts[0], 
-                        parts[1],
-                        parts[2]))
+# print('{}-{}-{}'.format(parts[0], 
+#                         parts[1],
+#                         parts[2]))
 
 """ These might be a seperate regex
 12/06
@@ -69,3 +71,8 @@ Dec, 2015
 March-2017
 April, 2017
 """
+
+# OLD FORMAT BEING HOARDED
+# standard = '{}-{}-{}'.format(match1.group('year'),
+#                              match1.group('month'),
+#                              match1.group('day'))
