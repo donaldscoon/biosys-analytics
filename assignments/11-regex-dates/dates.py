@@ -17,7 +17,9 @@ if len(args) != 1:
     print('Usage: dates.py "STRING of dates"')
     sys.exit(1)
 
-""" These should fit in all one regex
+arg = args[0]
+
+""" First REGEX covers these formats
 2012-03-09T08:59
 2012-03-09T08:59:03
 2017-06-16Z
@@ -25,10 +27,7 @@ if len(args) != 1:
 2015-01/2015-02
 2015-01-03/2015-02-14
 2017-06-16Z
-20100910 Might fit here with some effort
 """
-
-arg = args[0]
 
 date_re = re.compile('(?P<year>\d{4})'     # YYYY
                      '[/-]?'               # optional seperator
@@ -36,12 +35,38 @@ date_re = re.compile('(?P<year>\d{4})'     # YYYY
                      '[-]?'               # optional seperator
                      '(?P<day>\d{2})?')     # DD
 
+""" 2nd REGEX covers
+12/06
+"""
+
 date_re2 = re.compile('(?P<year>\d{2})'
                        '[/-]?'
                        '(?P<month>\d{2})')
 
-match = date_re.match(arg) or date_re2.match(arg)
+""" 3rd REGEX covers
+2/14
+2/14-12/15
+"""
 
+date_re3 = re.compile('(?P<month>\d{1})'
+                      '[/-]'
+                      '(?P<year>\d{2})')
+
+""" 4th REGEX covers
+Dec-2015
+March-2017
+Dec, 2015
+April, 2017
+"""
+
+match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg))
+# print(match)
+
+# print(match1)
+# print(match2)
+# print(match3)
+
+# print(match)
 d_match = (match.groupdict())
 
 if match == None:
@@ -50,22 +75,22 @@ if match == None:
 
 if len(d_match) < 3:
     d_match['day'] = '01'
+    
+if d_match.get('day') == None:
+    d_match['day'] = '01'
+
+if len(d_match.get('year')) < 3:
+    d_match['year'] = ('20' + d_match.get('year'))
+
+if len(d_match.get('month')) < 2:
+    d_match['month'] = ('0' + d_match.get('month'))
 
 print('{}-{}-{}'.format(d_match.get('year'), d_match.get('month'), d_match.get('day')))
 
 
-""" These might be a seperate regex
-12/06
-2/14
-2/14-12/15
-"""
 
-""" Another Regex
-Dec-2015
-Dec, 2015
-March-2017
-April, 2017
-"""
+
+
 
 # OLD CODE HOARDING
 
