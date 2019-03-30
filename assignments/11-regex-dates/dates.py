@@ -42,22 +42,17 @@ date_re2 = re.compile('(?P<year>\d{2})'
 
 match = date_re.match(arg) or date_re2.match(arg)
 
+d_match = (match.groupdict())
+
 if match == None:
     print('No match')
     sys.exit(0)
 
-parts = {'year': match.group('year'), 
-         'month': match.group('month')}
-        #  'day': match.group('day')}
+if len(d_match) < 3:
+    d_match['day'] = '01'
 
-print(parts)
+print('{}-{}-{}'.format(d_match.get('year'), d_match.get('month'), d_match.get('day')))
 
-# if parts[2] == None:
-#     parts[2] = '01'
-
-# print('{}-{}-{}'.format(parts[0], 
-#                         parts[1],
-#                         parts[2]))
 
 """ These might be a seperate regex
 12/06
@@ -71,6 +66,22 @@ Dec, 2015
 March-2017
 April, 2017
 """
+
+# OLD CODE HOARDING
+
+# parts = {'year': match.group('year'), 
+#          'month': match.group('month'),
+#          'day': match.group('day')}
+
+# print(parts)
+
+# if parts[2] == None:
+#     parts[2] = '01'
+
+# print('{}-{}-{}'.format(parts[0], 
+#                         parts[1],
+#                         parts[2]))
+
 
 # OLD FORMAT BEING HOARDED
 # standard = '{}-{}-{}'.format(match1.group('year'),
