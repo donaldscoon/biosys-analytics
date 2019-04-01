@@ -59,16 +59,15 @@ Dec, 2015
 April, 2017
 """
 
-date_re4 = re.compile('(?P<month>"[a-z]*")')
-                    #   '[/,-]'
+#                    #   '[/,-]'
                     #   '([\s*])?'
                     #   '(?P<year>\d{4})')
 
 # date_re4 = re.compile('/^(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)$/i')
 
-print(date_re4)
-match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg)) or (date_re4.match(arg))
-print(match)
+# print(date_re4)
+match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg)) #or (date_re4.match(arg))
+# print(match)
 
 d_match = (match.groupdict())
 
