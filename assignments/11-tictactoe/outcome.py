@@ -17,7 +17,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'state', metavar='str', help='State of the board')
+        'state', metavar='STATE', help='State of the board')
 
     return parser.parse_args()
 
