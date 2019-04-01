@@ -58,16 +58,17 @@ March-2017
 Dec, 2015
 April, 2017
 """
-# date_re4 = re.compile('(?P<month>[a-z]{2})')
-#                      '[/,-]'
-#                       '([\s*])?'
-#                       '(?P<year>\d{4})')
+
+date_re4 = re.compile('(?P<month>[a-zA-Z]{3})')
+                    #   '[/,-]'
+                    #   '([\s*])?'
+                    #   '(?P<year>\d{4})')
 
 # date_re4 = re.compile('/^(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)$/i')
 
-# print(date_re4)
-match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg)) #or (date_re4.match(arg))
-# print(match)
+print(date_re4)
+match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg)) or (date_re4.match(arg))
+print(match)
 
 d_match = (match.groupdict())
 
@@ -88,29 +89,3 @@ if len(d_match.get('month')) < 2:
     d_match['month'] = ('0' + d_match.get('month'))
 
 print('{}-{}-{}'.format(d_match.get('year'), d_match.get('month'), d_match.get('day')))
-
-
-
-
-
-
-# OLD CODE HOARDING
-
-# parts = {'year': match.group('year'), 
-#          'month': match.group('month'),
-#          'day': match.group('day')}
-
-# print(parts)
-
-# if parts[2] == None:
-#     parts[2] = '01'
-
-# print('{}-{}-{}'.format(parts[0], 
-#                         parts[1],
-#                         parts[2]))
-
-
-# OLD FORMAT BEING HOARDED
-# standard = '{}-{}-{}'.format(match1.group('year'),
-#                              match1.group('month'),
-#                              match1.group('day'))
