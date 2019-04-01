@@ -50,7 +50,7 @@ date_re2 = re.compile('(?P<month>\d{1,2})'
 
 date_re3 = re.compile('(?P<month>\d{1})'
                       '[/-]'
-                      '(?P<year>\d{2})')
+                      '(?P<year>\d{1,2})')
 
 """ 4th REGEX covers
 Dec-2015
@@ -59,16 +59,14 @@ Dec, 2015
 April, 2017
 """
 
-date_re4 = re.compile('(?P<month>[a-zA-Z]{3})')
-                    #   '[/,-]'
-                    #   '([\s*])?'
-                    #   '(?P<year>\d{4})')
+# date_re4 = re.compile('(?P<month>[Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|Aug|August|Sep|September|Oct|October|Nov|November|Dec|December]{3})'
+#                       '[/,-]'
+#                       '([\s*])?'
+#                       '(?P<year>\d{4})')
 
-# date_re4 = re.compile('/^(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)$/i')
-
-print(date_re4)
-match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg)) or (date_re4.match(arg))
-print(match)
+# print(date_re4)
+match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg))# or (date_re4.match(arg))
+# print(match)
 
 d_match = (match.groupdict())
 
@@ -87,5 +85,8 @@ if len(d_match.get('year')) < 3:
 
 if len(d_match.get('month')) < 2:
     d_match['month'] = ('0' + d_match.get('month'))
+
+# if d_match.get('month') == 'Jan':
+#     d_match['month'] = '01'
 
 print('{}-{}-{}'.format(d_match.get('year'), d_match.get('month'), d_match.get('day')))
