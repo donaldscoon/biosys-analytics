@@ -63,21 +63,8 @@ date_re4 = re.compile('(?P<month>[Jan|January|Feb|February|Mar|March|Apr|April|M
                       '([/,-])?'
                       '(\s*)?'
                       '(?P<year>\d{4}$)')
-# print(date_re)
-# print(date_re2)
-# print(date_re3)
-# print(date_re4)
 
 match = (date_re.match(arg)) or (date_re2.match(arg)) or (date_re3.match(arg)) or (date_re4.match(arg))
-# match = (date_re.match(arg))
-# match2 = (date_re2.match(arg))
-# match3 = (date_re3.match(arg))
-# match4 = (date_re4.match(arg))
-
-# print(match)
-# print(match2)
-# print(match3)
-# print(match4)
 
 if match == None:
     print('No match')
