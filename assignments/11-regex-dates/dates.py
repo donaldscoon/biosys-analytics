@@ -39,9 +39,9 @@ date_re = re.compile('(?P<year>\d{4})'     # YYYY
 12/06
 """
 
-date_re2 = re.compile('(?P<year>\d{2})'
+date_re2 = re.compile('(?P<month>\d{1,2})'
                        '[/-]?'
-                       '(?P<month>\d{2})')
+                       '(?P<year>\d{2})')
 
 """ 3rd REGEX covers
 2/14
