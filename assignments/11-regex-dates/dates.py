@@ -58,10 +58,10 @@ March-2017
 Dec, 2015
 April, 2017
 """
-
-#                    #   '[/,-]'
-                    #   '([\s*])?'
-                    #   '(?P<year>\d{4})')
+# date_re4 = re.compile('(?P<month>[a-z]{2})')
+#                      '[/,-]'
+#                       '([\s*])?'
+#                       '(?P<year>\d{4})')
 
 # date_re4 = re.compile('/^(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)$/i')
 
