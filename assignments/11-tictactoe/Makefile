@@ -3,5 +3,5 @@
 doc:
 	pandoc README.md -o README.pdf
 
-test
+test:
 	python3 -m pytest -v test.py
