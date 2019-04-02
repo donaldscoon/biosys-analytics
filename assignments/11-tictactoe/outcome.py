@@ -62,26 +62,11 @@ def main():
           count += 1
     if count != 9:
        die('State "{}" must be 9 characters of only ., X, O'.format(state))
-    """ REGEX SET UP REWRITE THE DICT AS A REGEX FORMAT WITH DOTS AS ANYTHING AND CHARACTERS AS 'PATTERN'
-     IN A FOR LOOP? USE COUNTS TO DETERMINE WINNER X > O = XWINS O > X = OWINS
-    state_re = re.compile('(?P<state>[XO\.]{9})')
-    print(state_re)
 
-    match = (state_re.match(state))
-    print(match)
-
-    d_match = (match.groupdict())
-    print(d_match['state'])
-    """
-
-
-    #### List of winnging states
     state_re = re.compile('(?P<state>[XXX......|...XXX...|......XXX|X..X..X..|.X..X..X.|..X..X..X|X...X...X|..X.X.X..|OOO......|...OOO...|......OOO|O..O..O..|.O..O..O.|..O..O..O|O...O...O|..O.O.O..]{9})')
     match = (state_re.match(state))
-   #  print(match)
 
     d_match = (match.groupdict())
-   #  print(d_match['state'])
 
     x_count = 0
     o_count = 0
@@ -91,37 +76,12 @@ def main():
       if character == 'O':
          o_count += 1
 
-   #  print(x_count)
     if x_count > o_count:
        print('X has won')
     elif x_count < o_count:
        print('O has won')
     else:
        print('No winner')
-   #  print(o_count)
-    '''
-   #  #### List of winnging states
-   #  x_wins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
-   #            'X..X..X..': 'X', '.X..X..X.': 'X', '..X..X..X': 'X',
-   #            'X...X...X': 'X', '..X.X.X..': 'X'}
-
-   #  o_wins = {'OOO......': 'O',
-   #            '...OOO...': 'O', '......OOO': 'O', 'O..O..O..': 'O',
-   #            '.O..O..O.': 'O', '..O..O..O': 'O', 'O...O...O': 'O',
-   #            '..O.O.O..': 'O'}
-    '''
-
-
-
-
-
-    #### The evaluation of the state inputed
-   #  if state in x_wins:
-   #     print('X has won')
-   #  elif state in o_wins:
-   #     print('O has won')
-   #  else:
-   #     print('No winner')
 
 # --------------------------------------------------
 if __name__ == '__main__':
