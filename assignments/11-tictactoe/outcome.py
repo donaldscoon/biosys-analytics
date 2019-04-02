@@ -7,6 +7,8 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
+import os
+import re
 
 
 # --------------------------------------------------
@@ -60,23 +62,39 @@ def main():
           count += 1
     if count != 9:
        die('State "{}" must be 9 characters of only ., X, O'.format(state))
+    """ REGEX SET UP
+    state_re = re.compile('(?P<state>[XO\.]{9})')
+    print(state_re)
+
+    match = (state_re.match(state))
+    print(match)
+
+    d_match = (match.groupdict())
+    print(d_match['state'])
+    """
 
     #### List of winnging states
-    xwins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
-             'X..X..X..': 'X', '.X..X..X.': 'X', '..X..X..X': 'X',
-             'X...X...X': 'X', '..X.X.X..': 'X'}
+    x_wins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
+              'X..X..X..': 'X', '.X..X..X.': 'X', '..X..X..X': 'X',
+              'X...X...X': 'X', '..X.X.X..': 'X'}
 
-    owins = {'OOO......': 'O', '...OOO...': 'O', '......OOO': 'O',
-             'O..O..O..': 'O', '.O..O..O.': 'O', '..O..O..O': 'O',
-             'O...O...O': 'O', '..O.O.O..': 'O'}
+    o_wins = {'OOO......': 'O',
+              '...OOO...': 'O', '......OOO': 'O', 'O..O..O..': 'O',
+              '.O..O..O.': 'O', '..O..O..O': 'O', 'O...O...O': 'O',
+              '..O.O.O..': 'O'}
+
+
+
+
+
 
     #### The evaluation of the state inputed
-    if state in xwins:
-       print('X has won')
-    elif state in owins:
-       print('O has won')
-    else:
-       print('No winner')
+   #  if state in x_wins:
+   #     print('X has won')
+   #  elif state in o_wins:
+   #     print('O has won')
+   #  else:
+   #     print('No winner')
 
 # --------------------------------------------------
 if __name__ == '__main__':
