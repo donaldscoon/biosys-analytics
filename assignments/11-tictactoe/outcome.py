@@ -76,15 +76,40 @@ def main():
 
 
     #### List of winnging states
-    x_wins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
-              'X..X..X..': 'X', '.X..X..X.': 'X', '..X..X..X': 'X',
-              'X...X...X': 'X', '..X.X.X..': 'X'}
+    state_re = re.compile('(?P<state>[XXX......|...XXX...|......XXX|X..X..X..|.X..X..X.|..X..X..X|X...X...X|..X.X.X..|OOO......|...OOO...|......OOO|O..O..O..|.O..O..O.|..O..O..O|O...O...O|..O.O.O..]{9})')
+    match = (state_re.match(state))
+   #  print(match)
 
-    o_wins = {'OOO......': 'O',
-              '...OOO...': 'O', '......OOO': 'O', 'O..O..O..': 'O',
-              '.O..O..O.': 'O', '..O..O..O': 'O', 'O...O...O': 'O',
-              '..O.O.O..': 'O'}
+    d_match = (match.groupdict())
+   #  print(d_match['state'])
 
+    x_count = 0
+    o_count = 0
+    for character in d_match['state']:
+      if character == 'X':
+         x_count += 1
+      if character == 'O':
+         o_count += 1
+
+   #  print(x_count)
+    if x_count > o_count:
+       print('X has won')
+    elif x_count < o_count:
+       print('O has won')
+    else:
+       print('No winner')
+   #  print(o_count)
+    '''
+   #  #### List of winnging states
+   #  x_wins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
+   #            'X..X..X..': 'X', '.X..X..X.': 'X', '..X..X..X': 'X',
+   #            'X...X...X': 'X', '..X.X.X..': 'X'}
+
+   #  o_wins = {'OOO......': 'O',
+   #            '...OOO...': 'O', '......OOO': 'O', 'O..O..O..': 'O',
+   #            '.O..O..O.': 'O', '..O..O..O': 'O', 'O...O...O': 'O',
+   #            '..O.O.O..': 'O'}
+    '''
 
 
 
