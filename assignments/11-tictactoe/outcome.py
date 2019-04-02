@@ -62,7 +62,8 @@ def main():
           count += 1
     if count != 9:
        die('State "{}" must be 9 characters of only ., X, O'.format(state))
-    """ REGEX SET UP
+    """ REGEX SET UP REWRITE THE DICT AS A REGEX FORMAT WITH DOTS AS ANYTHING AND CHARACTERS AS 'PATTERN'
+     IN A FOR LOOP? USE COUNTS TO DETERMINE WINNER X > O = XWINS O > X = OWINS
     state_re = re.compile('(?P<state>[XO\.]{9})')
     print(state_re)
 
@@ -72,6 +73,7 @@ def main():
     d_match = (match.groupdict())
     print(d_match['state'])
     """
+
 
     #### List of winnging states
     x_wins = {'XXX......': 'X', '...XXX...': 'X', '......XXX': 'X',
