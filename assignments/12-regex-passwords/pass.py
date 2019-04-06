@@ -47,8 +47,8 @@ def main():
     password = args.password
     entry = args.entry.lower()
 
-    print(password)
-    print(entry)
+    # print(password)
+    # print(entry)
 
     pass_re1 = re.compile('[^.]?'           #begining of word extra character
                           '(?P<pass>\w+)'
@@ -56,12 +56,12 @@ def main():
 
     match = pass_re1.match(entry)
 
-    print(match)
+    # print(match)
 
     if password == entry:
-        print('BORING')
+        print('ok')
     elif entry != None:
-        print('lucky you')
+        print('nah')
 
 # --------------------------------------------------
 if __name__ == '__main__':
