@@ -9,6 +9,8 @@ import argparse
 import sys
 import os
 import re
+import random
+import string
 
 
 # --------------------------------------------------
@@ -47,21 +49,22 @@ def main():
     password = args.password
     entry = args.entry.lower()
 
-    # print(password)
-    # print(entry)
-
-    pass_re1 = re.compile('[^.]?'           #begining of word extra character
-                          '(?P<pass>\w+)'
-                          '[$.]?')           #end of word extra character
+    pass_re1 = re.compile('[ -~]?' +           #begining of word extra character
+                          password +
+                          '[ -~]?')           #end of word extra character
 
     match = pass_re1.match(entry)
 
-    # print(match)
-
     if password == entry:
         print('ok')
-    elif entry != None:
-        print('nah')
+
+    if password != entry:
+        if match != None:
+            print('ok')
+        else:
+            print('nah')
+
+
 
 # --------------------------------------------------
 if __name__ == '__main__':
