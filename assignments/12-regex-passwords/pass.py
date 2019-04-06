@@ -2,11 +2,13 @@
 """
 Author : donaldscoon
 Date   : 2019-04-04
-Purpose: Rock the Casbah
+Purpose: Hack passwords
 """
 
 import argparse
 import sys
+import os
+import re
 
 
 # --------------------------------------------------
@@ -17,26 +19,10 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'password', metavar='str', help='The stored password')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
-        type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        'entry', metavar='str', help='What the user actually inputed')
 
     return parser.parse_args()
 
@@ -58,16 +44,24 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    password = args.password
+    entry = args.entry.lower()
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    print(password)
+    print(entry)
 
+    pass_re1 = re.compile('[^.]?'           #begining of word extra character
+                          '(?P<pass>\w+)'
+                          '[$.]?')           #end of word extra character
+
+    match = pass_re1.match(entry)
+
+    print(match)
+
+    if password == entry:
+        print('BORING')
+    elif entry != None:
+        print('lucky you')
 
 # --------------------------------------------------
 if __name__ == '__main__':
