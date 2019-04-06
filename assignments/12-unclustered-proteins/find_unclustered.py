@@ -7,7 +7,8 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
-
+import os
+import re
 
 # --------------------------------------------------
 def get_args():
@@ -17,26 +18,30 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
-
-    parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
+        '-c',
+        '--cdhit',
+        help='name of the CD-HIT cluster file',
         metavar='str',
         type=str,
-        default='')
+        default='',
+        required=True)
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-p',
+        '--proteins',
+        help='FASTA file',
         metavar='int',
-        type=int,
-        default=0)
+        type=str,
+        default='',
+        required=True)
 
     parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        '-o',
+        '--outfile',
+        help='place to put matchs',
+        metavar='str',
+        type=str,
+        default='unclustered.py')
 
     return parser.parse_args()
 
