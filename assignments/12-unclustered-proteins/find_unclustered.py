@@ -63,15 +63,55 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    cdhit = args.cdhit
+    proteins = args.proteins
+    out_file = args.outfile
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+
+    if not os.path.isfile(proteins):
+        die('--proteins "{}" is not a file'.format(proteins))
+         
+    if not os.path.isfile(cdhit):
+        die('--cdhit "{}" is not a file'.format(cdhit))
+
+    cd_re = re.compile('(?P<ig>[|])'
+                       '(?P<cd_id>\d{1,})'
+                       '(?P<nor>[|])')
+
+    p_re = re.compile('(?P<ignore>[>])'
+                      '(?P<p_id>\d{1,})')
+
+    """Pull clusters from cdhits"""
+    cluster_count = 0
+    d_cluster = {}
+    with open(cdhit) as cdfh:
+        for line in cdfh:
+            # print(line)
+            cluster_match = cd_re.search(line)
+            if cluster_match != None:
+                cluster_count += 1
+                d_cluster[cluster_match.group('cd_id')] = cluster_count
+    # print(d_cluster)
+    """Pull protein ID from fasta file"""
+    protein_count = 0
+    d_protein = {}
+    with open(proteins) as pfh:
+        for line in pfh:
+            protein_match = p_re.search(line)
+            if protein_match != None:
+                protein_count +=1
+                d_protein[protein_match.group('p_id')] = protein_count
+    
+    matchy_matchy = 0
+    for item in d_protein:
+        if item in d_cluster:
+            matchy_matchy += 1
+    print(protein_count - cluster_count)
+    print('"{}""{}"'.format(cluster_count, protein_count))
+
+    out_file = open(out_file, 'w+')
+
+
 
 
 # --------------------------------------------------
