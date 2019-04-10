@@ -9,6 +9,8 @@ import argparse
 import sys
 import os
 import re
+from Bio import SeqIO
+from collections import Counter
 
 # --------------------------------------------------
 def get_args():
@@ -41,7 +43,7 @@ def get_args():
         help='place to put matchs',
         metavar='str',
         type=str,
-        default='unclustered.py')
+        default='unclustered.fa')
 
     return parser.parse_args()
 
@@ -91,7 +93,32 @@ def main():
                 cluster_count += 1
                 d_cluster[cluster_match.group('cd_id')] = cluster_count
     # print(d_cluster)
-    """Pull protein ID from fasta file"""
+    no_matchy = 0
+    num_seqs = 0
+    with open(out_file, 'w+') as out_fh:
+        for record in SeqIO.parse(proteins, 'fasta'):
+            """Still not sure how to use this"""
+            # p_id = re.sub('[|].*', '')
+            num_seqs += 1
+            if record.id not in d_cluster:
+                SeqIO.write(record, out_fh, "fasta")
+                no_matchy += 1
+
+    print('Wrote {} of {} unclustered proteins to "{}"'.format(no_matchy, num_seqs, out_file))
+
+
+
+
+
+
+
+# --------------------------------------------------
+if __name__ == '__main__':
+    main()
+
+
+    """MY PRECIOUS
+    Pull protein ID from fasta file
     protein_count = 0
     d_protein = {}
     with open(proteins) as pfh:
@@ -105,16 +132,4 @@ def main():
     for item in d_protein:
         if item in d_cluster:
             matchy_matchy += 1
-
-    print(matchy_matchy)
-    print(protein_count - cluster_count)
-    print('"{}" "{}"'.format(cluster_count, protein_count))
-
-    out_file = open(out_file, 'w+')
-
-
-
-
-# --------------------------------------------------
-if __name__ == '__main__':
-    main()
+    """
