@@ -67,10 +67,9 @@ def main():
     proteins = args.proteins
     out_file = args.outfile
 
-
     if not os.path.isfile(proteins):
         die('--proteins "{}" is not a file'.format(proteins))
-         
+
     if not os.path.isfile(cdhit):
         die('--cdhit "{}" is not a file'.format(cdhit))
 
@@ -101,13 +100,15 @@ def main():
             if protein_match != None:
                 protein_count +=1
                 d_protein[protein_match.group('p_id')] = protein_count
-    
+
     matchy_matchy = 0
     for item in d_protein:
         if item in d_cluster:
             matchy_matchy += 1
+
+    print(matchy_matchy)
     print(protein_count - cluster_count)
-    print('"{}""{}"'.format(cluster_count, protein_count))
+    print('"{}" "{}"'.format(cluster_count, protein_count))
 
     out_file = open(out_file, 'w+')
 
