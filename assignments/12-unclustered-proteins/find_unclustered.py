@@ -98,13 +98,13 @@ def main():
     with open(out_file, 'w+') as out_fh:
         for record in SeqIO.parse(proteins, 'fasta'):
             """Still not sure how to use this"""
-            # p_id = re.sub('[|].*', '')
+            record.id = re.sub('[|].*', '', record.id)
             num_seqs += 1
             if record.id not in d_cluster:
                 SeqIO.write(record, out_fh, "fasta")
                 no_matchy += 1
 
-    print('Wrote {} of {} unclustered proteins to "{}"'.format(no_matchy, num_seqs, out_file))
+    print('Wrote {:,d} of {:,d} unclustered proteins to "{}"'.format(no_matchy, num_seqs, out_file))
 
 
 
