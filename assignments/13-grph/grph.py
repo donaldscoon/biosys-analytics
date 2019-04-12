@@ -60,7 +60,6 @@ def main():
     if k_value < 1:
         die('-k "{}" must be a positive integer'.format(k_value))
 
-    k_value = 3
     text = [line.strip() for line in open(input_file)]
     i = 2
     while i < len(text):
