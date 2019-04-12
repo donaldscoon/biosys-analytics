@@ -2,11 +2,15 @@
 """
 Author : donaldscoon
 Date   : 2019-04-11
-Purpose: Rock the Casbah
+Purpose: Matchey KMERS!!
 """
 
 import argparse
 import sys
+import os
+import re
+from Bio import SeqIO
+from collections import Counter
 
 
 # --------------------------------------------------
@@ -17,26 +21,15 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'positional', metavar='str', help='input file')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-k',
+        '--overlap',
+        help='Number of codons to over lap at begining and end of sequence',
         metavar='int',
         type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        default=3)
 
     return parser.parse_args()
 
@@ -58,17 +51,14 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    k_value = args.overlap
+    input_file = args.positional
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    if not os.path.isfile(input_file):
+        die('"{}" is not a file'.format(input_file))
 
-
+    if k_value < 1:
+        die('-k "{}" must be a positive integer'.format(k_value))
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
