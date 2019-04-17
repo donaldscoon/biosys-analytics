@@ -7,6 +7,8 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
+import os
+import re
 
 
 # --------------------------------------------------
@@ -17,7 +19,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'File File', metavar='str', help='Files to Hamm', nargs=2)
 
     parser.add_argument(
         '-a',
@@ -27,16 +29,6 @@ def get_args():
         type=str,
         default='')
 
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
-        type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
 
     return parser.parse_args()
 
@@ -53,21 +45,30 @@ def die(msg='Something bad happened'):
     warn(msg)
     sys.exit(1)
 
+#--------------------------------------------------
+def hamdist(str1, str2):
+ 
+        diffs = 0
+        for ch1, ch2 in zip(str1, str2):
+                if ch1 != ch2:
+                        diffs += 1
+        return diffs
 
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
-
+ 
+if __name__ == "__main__":
+   lines = []
+   for line in open("rosalind_hamm.txt"):
+      lines.append(line)
+   s = lines[0]
+   t = lines[1]
+   
+   dist = hamming_distance(s,t)
+   print(dist)
 
 # --------------------------------------------------
 if __name__ == '__main__':
