@@ -19,15 +19,15 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'File File', metavar='str', help='Files to Hamm', nargs=2)
+        'positional', metavar='FILE', help='Files to Hamm', nargs=2)
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
+        '-d',
+        '--debug',
+        help='turns on lowlevel debug statements',
         metavar='str',
         type=str,
-        default='')
+        default=False)
 
 
     return parser.parse_args()
@@ -46,29 +46,46 @@ def die(msg='Something bad happened'):
     sys.exit(1)
 
 #--------------------------------------------------
-def hamdist(str1, str2):
- 
-        diffs = 0
-        for ch1, ch2 in zip(str1, str2):
-                if ch1 != ch2:
-                        diffs += 1
-        return diffs
+def dist(str1, str2):
 
+    logging.basicConfig(
+        filename='.log',
+        filemode='w',
+        level=logging.DEBUG if args.debug else logging.CRITICAL)
+
+    diffs = 0
+    for ch1, ch2 in zip(fh1, fh2):
+        if ch1 != ch2:
+            diffs += 1
+    return diffs
+# loggin.debug('s1 = {}, s2 = {}, d = {}'.format(a,b, hamm_d))
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
+    file1 = args.positional[0]
+    file2 = args.positional[1]
 
- 
-if __name__ == "__main__":
-   lines = []
-   for line in open("rosalind_hamm.txt"):
-      lines.append(line)
-   s = lines[0]
-   t = lines[1]
-   
-   dist = hamming_distance(s,t)
-   print(dist)
+    if not os.path.isfile(file1):
+        die('"{}" is not a file'.format(file1))
+    if not os.path.isfile(file2):
+        die('"{}" is not a file'.format(file2))
+
+    fh1 = open(file1)
+    fh2 = open(file2)
+
+    for line in fh1:
+        for word in line.split():
+            print(word)
+    for line in fh2:
+        for word in line.split():
+            print(word)
+
+
+
+
+
+
 
 # --------------------------------------------------
 if __name__ == '__main__':
