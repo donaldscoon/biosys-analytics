@@ -63,11 +63,6 @@ def main():
     args = get_args()
     file1 = args.positional[0]
     file2 = args.positional[1]
-    
-    if not os.path.isfile(file1):
-        die('"{}" is not a file'.format(file1))
-    if not os.path.isfile(file2):
-        die('"{}" is not a file'.format(file2))
 
     logging.basicConfig(
         filename='.log',
@@ -75,9 +70,15 @@ def main():
         level=logging.DEBUG if args.debug else logging.CRITICAL
     )
 
+    logging.debug('file1 = {}, file2 = {}'.format(file1, file2))
+
+    if not os.path.isfile(file1):
+        die('"{}" is not a file'.format(file1))
+    if not os.path.isfile(file2):
+        die('"{}" is not a file'.format(file2))
+
     fh1 = open(file1)
     fh2 = open(file2)
-
 
     """Creates lists to use later"""
     list_1 = []
@@ -89,8 +90,6 @@ def main():
     for line in fh2:
         for word in line.split():
             list_2.append(word)
-    # print(len(list_1))
-    # print(len(list_2))
     """###########################"""
 
     """Checks the length of the hamming subjects"""
@@ -99,10 +98,6 @@ def main():
         count += dist(word1,word2)
     print(count)
     """##########################"""
-
-
-
-
-# --------------------------------------------------
+# -----------------------------------------------
 if __name__ == '__main__':
     main()
