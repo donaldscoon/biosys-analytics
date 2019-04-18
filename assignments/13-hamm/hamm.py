@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-04-11
-Purpose: Rock the Casbah
+Purpose: I actually prefer SPAM over Hamm
 """
 
 import argparse
@@ -54,8 +54,8 @@ def dist(str1, str2):
             char_count += 1
     len_count = abs(len(str1) - len(str2))
     diffs = len_count + char_count
-    return diffs
     logging.debug('s1 = {}, s2 = {}, d = {}'.format(str1,str2, diffs))
+    return diffs
 
 # --------------------------------------------------
 def main():
@@ -72,11 +72,14 @@ def main():
     logging.basicConfig(
         filename='.log',
         filemode='w',
-        level=logging.DEBUG if args.debug else logging.CRITICAL)
+        level=logging.DEBUG if args.debug else logging.CRITICAL
+    )
 
     fh1 = open(file1)
     fh2 = open(file2)
 
+
+    """Creates lists to use later"""
     list_1 = []
     list_2 = []
 
@@ -86,17 +89,16 @@ def main():
     for line in fh2:
         for word in line.split():
             list_2.append(word)
-
-    # print(list_1)
-    # print(list_2)
+    # print(len(list_1))
+    # print(len(list_2))
+    """###########################"""
 
     """Checks the length of the hamming subjects"""
     count = 0
     for word1, word2 in zip(list_1, list_2):
         count += dist(word1,word2)
     print(count)
-    # print(distance)
-
+    """##########################"""
 
 
 
