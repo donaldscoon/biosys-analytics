@@ -9,6 +9,7 @@ import argparse
 import sys
 import os
 import re
+import logging
 
 
 # --------------------------------------------------
@@ -25,8 +26,7 @@ def get_args():
         '-d',
         '--debug',
         help='turns on lowlevel debug statements',
-        metavar='str',
-        type=str,
+        action='store_true',
         default=False)
 
 
@@ -48,40 +48,52 @@ def die(msg='Something bad happened'):
 #--------------------------------------------------
 def dist(str1, str2):
 
-    logging.basicConfig(
-        filename='.log',
-        filemode='w',
-        level=logging.DEBUG if args.debug else logging.CRITICAL)
-
     diffs = 0
-    for ch1, ch2 in zip(fh1, fh2):
+    for ch1, ch2 in zip(str1, str2):
         if ch1 != ch2:
             diffs += 1
     return diffs
-# loggin.debug('s1 = {}, s2 = {}, d = {}'.format(a,b, hamm_d))
+    logging.debug('s1 = {}, s2 = {}, d = {}'.format(ch1,ch2, diffs))
+
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
     file1 = args.positional[0]
     file2 = args.positional[1]
-
+    
     if not os.path.isfile(file1):
         die('"{}" is not a file'.format(file1))
     if not os.path.isfile(file2):
         die('"{}" is not a file'.format(file2))
 
+    logging.basicConfig(
+        filename='.log',
+        filemode='w',
+        level=logging.DEBUG if args.debug else logging.CRITICAL)
+
     fh1 = open(file1)
     fh2 = open(file2)
 
+    list_1 = []
+    list_2 = []
+
     for line in fh1:
         for word in line.split():
-            print(word)
+            list_1.append(word)
     for line in fh2:
         for word in line.split():
-            print(word)
+            list_2.append(word)
 
+    # print(list_1)
+    # print(list_2)
 
+    """Checks the length of the hamming subjects"""
+    count = 0
+    for word1, word2 in zip(list_1, list_2):
+        count += dist(word1,word2)
+    print(count)
+    # print(distance)
 
 
 
