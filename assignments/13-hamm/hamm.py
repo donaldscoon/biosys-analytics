@@ -48,12 +48,14 @@ def die(msg='Something bad happened'):
 #--------------------------------------------------
 def dist(str1, str2):
 
-    diffs = 0
+    char_count = 0
     for ch1, ch2 in zip(str1, str2):
         if ch1 != ch2:
-            diffs += 1
+            char_count += 1
+    len_count = abs(len(str1) - len(str2))
+    diffs = len_count + char_count
     return diffs
-    logging.debug('s1 = {}, s2 = {}, d = {}'.format(ch1,ch2, diffs))
+    logging.debug('s1 = {}, s2 = {}, d = {}'.format(str1,str2, diffs))
 
 # --------------------------------------------------
 def main():
