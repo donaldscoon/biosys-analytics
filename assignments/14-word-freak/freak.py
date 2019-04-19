@@ -7,6 +7,10 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
+import os
+import re
+from collections import Counter
+
 
 
 # --------------------------------------------------
@@ -17,26 +21,21 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
+        'positional', metavar='str', help='A positional argument', nargs='+')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
+        '-s',
+        '--sort',
+        help='Switches sort to numerically in ascending order',
+        default=False)
 
     parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
+        '-m',
+        '--min',
+        help='minimum number of times a word must occur',
         metavar='int',
         type=int,
         default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
 
     return parser.parse_args()
 
@@ -58,15 +57,23 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    files = args.positional
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    for item in files:
+        print(item)
+        if not os.path.isfile(item):
+            die('"{}" is not a file'.format(item))
+        with open(item) as fh:
+            for line in fh:
+                for word in line.split():
+                    word = (re.sub('[^a-zA-Z0-9]', '', word.lower()))
+                    print(word)
+
+
+
+
+
+
 
 
 # --------------------------------------------------
