@@ -28,6 +28,7 @@ def get_args():
         '-s',
         '--sort',
         help='Switches sort to numerically in ascending order',
+        action='store_true',
         default=False)
 
     parser.add_argument(
@@ -63,18 +64,30 @@ def main():
     num = args.min
 
     dictionary = defaultdict(int)
+
+    """ PULLING WORDS FROM FILES INTO DICTIONARIES"""
     for item in files:
         if not os.path.isfile(item):
             die('"{}" is not a file'.format(item))
         with open(item) as fh:
             for line in fh:
-                for word in line.split():
-                    word = (re.sub('[^a-zA-Z0-9]', '', word.lower()))
-                    dictionary[word] += 1
-    print(dictionary)
+                for thing in line.split():
+                    thing = (re.sub('[^a-zA-Z0-9]', '', thing.lower()))
+                    dictionary[thing] += 1
+    """##########################################"""
 
+    """SORT ALPHBETICALLY"""
+    if sort == False:
+        for word in sorted(dictionary):
+            count = dictionary.get(word)
+            # print(word)
+            print('{:20} {}'.format(word, count))
+    else:
+        for word in sorted(dictionary.values()):
+            count = dictionary.get(word)
+            # print(word)
+            print('{:20} {}'.format(word, count))
 
-    # print('{:20} {}'.format(word, count))
 
 
 
