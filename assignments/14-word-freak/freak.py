@@ -90,13 +90,10 @@ def main():
         for word in sorted(dictionary):
             count = dictionary.get(word)
             print('{:20} {}'.format(word, count))
-    """SORT NUMERICALLY
-    BROKEN BROKEN BROKEN"""
-    # else:
-    #     for word in sorted(dictionary.values()):
-    #         count = dictionary.get(word)
-    #         # print(word)
-    #         print('{:20} {}'.format(word, count))
+    else:
+        pairs = sorted([(x[1], x[0]) for x in dictionary.items()])
+        for count, word in pairs:
+            print('{:20} {}'.format(word, count))
 
 
 
