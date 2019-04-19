@@ -27,9 +27,10 @@ def get_args():
     parser.add_argument(
         '-s',
         '--sort',
-        help='Switches sort to numerically in ascending order',
-        action='store_true',
-        default=False)
+        help='Sort by word or frequency',
+        metavar='str',
+        type=str,
+        default='word')
 
     parser.add_argument(
         '-m',
@@ -63,6 +64,15 @@ def main():
     sort = args.sort
     num = args.min
 
+    """--SORT ERROR STATEMENT"""
+    if sort != 'word':
+        if sort != 'frequency':
+            die('The word "{}" is not word or frequency'.format(sort))
+
+    """--MIN ERROR STATEMENT"""
+    if num < 0:
+        die('"{}" must be greater than 0'.format(num))
+
     dictionary = defaultdict(int)
 
     """ PULLING WORDS FROM FILES INTO DICTIONARIES"""
@@ -74,19 +84,19 @@ def main():
                 for thing in line.split():
                     thing = (re.sub('[^a-zA-Z0-9]', '', thing.lower()))
                     dictionary[thing] += 1
-    """##########################################"""
 
     """SORT ALPHBETICALLY"""
-    if sort == False:
+    if sort == 'word':
         for word in sorted(dictionary):
             count = dictionary.get(word)
-            # print(word)
             print('{:20} {}'.format(word, count))
-    else:
-        for word in sorted(dictionary.values()):
-            count = dictionary.get(word)
-            # print(word)
-            print('{:20} {}'.format(word, count))
+    """SORT NUMERICALLY
+    BROKEN BROKEN BROKEN"""
+    # else:
+    #     for word in sorted(dictionary.values()):
+    #         count = dictionary.get(word)
+    #         # print(word)
+    #         print('{:20} {}'.format(word, count))
 
 
 
