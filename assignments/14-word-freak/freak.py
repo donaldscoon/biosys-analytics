@@ -10,6 +10,7 @@ import sys
 import os
 import re
 from collections import Counter
+from collections import defaultdict
 
 
 
@@ -58,19 +59,22 @@ def main():
     """Make a jazz noise here"""
     args = get_args()
     files = args.positional
+    sort = args.sort
+    num = args.min
 
+    dictionary = defaultdict(int)
     for item in files:
-        print(item)
         if not os.path.isfile(item):
             die('"{}" is not a file'.format(item))
         with open(item) as fh:
             for line in fh:
                 for word in line.split():
                     word = (re.sub('[^a-zA-Z0-9]', '', word.lower()))
-                    print(word)
+                    dictionary[word] += 1
+    print(dictionary)
 
 
-
+    # print('{:20} {}'.format(word, count))
 
 
 
