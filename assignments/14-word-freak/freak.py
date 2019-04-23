@@ -88,16 +88,16 @@ def main():
 
     """SORT ALPHBETICALLY"""
     if sort == 'word':
-        for word in sorted(dictionary):
+        for word in sorted(dictionary.keys()):
             count = dictionary.get(word)
             """Limit output"""
-            if count > num:
+            if count >= num:
                 print('{:20} {}'.format(word, count))
     else:
         pairs = sorted([(x[1], x[0]) for x in dictionary.items()])
         for count, word in pairs:
             """Limit output"""
-            if count > num:
+            if count >= num:
                 print('{:20} {}'.format(word, count))
 
 # --------------------------------------------------
