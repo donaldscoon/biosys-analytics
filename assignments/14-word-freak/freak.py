@@ -22,7 +22,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'positional', metavar='str', help='A positional argument', nargs='+')
+        'positional', metavar='FILE', help='A positional argument', nargs='+')
 
     parser.add_argument(
         '-s',
@@ -83,22 +83,22 @@ def main():
             for line in fh:
                 for thing in line.split():
                     thing = (re.sub('[^a-zA-Z0-9]', '', thing.lower()))
-                    dictionary[thing] += 1
+                    if thing:
+                        dictionary[thing] += 1
 
     """SORT ALPHBETICALLY"""
     if sort == 'word':
         for word in sorted(dictionary):
             count = dictionary.get(word)
-            print('{:20} {}'.format(word, count))
+            """Limit output"""
+            if count > num:
+                print('{:20} {}'.format(word, count))
     else:
         pairs = sorted([(x[1], x[0]) for x in dictionary.items()])
         for count, word in pairs:
-            print('{:20} {}'.format(word, count))
-
-
-
-
-
+            """Limit output"""
+            if count > num:
+                print('{:20} {}'.format(word, count))
 
 # --------------------------------------------------
 if __name__ == '__main__':
