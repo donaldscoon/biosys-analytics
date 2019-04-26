@@ -34,14 +34,16 @@ def get_args():
         '--min_len',
         help='Minimum length of words that should be included',
         metavar='INT',
-        type=int)
+        type=int,
+        default=0)
 
     parser.add_argument(
         '-n',
         '--distance',
         help='max allowed hamming distance for two words to be the same',
         metavar='INT',
-        type=int)
+        type=int,
+        default=False)
 
     # parser.add_argument(
     #     '-l',
@@ -124,31 +126,29 @@ def main():
 
     for line in fh1:
         for word in line.split():
+            word = (re.sub('[^a-zA-Z0-9]', '', word.lower()))
             list_1.append(word)
     for line in fh2:
         for word in line.split():
+            word = (re.sub('[^a-zA-Z0-9]', '', word.lower()))
             list_2.append(word)
     """###########################"""
+
     """pull words from the files"""
-    # d_print = {}
     for word1, word2, in zip(list_1, list_2):
         distance = dist(word1, word2)
         l = [word1, word2, distance]
-        if len(l[0]) <= min_len:
+        if len(l[0]) < min_len:
             continue
-        if l[2] <= max_hamm:
-            continue
+        if max_hamm != False:
+            if l[2] > max_hamm:
+                continue
         big_list.append(l)
-    print(big_list)
+
+    for line in sorted(big_list):
+        print(line)
         # print("{}   {}   {}".format(word1, word2, distance))
 
-
-    # """Checks the length of the hamming subjects"""
-    # count = 0
-    # for word1, word2 in zip(list_1, list_2):
-    #     count += dist(word1,word2)
-    # print(count)
-    # """##########################"""
 # -----------------------------------------------
 if __name__ == '__main__':
     main()
