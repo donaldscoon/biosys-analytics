@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-04-11
-Purpose: I actually prefer SPAM over Hamm
+Purpose: A program for the peasentry.
 """
 
 import argparse
@@ -10,7 +10,7 @@ import sys
 import os
 import re
 import logging
-
+# from tabulate import tabulate
 
 # --------------------------------------------------
 def get_args():
@@ -29,19 +29,19 @@ def get_args():
         action='store_true',
         default=False)
 
-    # parser.add_argument(
-    #     '-m',
-    #     '--min_len',
-    #     help='Minimum length of words that should be included',
-    #     metavar='INT',
-    #     type=int)
+    parser.add_argument(
+        '-m',
+        '--min_len',
+        help='Minimum length of words that should be included',
+        metavar='INT',
+        type=int)
 
-    # parser.add_argument(
-    #     '-n',
-    #     'hamming_distance',
-    #     help='max allowed hamming distance for two words to be the same',
-    #     metavar='INT',
-    #     type=int)
+    parser.add_argument(
+        '-n',
+        '--distance',
+        help='max allowed hamming distance for two words to be the same',
+        metavar='INT',
+        type=int)
 
     # parser.add_argument(
     #     '-l',
@@ -92,7 +92,14 @@ def main():
     args = get_args()
     file1 = args.positional[0]
     file2 = args.positional[1]
-    # max_hamm = args.hamming_distance
+    max_hamm = args.distance
+    min_len = args.min_len
+    
+    if max_hamm < 0:
+        die('--distance "{}" must be > 0'.format(max_hamm))
+
+    if min_len < 0:
+        die('--min_len "{}" must be > 0'.format(min_len))
 
     logging.basicConfig(
         filename='.log',
@@ -113,6 +120,7 @@ def main():
     """Creates lists to use later"""
     list_1 = []
     list_2 = []
+    big_list = []
 
     for line in fh1:
         for word in line.split():
@@ -121,16 +129,18 @@ def main():
         for word in line.split():
             list_2.append(word)
     """###########################"""
-
     """pull words from the files"""
-    d_print = {}
+    # d_print = {}
     for word1, word2, in zip(list_1, list_2):
         distance = dist(word1, word2)
-        d_print['line'] = [word1, word2, distance]
-        # if distance >= max_hamm:
-        #     pop.(word1, word2, distance)
+        l = [word1, word2, distance]
+        if len(l[0]) <= min_len:
+            continue
+        if l[2] <= max_hamm:
+            continue
+        big_list.append(l)
+    print(big_list)
         # print("{}   {}   {}".format(word1, word2, distance))
-    print(d_print)
 
 
     # """Checks the length of the hamming subjects"""
