@@ -45,12 +45,12 @@ def get_args():
         type=int,
         default=False)
 
-    # parser.add_argument(
-    #     '-l',
-    #     '--logfile',
-    #     help='the file log statements are printed to',
-    #     action='store_true',
-    #     default='.log')
+    parser.add_argument(
+        '-l',
+        '--logfile',
+        help='the file log statements are printed to',
+        action='store_true',
+        default='.log')
 
     # parser.add_argument(
     #     '-t',
@@ -146,7 +146,7 @@ def main():
         big_list.append(l)
 
     for line in sorted(big_list):
-        print(line)
+        print('{:20} {:20} {:}'.format(line[0], line[1], line[2]))
         # print("{}   {}   {}".format(word1, word2, distance))
 
 # -----------------------------------------------
