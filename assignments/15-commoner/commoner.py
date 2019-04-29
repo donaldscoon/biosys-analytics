@@ -10,7 +10,7 @@ import sys
 import os
 import re
 import logging
-# from tabulate import tabulate
+from tabulate import tabulate
 
 # --------------------------------------------------
 def get_args():
@@ -39,7 +39,7 @@ def get_args():
 
     parser.add_argument(
         '-n',
-        '--distance',
+        '--hamming_distance',
         help='max allowed hamming distance for two words to be the same',
         metavar='INT',
         type=int,
@@ -52,12 +52,12 @@ def get_args():
         action='store_true',
         default='.log')
 
-    # parser.add_argument(
-    #     '-t',
-    #     '--table',
-    #     help='converts output to ascii table',
-    #     action='store_true',
-    #     default= False)
+    parser.add_argument(
+        '-t',
+        '--table',
+        help='converts output to ascii table',
+        action='store_true',
+        default= False)
 
 
     return parser.parse_args()
@@ -87,6 +87,17 @@ def dist(str1, str2):
     logging.debug('s1 = {}, s2 = {}, d = {}'.format(str1,str2, diffs))
     return diffs
 
+def test_dist():
+    """dist ok"""
+
+    tests = [('foo', 'boo', 1), ('foo', 'faa', 2), ('foo', 'foobar', 3),
+             ('TAGGGCAATCATCCGAG', 'ACCGTCAGTAATGCTAC',
+              9), ('TAGGGCAATCATCCGG', 'ACCGTCAGTAATGCTAC', 10)]
+
+    for s1, s2, n in tests:
+        d = dist(s1, s2)
+        assert d == n
+
 
 # --------------------------------------------------
 def main():
@@ -94,8 +105,9 @@ def main():
     args = get_args()
     file1 = args.positional[0]
     file2 = args.positional[1]
-    max_hamm = args.distance
+    max_hamm = args.hamming_distance
     min_len = args.min_len
+    table = args.table
     
     if max_hamm < 0:
         die('--distance "{}" must be > 0'.format(max_hamm))
@@ -122,7 +134,7 @@ def main():
     """Creates lists to use later"""
     list_1 = []
     list_2 = []
-    big_list = []
+    big_list = [['word1', 'word2', 'distance']]
 
     for line in fh1:
         for word in line.split():
@@ -145,10 +157,13 @@ def main():
                 continue
         big_list.append(l)
 
-    for line in sorted(big_list):
-        print('{:20} {:20} {:}'.format(line[0], line[1], line[2]))
-        # print("{}   {}   {}".format(word1, word2, distance))
+    if table == False:
+        print(tabulate(big_list, headers="firstrow"))
+    else:
+        print(tabulate(big_list, headers="firstrow", tablefmt="psql"))
 
+    # for line in sorted(big_list):
+    #     print('{:15} {:15} {:8}'.format(line[0], line[1], line[2]))
 # -----------------------------------------------
 if __name__ == '__main__':
     main()
