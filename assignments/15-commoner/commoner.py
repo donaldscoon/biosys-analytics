@@ -158,13 +158,16 @@ def main():
         logging.debug('words campared are {}'.format(l))
         big_list.append(l)
 
+    if len(big_list) == 0:
+        die('No words in common.')
+        # print(len(big_list))
+
     """tabulate that output"""
     if table == False:
         headers = ['word1', 'word2', 'distance']
         print('\t'.join(headers))
         for line in sorted(big_list):
             print('{}\t{}\t{}'.format(line[0], line[1], line[2]))
-        # print(tabulate(big_list, headers="firstrow"))
     else:
         print(tabulate(sorted(big_list), headers=['word1', 'word2', 'distance'], tablefmt="psql"))
 
