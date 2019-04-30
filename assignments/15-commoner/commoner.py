@@ -134,7 +134,7 @@ def main():
     """Creates lists to use later"""
     list_1 = []
     list_2 = []
-    big_list = [['word1', 'word2', 'distance']]
+    big_list = []
 
     for line in fh1:
         for word in line.split():
@@ -167,7 +167,7 @@ def main():
             print('{} {} {}'.format(line[0], line[1], line[2]))
         # print(tabulate(big_list, headers="firstrow"))
     else:
-        print(tabulate(big_list, headers="firstrow", tablefmt="psql"))
+        print(tabulate(sorted(big_list), headers=['word1', 'word2', 'distance'], tablefmt="psql"))
 
     #"""old print statement for testing"""
     # for line in sorted(big_list):
