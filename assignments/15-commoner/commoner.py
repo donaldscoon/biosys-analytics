@@ -155,13 +155,21 @@ def main():
         if max_hamm != False:
             if l[2] > max_hamm:
                 continue
+        logging.debug('words campared are {}'.format(l))
         big_list.append(l)
 
+    """tabulate that output"""
     if table == False:
-        print(tabulate(big_list, headers="firstrow"))
+        print('word1 word2 distance')
+        for line in sorted(big_list):
+            if line[2] == 'distance':
+                continue
+            print('{} {} {}'.format(line[0], line[1], line[2]))
+        # print(tabulate(big_list, headers="firstrow"))
     else:
         print(tabulate(big_list, headers="firstrow", tablefmt="psql"))
 
+    #"""old print statement for testing"""
     # for line in sorted(big_list):
     #     print('{:15} {:15} {:8}'.format(line[0], line[1], line[2]))
 # -----------------------------------------------
