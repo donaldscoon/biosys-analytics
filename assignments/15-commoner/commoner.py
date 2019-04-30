@@ -160,11 +160,10 @@ def main():
 
     """tabulate that output"""
     if table == False:
-        print('word1 word2 distance')
+        headers = ['word1', 'word2', 'distance']
+        print('\t'.join(headers))
         for line in sorted(big_list):
-            if line[2] == 'distance':
-                continue
-            print('{} {} {}'.format(line[0], line[1], line[2]))
+            print('{}\t{}\t{}'.format(line[0], line[1], line[2]))
         # print(tabulate(big_list, headers="firstrow"))
     else:
         print(tabulate(sorted(big_list), headers=['word1', 'word2', 'distance'], tablefmt="psql"))
