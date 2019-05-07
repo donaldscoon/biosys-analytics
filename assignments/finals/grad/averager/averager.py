@@ -41,13 +41,23 @@ def main():
     args = get_args()
     files = args.positional
 
+    num_list = []
+
     for name in files:
         if not os.path.isfile(name):
             warn('"{}" is not a file'.format(name))
             break
         with open(name) as fh:
             for line in fh:
-                
+                match = re.findall("[-+]?[\d]+(?:,\d\d\d)*\d*(?:[eE][-+]?\d+)?", line)
+                if len(match) > 0:
+                    num_list.append(match)
+
+        total = 0
+        for item in num_list:
+            print('{}'.format(item))
+
+    # print(num_list)
 
 # -----------------------------------------------
 if __name__ == '__main__':
