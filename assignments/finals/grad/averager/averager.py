@@ -2,7 +2,7 @@
 """
 Author : donaldscoon
 Date   : 2019-04-11
-Purpose: A program for the peasentry.
+Purpose: .
 """
 
 import argparse
@@ -54,11 +54,12 @@ def main():
                 # print(match)
                 for num in match:
                     counter += 1
+                    # print(counter)
                     total += float(num)
+                    # print(total)
                     average = (total/counter)
-
+                    # print(average)
         print('{:10.02f}: {}'.format(average, os.path.basename(name)))
-
 
 # -----------------------------------------------
 if __name__ == '__main__':
