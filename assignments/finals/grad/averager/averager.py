@@ -42,12 +42,14 @@ def main():
     files = args.positional
 
 
-    total = 0
-    counter = 0
+
+
     for name in files:
+        counter = 0
+        total = 0
         if not os.path.isfile(name):
             warn('"{}" is not a file'.format(name))
-            break
+            continue
         with open(name) as fh:
             for line in fh:
                 match = re.findall('([+-]?\d+(?:\.\d+)?)', line)
@@ -57,7 +59,10 @@ def main():
                     # print(counter)
                     total += float(num)
                     # print(total)
-                    average = (total/counter)
+        if counter > 0:
+            average = (total/counter)
+        else:
+            average = 0
                     # print(average)
         print('{:10.02f}: {}'.format(average, os.path.basename(name)))
 
