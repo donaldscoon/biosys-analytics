@@ -41,21 +41,33 @@ def main():
     args = get_args()
     files = args.positional
 
-    num_list = []
-
+    # re = re.compile('[+-]?\d+(\.\d+)?')
+    total = 0
+    counter = 0
     for name in files:
         if not os.path.isfile(name):
             warn('"{}" is not a file'.format(name))
             break
         with open(name) as fh:
             for line in fh:
-                match = re.findall("[-+]?[\d]+(?:,\d\d\d)*\d*(?:[eE][-+]?\d+)?", line)
-                if len(match) > 0:
-                    num_list.append(match)
+                match = re.findall('([+-]?\d+(?:\.\d+)?)', line)
+                # print(match)
+                for num in match:
 
-        total = 0
-        for item in num_list:
-            print('{}'.format(item))
+                    counter += 1
+                    total += float(num)
+        # print(total)
+        # print(counter)
+        average = (total/counter)
+        print('{:10.02f}: {}'.format(average, os.path.basename(name)))
+
+                # if len(match) > 0:
+                #     num_list.append(match)
+                #     print(match)
+
+        # total = 0
+        # for item in num_list:
+        #     print('{}'.format(item))
 
     # print(num_list)
 
